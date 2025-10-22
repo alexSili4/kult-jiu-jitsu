@@ -7,7 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
-      '@CommonComponents': '/src/components/Common',
+      '@CommonComponents': '/src/components/common',
       '@ErrorPageComponents': '/src/components/ErrorPage',
       '@MainPageComponents': '/src/components/MainPage',
       // animations
