@@ -1,11 +1,8 @@
 import { FC, useEffect, useRef } from 'react';
 import { Title } from './SectionTitle.styled';
+import { ISectionTitleProps } from './SectionTitle.types';
 
-interface ISectionTitleProps {
-  text: string;
-}
-
-const SectionTitle: FC<ISectionTitleProps> = ({ text }) => {
+const SectionTitle: FC<ISectionTitleProps> = ({ text, isHidden = false }) => {
   const containerRef = useRef<HTMLHeadingElement>(null);
   const textRef = useRef<HTMLSpanElement>(null);
 
@@ -31,7 +28,7 @@ const SectionTitle: FC<ISectionTitleProps> = ({ text }) => {
   }, []);
 
   return (
-    <Title ref={containerRef}>
+    <Title ref={containerRef} isHidden={isHidden}>
       <span
         ref={textRef}
         style={{

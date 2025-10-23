@@ -24,10 +24,8 @@ const Header: FC = () => {
 
             <List>
               {navLinks.map(({ href, label }) => (
-                <ListItem>
-                  <Link key={href} href={href}>
-                    {label}
-                  </Link>
+                <ListItem key={href}>
+                  <Link href={href}>{label}</Link>
                 </ListItem>
               ))}
             </List>

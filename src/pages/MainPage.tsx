@@ -9,12 +9,15 @@ import AmenitiesSection from '@MainPageComponents/AmenitiesSection';
 import VeteransSection from '@MainPageComponents/VeteransSection';
 import FAQsSection from '@MainPageComponents/FAQsSection';
 import ContactsSection from '@MainPageComponents/ContactsSection';
+import SectionsWrap from '@MainPageComponents/SectionsWrap';
 
 const MainPage: FC = () => {
   return (
     <>
-      <HeroSection />
-      <AboutSection />
+      <SectionsWrap>
+        <HeroSection />
+        <AboutSection />
+      </SectionsWrap>
       <CoachesSection />
       <ProgramsSection />
       <ScheduleSection />
