@@ -21,10 +21,34 @@ const SectionTitle: FC<ISectionTitleProps> = ({ text, isHidden = false }) => {
   };
 
   useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
     stretchText();
 
+    // ResizeObserver для відстеження змін розміру контейнера
+    const resizeObserver = new ResizeObserver(() => {
+      stretchText();
+    });
+
+    resizeObserver.observe(container);
+
+    // Слухач resize для вікна
     window.addEventListener('resize', stretchText);
-    return () => window.removeEventListener('resize', stretchText);
+
+    // Слухач на завантаження шрифтів
+    const handleFontsLoad = () => {
+      stretchText();
+    };
+
+    document.fonts.ready.then(handleFontsLoad);
+    document.fonts.addEventListener('loadingdone', handleFontsLoad);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener('resize', stretchText);
+      document.fonts.removeEventListener('loadingdone', handleFontsLoad);
+    };
   }, []);
 
   return (
