@@ -1,10 +1,27 @@
 import { FC } from 'react';
 import { Global, css } from '@emotion/react';
+import { involveRegular, theaterBold } from '@/fonts';
+import { theme } from '@/constants';
+
 import 'modern-normalize';
 
 const GlobalStyles: FC = () => (
   <Global
     styles={css`
+      @font-face {
+        font-family: ${theme.fontFamily.involve};
+        src: local(${theme.fontFamily.involve}),
+          url(${involveRegular}) format('truetype');
+        font-weight: 400;
+      }
+
+      @font-face {
+        font-family: ${theme.fontFamily.theater};
+        src: local(${theme.fontFamily.theater}),
+          url(${theaterBold}) format('truetype');
+        font-weight: 700;
+      }
+
       body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
           'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',

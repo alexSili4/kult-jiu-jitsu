@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import LogoIcon from '@/icons/logo.svg?react';
 
 export const StyledHeader = styled.header`
   position: fixed;
@@ -24,9 +25,9 @@ export const Nav = styled.nav`
   justify-content: space-between;
 `;
 
-export const Logo = styled.img`
-  width: 100px;
-  height: 31px;
+export const Logo = styled(LogoIcon)`
+  width: 128px;
+  height: 40px;
 `;
 
 export const List = styled.ul`
@@ -38,7 +39,7 @@ export const List = styled.ul`
 export const ListItem = styled.li``;
 
 export const Link = styled.a`
-  font-family: 'Involve Regular', 'Involve Regular Placeholder', sans-serif;
+  font-family: ${({ theme }) => theme.fontFamily.involve};
   color: #f9f9f9;
   font-size: 16px;
   font-weight: 400;
@@ -56,11 +57,10 @@ export const BookASessionBtn = styled.button`
 `;
 
 export const Label = styled.span`
-  font-family: 'Theater Bold Condensed', 'Theater Bold Condensed Placeholder',
-    sans-serif;
+  font-family: ${({ theme }) => theme.fontFamily.theater};
   color: ${({ theme }) => theme.colors.white};
   font-size: 20px;
-  font-weight: 400;
+  font-weight: 700;
   letter-spacing: -0.2px;
   line-height: 1;
 `;

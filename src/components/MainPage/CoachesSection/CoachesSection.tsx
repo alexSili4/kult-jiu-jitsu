@@ -1,17 +1,28 @@
 import GeneralContainer from '@CommonComponents/GeneralContainer';
-import { FC } from 'react';
-import { Section } from './CoachesSection.styled';
+import { FC, useRef } from 'react';
+import { Container, Content, Section } from './CoachesSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import CoachesList from '@MainPageComponents/CoachesList';
+import { useScroll } from 'framer-motion';
 
 const CoachesSection: FC = () => {
-  return (
-    <Section>
-      <GeneralContainer>
-        <SectionTitle text='тренери' />
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ['start end', 'end start'],
+  });
 
-        <CoachesList />
-      </GeneralContainer>
+  return (
+    <Section ref={containerRef}>
+      <Container>
+        <GeneralContainer>
+          <Content>
+            <SectionTitle text='тренери' />
+
+            <CoachesList scrollYProgress={scrollYProgress} />
+          </Content>
+        </GeneralContainer>
+      </Container>
     </Section>
   );
 };

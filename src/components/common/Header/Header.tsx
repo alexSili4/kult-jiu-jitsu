@@ -13,6 +13,8 @@ import {
 } from './Header.styled';
 import GeneralContainer from '@CommonComponents/GeneralContainer';
 import { navLinks } from '@/constants';
+import fire from '@/lottiefiles/fire.json';
+import Lottie from 'lottie-react';
 
 const Header: FC = () => {
   return (
@@ -33,7 +35,9 @@ const Header: FC = () => {
 
           <BookASessionBtn>
             <Label>Записатись</Label>
-            <IconWrap></IconWrap>
+            <IconWrap>
+              <Lottie animationData={fire} loop={true} />
+            </IconWrap>
           </BookASessionBtn>
         </Container>
       </GeneralContainer>

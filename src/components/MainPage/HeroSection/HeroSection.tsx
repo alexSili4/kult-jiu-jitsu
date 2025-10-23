@@ -7,11 +7,21 @@ import {
   PageTitle,
   Country,
   Symbol,
+  Video,
+  StyledVideo,
 } from './HeroSection.styled';
+import { useVideo } from '@/hooks';
+import preview from '@/video/preview.mp4';
 
 const HeroSection: FC = () => {
+  const { videoRef } = useVideo();
+
   return (
     <Section>
+      <Video>
+        <StyledVideo ref={videoRef} src={preview} muted playsInline loop />
+      </Video>
+
       <GeneralContainer>
         <Container>
           <Location>

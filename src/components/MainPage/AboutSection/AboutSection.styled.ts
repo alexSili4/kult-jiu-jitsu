@@ -10,7 +10,7 @@ export const Content = styled.div`
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
   padding-top: ${({ theme }) => theme.spacing(40)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(100)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(110)}px;
 `;
 
 export const Container = styled.div`
@@ -23,7 +23,7 @@ export const Title = styled.p`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(2)}px;
-  font-family: 'Involve Regular', 'Involve Regular Placeholder', sans-serif;
+  font-family: ${({ theme }) => theme.fontFamily.involve};
   color: #808080;
   font-size: 16px;
   font-weight: 400;
@@ -33,7 +33,8 @@ export const Title = styled.p`
 export const Text = styled.p`
   width: 64.4vw;
   color: ${({ theme }) => theme.colors.white};
-  font-family: 'Involve Regular', 'Involve Regular Placeholder', sans-serif;
+  font-family: ${({ theme }) => theme.fontFamily.involve};
+
   font-size: 44px;
   font-weight: 400;
   letter-spacing: normal;

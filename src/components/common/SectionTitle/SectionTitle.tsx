@@ -1,5 +1,5 @@
 import { FC, useEffect, useRef } from 'react';
-import { Title } from './SectionTitle.styled';
+import { Title, Text } from './SectionTitle.styled';
 import { ISectionTitleProps } from './SectionTitle.types';
 
 const SectionTitle: FC<ISectionTitleProps> = ({ text, isHidden = false }) => {
@@ -29,7 +29,7 @@ const SectionTitle: FC<ISectionTitleProps> = ({ text, isHidden = false }) => {
 
   return (
     <Title ref={containerRef} isHidden={isHidden}>
-      <span
+      <Text
         ref={textRef}
         style={{
           display: 'inline-block',
@@ -38,7 +38,7 @@ const SectionTitle: FC<ISectionTitleProps> = ({ text, isHidden = false }) => {
         }}
       >
         {text}
-      </span>
+      </Text>
     </Title>
   );
 };

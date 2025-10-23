@@ -1,6 +1,5 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { coaches } from '@/constants';
-import { ICoach } from '@/types/coaches';
 import {
   CoachInfo,
   CoachDesc,
@@ -10,12 +9,94 @@ import {
   CoachName,
   Desc,
   Name,
-  Card,
   Container,
+  NameWrap,
+  SymbolsWrap,
+  Symbol,
+  Image,
+  CardBtn,
 } from './CoachesList.styled';
+import { MotionValue, SpringOptions, useTransform } from 'framer-motion';
+import { useSpring } from 'framer-motion';
 
-const CoachesList: FC = () => {
-  const [coach, setCoach] = useState<ICoach>(() => coaches[0]);
+interface ICoachesListProps {
+  scrollYProgress: MotionValue<number>;
+}
+
+interface ICoachCardProps {
+  scaleStart: number;
+  scaleEnd: number;
+  start: number;
+  rotateEnd: number;
+  img: string;
+  name: string;
+  scrollYProgress: MotionValue<number>;
+}
+
+const CoachCard: FC<ICoachCardProps> = ({
+  scaleStart,
+  scaleEnd,
+  start,
+  rotateEnd,
+  img,
+  name,
+  scrollYProgress,
+}) => {
+  const rotate = useTransform(
+    scrollYProgress,
+    [start, rotateEnd, scaleStart, scaleEnd],
+    [-45, 0, 0, 15]
+  );
+
+  const y = useTransform(scrollYProgress, [start, rotateEnd], [1000, 0]);
+
+  const scale = useTransform(scrollYProgress, [scaleStart, scaleEnd], [1, 0.5]);
+
+  const transition: SpringOptions = {
+    stiffness: 150,
+    damping: 12,
+    mass: 0.5,
+  };
+
+  const smoothScale = useSpring(scale, transition);
+
+  const smoothY = useSpring(y, transition);
+
+  const smoothRotate = useSpring(rotate, transition);
+
+  return (
+    <CardBtn
+      style={{
+        y: smoothY,
+        scale: smoothScale,
+        rotate: smoothRotate,
+      }}
+    >
+      <Image src={img} alt={name} />
+    </CardBtn>
+  );
+};
+
+const CoachesList: FC<ICoachesListProps> = ({ scrollYProgress }) => {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+
+  useEffect(() => {
+    const unsubscribe = scrollYProgress.on('change', (latest) => {
+      const offset = 0.15; // початок після 15% скролу
+      const clamped = Math.max(0, latest - offset) / (1 - offset);
+      const index = Math.min(
+        coaches.length - 1,
+        Math.floor(clamped * coaches.length)
+      );
+      setCurrentIndex(index);
+    });
+
+    return () => unsubscribe();
+  }, [scrollYProgress]);
+
+  const coach = coaches[currentIndex];
+
+  const coachesData = Object.values(coaches);
 
   return (
     <Container>
@@ -36,12 +117,37 @@ const CoachesList: FC = () => {
         </CoachDesc>
 
         <CoachName>
-          <Name>{coach.name}</Name>
+          <NameWrap>
+            <Name>{coach.name}</Name>
+
+            <SymbolsWrap>
+              <Symbol></Symbol>
+              <Symbol></Symbol>
+            </SymbolsWrap>
+          </NameWrap>
           <Desc>{coach.desc}</Desc>
         </CoachName>
       </CoachInfo>
 
-      <Card />
+      {coachesData.map(({ img, name }, index) => {
+        const start = index * 0.25;
+        const rotateEnd = start + 0.25;
+        const scaleStart = rotateEnd + 0.17;
+        const scaleEnd = scaleStart + 0.25;
+
+        return (
+          <CoachCard
+            key={name}
+            rotateEnd={rotateEnd}
+            scaleEnd={scaleEnd}
+            scaleStart={scaleStart}
+            start={start}
+            img={img}
+            name={name}
+            scrollYProgress={scrollYProgress}
+          />
+        );
+      })}
     </Container>
   );
 };
