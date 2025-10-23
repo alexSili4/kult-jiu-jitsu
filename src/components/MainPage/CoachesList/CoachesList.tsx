@@ -15,6 +15,7 @@ import {
   Symbol,
   Image,
   CardBtn,
+  CardWrapper,
 } from './CoachesList.styled';
 import { MotionValue, SpringOptions, useTransform } from 'framer-motion';
 import { useSpring } from 'framer-motion';
@@ -65,15 +66,17 @@ const CoachCard: FC<ICoachCardProps> = ({
   const smoothRotate = useSpring(rotate, transition);
 
   return (
-    <CardBtn
+    <CardWrapper
       style={{
         y: smoothY,
         scale: smoothScale,
         rotate: smoothRotate,
       }}
     >
-      <Image src={img} alt={name} />
-    </CardBtn>
+      <CardBtn>
+        <Image src={img} alt={name} />
+      </CardBtn>
+    </CardWrapper>
   );
 };
 

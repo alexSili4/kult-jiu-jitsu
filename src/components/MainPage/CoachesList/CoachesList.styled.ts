@@ -86,16 +86,30 @@ export const Desc = styled.p`
   line-height: 1.4;
 `;
 
-export const CardBtn = styled(motion.button)`
+export const CardWrapper = styled(motion.div)`
   position: absolute;
   bottom: -100px;
   left: 50%;
+  translate: -50% 0;
   width: 26.7vw;
   aspect-ratio: 317.7 / 475.62;
+  perspective: 1500px;
+`;
+
+export const CardBtn = styled.button`
+  width: 100%;
+  height: 100%;
   border-radius: 20px;
   border: 10px solid #252525;
-  translate: -50% 0;
   overflow: hidden;
+  transform-style: preserve-3d;
+  transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
+  cursor: pointer;
+
+  *:is(:hover, :focus) > &,
+  &:focus {
+    transform: rotateY(180deg);
+  }
 `;
 
 export const Image = styled.img`
