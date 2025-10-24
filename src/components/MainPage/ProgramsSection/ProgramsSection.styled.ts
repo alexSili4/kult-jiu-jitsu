@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
 import { ClassName } from '@/constants';
 
 export const Section = styled.section`
+  position: sticky;
+  top: -200dvh;
+  left: 0;
   height: 300dvh;
   background-color: #18181c;
 `;
@@ -12,7 +15,6 @@ export const Container = styled.div`
   position: relative;
   height: 100%;
   padding-top: ${({ theme }) => theme.spacing(30)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(30)}px;
 `;
 
 export const Content = styled.div`
@@ -86,6 +88,7 @@ export const Desc = styled.p`
 
 export const TitleWrap = styled.div`
   align-self: flex-end;
+  position: relative;
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(2)}px;

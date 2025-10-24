@@ -5,3 +5,4 @@ export { default as navLinks } from './navLinks';
 export { default as coaches } from './coaches';
 export { default as programs } from './programs';
 export { default as ClassName } from './className';
+export { default as schedule } from './schedule';

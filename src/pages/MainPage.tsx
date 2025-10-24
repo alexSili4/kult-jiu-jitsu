@@ -19,8 +19,10 @@ const MainPage: FC = () => {
         <AboutSection />
       </SectionsWrap>
       <CoachesSection />
-      <ProgramsSection />
-      <ScheduleSection />
+      <SectionsWrap>
+        <ProgramsSection />
+        <ScheduleSection />
+      </SectionsWrap>
       <PriceSection />
       <AmenitiesSection />
       <VeteransSection />
