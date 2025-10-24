@@ -1,7 +1,7 @@
 export interface ICoach {
   name: string;
   desc: string;
-  img: string;
+  video: string;
   qualification: string;
   experience: string;
   groups: string;

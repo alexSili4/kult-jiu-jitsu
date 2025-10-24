@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Global, css } from '@emotion/react';
-import { involveRegular, theaterBold } from '@/fonts';
+import { involveMedium, involveRegular, theaterBold } from '@/fonts';
 import { theme } from '@/constants';
 
 import 'modern-normalize';
@@ -13,6 +13,13 @@ const GlobalStyles: FC = () => (
         src: local(${theme.fontFamily.involve}),
           url(${involveRegular}) format('truetype');
         font-weight: 400;
+      }
+
+      @font-face {
+        font-family: ${theme.fontFamily.involve};
+        src: local(${theme.fontFamily.involve}),
+          url(${involveMedium}) format('truetype');
+        font-weight: 500;
       }
 
       @font-face {
@@ -29,6 +36,7 @@ const GlobalStyles: FC = () => (
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         overflow-y: scroll;
+        overflow-x: hidden;
       }
 
       code {

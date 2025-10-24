@@ -13,9 +13,11 @@ import {
   NameWrap,
   SymbolsWrap,
   Symbol,
-  Image,
+  // Image,
   CardBtn,
   CardWrapper,
+  StyledVideo,
+  Video,
 } from './CoachesList.styled';
 import { MotionValue, SpringOptions, useTransform } from 'framer-motion';
 import { useSpring } from 'framer-motion';
@@ -29,8 +31,7 @@ interface ICoachCardProps {
   scaleEnd: number;
   start: number;
   rotateEnd: number;
-  img: string;
-  name: string;
+  video: string;
   scrollYProgress: MotionValue<number>;
 }
 
@@ -39,10 +40,11 @@ const CoachCard: FC<ICoachCardProps> = ({
   scaleEnd,
   start,
   rotateEnd,
-  img,
-  name,
   scrollYProgress,
+  video,
 }) => {
+  const [isActive, setIsActive] = useState(false);
+
   const rotate = useTransform(
     scrollYProgress,
     [start, rotateEnd, scaleStart, scaleEnd],
@@ -50,7 +52,6 @@ const CoachCard: FC<ICoachCardProps> = ({
   );
 
   const y = useTransform(scrollYProgress, [start, rotateEnd], [1000, 0]);
-
   const scale = useTransform(scrollYProgress, [scaleStart, scaleEnd], [1, 0.5]);
 
   const transition: SpringOptions = {
@@ -60,21 +61,42 @@ const CoachCard: FC<ICoachCardProps> = ({
   };
 
   const smoothScale = useSpring(scale, transition);
-
-  const smoothY = useSpring(y, transition);
-
   const smoothRotate = useSpring(rotate, transition);
+  const smoothY = useSpring(y, transition);
 
   return (
     <CardWrapper
+      onMouseEnter={() => setIsActive(true)}
+      onMouseLeave={() => setIsActive(false)}
+      onFocus={() => setIsActive(true)}
+      onBlur={() => setIsActive(false)}
       style={{
         y: smoothY,
         scale: smoothScale,
         rotate: smoothRotate,
       }}
     >
-      <CardBtn>
-        <Image src={img} alt={name} />
+      <CardBtn tabIndex={0}>
+        {/* <Image src={img} alt={name} /> */}
+
+        <Video>
+          <StyledVideo
+            src={video}
+            muted
+            playsInline
+            loop
+            ref={(el) => {
+              if (el) {
+                if (isActive) {
+                  el.play().catch(() => {});
+                } else {
+                  el.pause();
+                  el.currentTime = 0;
+                }
+              }
+            }}
+          />
+        </Video>
       </CardBtn>
     </CardWrapper>
   );
@@ -132,7 +154,7 @@ const CoachesList: FC<ICoachesListProps> = ({ scrollYProgress }) => {
         </CoachName>
       </CoachInfo>
 
-      {coachesData.map(({ img, name }, index) => {
+      {coachesData.map(({ name, video }, index) => {
         const start = index * 0.25;
         const rotateEnd = start + 0.25;
         const scaleStart = rotateEnd + 0.17;
@@ -145,9 +167,8 @@ const CoachesList: FC<ICoachesListProps> = ({ scrollYProgress }) => {
             scaleEnd={scaleEnd}
             scaleStart={scaleStart}
             start={start}
-            img={img}
-            name={name}
             scrollYProgress={scrollYProgress}
+            video={video}
           />
         );
       })}

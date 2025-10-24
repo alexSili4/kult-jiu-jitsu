@@ -97,6 +97,7 @@ export const CardWrapper = styled(motion.div)`
 `;
 
 export const CardBtn = styled.button`
+  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 20px;
@@ -112,7 +113,33 @@ export const CardBtn = styled.button`
   }
 `;
 
-export const Image = styled.img`
+// export const Image = styled.img`
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+//   opacity: 0;
+
+//   *:is(:hover, :focus) > * > &,
+//   *:focus > & {
+//     opacity: 0;
+//   }
+// `;
+
+export const Video = styled.div`
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  width: 100%;
+  height: 100%;
+  /* opacity: 0;
+
+  *:is(:hover, :focus) > * > &,
+  *:focus > & {
+    opacity: 1;
+  } */
+`;
+
+export const StyledVideo = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
