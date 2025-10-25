@@ -14,12 +14,16 @@ export const Content = styled.div`
 `;
 
 export const Container = styled.div`
+  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 `;
 
 export const Title = styled.p`
+  position: sticky;
+  top: 100px;
+  left: 0;
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(2)}px;

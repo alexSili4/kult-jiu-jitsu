@@ -18,7 +18,7 @@ import {
   DecorativeElementWrap,
 } from './ProgramsSection.styled';
 import { programs } from '@/constants';
-import SectionTitle from '@/components/common/SectionTitle';
+import SectionTitle from '@CommonComponents/SectionTitle';
 import {
   SpringOptions,
   useInView,

@@ -3,7 +3,7 @@ import LogoIcon from '@/icons/logo.svg?react';
 
 export const StyledHeader = styled.header`
   position: fixed;
-  z-index: 10;
+  z-index: 20;
   top: 0;
   left: 0;
   width: 100%;

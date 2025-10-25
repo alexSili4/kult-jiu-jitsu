@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   position: relative;
 `;
 
@@ -11,7 +11,7 @@ export const CoachInfo = styled.div`
   align-items: flex-end;
 `;
 
-export const CoachDesc = styled.div`
+export const CoachDesc = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(8)}px;
@@ -40,7 +40,7 @@ export const DescTitle = styled.p`
   line-height: 1.4;
 `;
 
-export const CoachName = styled.div`
+export const CoachName = styled(motion.div)`
   display: inline-flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(5)}px;

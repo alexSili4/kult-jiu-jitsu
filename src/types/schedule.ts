@@ -6,5 +6,5 @@ export interface IProgramDetails {
 
 export interface IScheduleItem {
   days: string;
-  items: IProgramDetails[][];
+  programs: IProgramDetails[][];
 }

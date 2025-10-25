@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useRef, useState } from 'react';
 import { coaches } from '@/constants';
 import {
   CoachInfo,
@@ -19,7 +19,15 @@ import {
   StyledVideo,
   Video,
 } from './CoachesList.styled';
-import { MotionValue, SpringOptions, useTransform } from 'framer-motion';
+import {
+  MotionValue,
+  SpringOptions,
+  Transition,
+  useInView,
+  useTransform,
+  VariantLabels,
+  Variants,
+} from 'framer-motion';
 import { useSpring } from 'framer-motion';
 
 interface ICoachesListProps {
@@ -104,6 +112,38 @@ const CoachCard: FC<ICoachCardProps> = ({
 
 const CoachesList: FC<ICoachesListProps> = ({ scrollYProgress }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const containerRef = useRef(null);
+
+  const inView = useInView(containerRef, { amount: 1 });
+
+  const animate: VariantLabels = inView ? 'visible' : 'hidden';
+
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {},
+  };
+
+  const transition: Transition = {
+    type: 'spring',
+    duration: 1,
+    bounce: 0.4,
+  };
+
+  const descVariants: Variants = {
+    hidden: { x: '-20vw', transition },
+    visible: {
+      x: 0,
+      transition,
+    },
+  };
+
+  const nameVariants: Variants = {
+    hidden: { x: '30vw', transition },
+    visible: {
+      x: 0,
+      transition,
+    },
+  };
 
   useEffect(() => {
     const unsubscribe = scrollYProgress.on('change', (latest) => {
@@ -124,9 +164,14 @@ const CoachesList: FC<ICoachesListProps> = ({ scrollYProgress }) => {
   const coachesData = Object.values(coaches);
 
   return (
-    <Container>
+    <Container
+      ref={containerRef}
+      variants={containerVariants}
+      initial='hidden'
+      animate={animate}
+    >
       <CoachInfo>
-        <CoachDesc>
+        <CoachDesc variants={descVariants}>
           <CoachDescItem>
             <DescText>{coach.qualification}</DescText>
             <DescTitle>Кваліфікація</DescTitle>
@@ -141,7 +186,7 @@ const CoachesList: FC<ICoachesListProps> = ({ scrollYProgress }) => {
           </CoachDescItem>
         </CoachDesc>
 
-        <CoachName>
+        <CoachName variants={nameVariants}>
           <NameWrap>
             <Name>{coach.name}</Name>
 

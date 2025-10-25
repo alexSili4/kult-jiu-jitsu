@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const Section = styled.section`
   position: relative;
+  z-index: 10;
   height: 300dvh;
 `;
 

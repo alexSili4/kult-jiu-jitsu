@@ -7,12 +7,14 @@ import {
   Symbol,
   Title,
 } from './ScheduleSection.styled';
-import SectionTitle from '@/components/common/SectionTitle';
+import SectionTitle from '@CommonComponents/SectionTitle';
+import ScheduleDetails from '@MainPageComponents/ScheduleDetails';
 
 const ScheduleSection: FC = () => {
   return (
     <Section>
       <SectionTitle text='Розклад' isHidden />
+
       <Content>
         <GeneralContainer>
           <Container>
@@ -20,6 +22,7 @@ const ScheduleSection: FC = () => {
               <Symbol>•</Symbol>
               <span>[Розклад)</span>
             </Title>
+
             <ScheduleDetails />
           </Container>
         </GeneralContainer>
