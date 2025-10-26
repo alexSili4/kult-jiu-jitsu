@@ -22,10 +22,14 @@ export const Banner = styled(motion.img)`
 
 export const Container = styled.div`
   position: relative;
-  height: 300dvh;
   background-color: #18181c;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+`;
+
+export const Founders = styled.div`
+  position: relative;
+  height: 300dvh;
 `;
 
 export const Content = styled.div`
