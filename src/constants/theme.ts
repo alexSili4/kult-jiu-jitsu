@@ -3,7 +3,7 @@ declare module '@emotion/react' {
 }
 
 interface ITheme {
-  colors: Record<'white' | 'white10' | 'white60' | 'black', string>;
+  colors: Record<'white' | 'white10' | 'white50' | 'white60' | 'black', string>;
   fontFamily: Record<'involve' | 'theater', string>;
   padding: {
     container: number;
@@ -20,6 +20,7 @@ const theme: ITheme = {
   colors: {
     white: '#ffffff',
     white10: 'rgba(255,255,255,0.1)',
+    white50: 'rgba(255,255,255,0.5)',
     white60: 'rgba(255,255,255,0.6)',
     black: '#000000',
   },
