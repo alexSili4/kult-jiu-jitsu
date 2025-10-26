@@ -20,6 +20,15 @@ import {
   MembershipContent,
   MembershipPrice,
   MembershipsListItem,
+  Container,
+  Service,
+  ServiceTitle,
+  Services,
+  ServicesList,
+  ServiceName,
+  ServiceItem,
+  ServicePrice,
+  ServicesListItem,
 } from './PriceSection.styled';
 import price from '@/constants/price';
 import SectionTitle from '@CommonComponents/SectionTitle';
@@ -38,9 +47,15 @@ const FavoriteStatus: FC = () => {
 
 const PriceSection: FC = () => {
   const membershipsRef = useRef(null);
-  const membershipsInView = useInView(membershipsRef, { amount: 0.7 });
+  const servicesRef = useRef(null);
 
-  const animate: VariantLabels = membershipsInView ? 'visible' : 'hidden';
+  const membershipsInView = useInView(membershipsRef, { amount: 0.7 });
+  const servicesInView = useInView(servicesRef, { amount: 1 });
+
+  const animateMemberships: VariantLabels = membershipsInView
+    ? 'visible'
+    : 'hidden';
+  const animateServices: VariantLabels = servicesInView ? 'visible' : 'hidden';
 
   const containerVariants: Variants = {
     hidden: {},
@@ -70,7 +85,7 @@ const PriceSection: FC = () => {
     },
   };
 
-  const { memberships } = price;
+  const { memberships, services } = price;
 
   return (
     <Section>
@@ -78,43 +93,71 @@ const PriceSection: FC = () => {
 
       <Content>
         <GeneralContainer>
-          <Memberships
-            ref={membershipsRef}
-            variants={containerVariants}
-            initial='hidden'
-            animate={animate}
-          >
-            {memberships.map(
-              ({ benefits, name, price: { amount, period }, isFavorite }) => (
-                <MembershipsListItem key={name}>
-                  <MembershipDetails variants={elementVariants}>
-                    <MembershipContent>
-                      <Header>
-                        <Name>{name}</Name>
-                        {isFavorite && <FavoriteStatus />}
-                      </Header>
+          <Container>
+            <Memberships
+              ref={membershipsRef}
+              variants={containerVariants}
+              initial='hidden'
+              animate={animateMemberships}
+            >
+              {memberships.map(
+                ({ benefits, name, price: { amount, period }, isFavorite }) => (
+                  <MembershipsListItem key={name}>
+                    <MembershipDetails variants={elementVariants}>
+                      <MembershipContent>
+                        <Header>
+                          <Name>{name}</Name>
+                          {isFavorite && <FavoriteStatus />}
+                        </Header>
 
-                      <Benefits>
-                        {benefits.map((benefit) => (
-                          <ListItem key={benefit}>
-                            <BenefitText>{benefit}</BenefitText>
-                          </ListItem>
-                        ))}
-                      </Benefits>
-                    </MembershipContent>
+                        <Benefits>
+                          {benefits.map((benefit) => (
+                            <ListItem key={benefit}>
+                              <BenefitText>{benefit}</BenefitText>
+                            </ListItem>
+                          ))}
+                        </Benefits>
+                      </MembershipContent>
 
-                    <MembershipPrice>
-                      <Price>
-                        <PriceAmount>{amount}</PriceAmount>
-                        <PricePeriod>{`/ ${period}`}</PricePeriod>
-                      </Price>
-                      <Button type='button'>Спробувати</Button>
-                    </MembershipPrice>
-                  </MembershipDetails>
-                </MembershipsListItem>
-              )
-            )}
-          </Memberships>
+                      <MembershipPrice>
+                        <Price>
+                          <PriceAmount>{amount}</PriceAmount>
+                          <PricePeriod>{`/ ${period}`}</PricePeriod>
+                        </Price>
+                        <Button type='button'>Спробувати</Button>
+                      </MembershipPrice>
+                    </MembershipDetails>
+                  </MembershipsListItem>
+                )
+              )}
+            </Memberships>
+
+            <Services
+              ref={servicesRef}
+              variants={containerVariants}
+              initial='hidden'
+              animate={animateServices}
+            >
+              {services.map(({ addTitle, services, title }) => (
+                <ServicesListItem key={title}>
+                  <Service variants={elementVariants}>
+                    {title && <ServiceTitle>{title}</ServiceTitle>}
+                    {addTitle && <ServiceTitle>{addTitle}</ServiceTitle>}
+                    <ServicesList>
+                      {services.map(({ price, service }) => (
+                        <ListItem key={service}>
+                          <ServiceItem>
+                            <ServiceName>{service}</ServiceName>
+                            <ServicePrice>{price}</ServicePrice>
+                          </ServiceItem>
+                        </ListItem>
+                      ))}
+                    </ServicesList>
+                  </Service>
+                </ServicesListItem>
+              ))}
+            </Services>
+          </Container>
         </GeneralContainer>
       </Content>
     </Section>

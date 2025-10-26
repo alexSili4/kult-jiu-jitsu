@@ -15,6 +15,13 @@ export const Content = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing(120)}px;
 `;
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(11)}px;
+`;
+
+// Memberships
 export const Memberships = styled(motion.ul)`
   display: flex;
   gap: ${listGap}px;
@@ -151,4 +158,65 @@ export const Symbol = styled.span`
   position: relative;
   font-size: 18px;
   translate: 0 4px;
+`;
+
+// Services
+export const Services = styled(motion.ul)`
+  display: flex;
+`;
+
+export const ServicesListItem = styled(ListItem)`
+  width: calc(${getFlexItemWidth({ listGap: 0, listLength: 3 })});
+`;
+
+export const Service = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(6)}px;
+  height: 100%;
+  padding: ${({ theme }) => theme.spacing(7)}px;
+  padding-top: ${({ theme }) => theme.spacing(8)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(8)}px;
+
+  *:not(:first-of-type) > & {
+    border-left: 1px solid ${({ theme }) => theme.colors.white10};
+  }
+`;
+
+export const ServiceTitle = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fontFamily.involve};
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+`;
+
+export const ServicesList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(6)}px;
+`;
+
+export const ServiceItem = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+export const ServiceName = styled.p`
+  flex-grow: 1;
+  color: #808080;
+  font-family: ${({ theme }) => theme.fontFamily.involve};
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+`;
+
+export const ServicePrice = styled.p`
+  flex-shrink: 1;
+  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fontFamily.involve};
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
 `;

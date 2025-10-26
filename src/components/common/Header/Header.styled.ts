@@ -57,12 +57,14 @@ export const BookASessionBtn = styled.button`
 `;
 
 export const Label = styled.span`
+  position: relative;
   font-family: ${({ theme }) => theme.fontFamily.theater};
   color: ${({ theme }) => theme.colors.white};
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.2px;
   line-height: 1;
+  translate: 0 2px;
 `;
 
 export const IconWrap = styled.span`

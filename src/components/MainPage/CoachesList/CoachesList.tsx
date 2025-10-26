@@ -13,7 +13,6 @@ import {
   NameWrap,
   SymbolsWrap,
   Symbol,
-  // Image,
   CardBtn,
   CardWrapper,
   StyledVideo,
@@ -85,8 +84,6 @@ const CoachCard: FC<ICoachCardProps> = ({
       }}
     >
       <CardBtn tabIndex={0}>
-        {/* <Image src={img} alt={name} /> */}
-
         <Video>
           <StyledVideo
             src={video}
