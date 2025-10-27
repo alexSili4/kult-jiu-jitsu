@@ -63,7 +63,7 @@ export const AmenitiesCard = styled(motion.div)`
   padding-left: ${({ theme }) => theme.spacing(8)}px;
   padding-right: ${({ theme }) => theme.spacing(8)}px;
 
-  li:not(:nth-child(3n + 1)) & {
+  li:not(:nth-of-type(3n + 1)) & {
     border-left: 1px solid ${({ theme }) => theme.colors.white10};
   }
 `;

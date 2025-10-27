@@ -4,6 +4,8 @@ const enum SectionId {
   amenities = 'amenities',
   veterans = 'veterans',
   contacts = 'contacts',
+  programs = 'programs',
+  schedule = 'schedule',
 }
 
 export default SectionId;

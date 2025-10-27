@@ -184,7 +184,7 @@ export const CardText = styled.p`
   line-height: 1.4;
 `;
 
-export const CardLinks = styled.div`
+export const CardLinks = styled.ul`
   display: flex;
   align-items: center;
   justify-content: space-between;

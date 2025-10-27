@@ -1,6 +1,9 @@
-import { IUseVideo } from '@/types/hooks';
 import { useInView } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { RefObject, useEffect, useRef } from 'react';
+
+interface IUseVideo {
+  videoRef: RefObject<HTMLVideoElement>;
+}
 
 const useVideo = (): IUseVideo => {
   const videoRef = useRef<HTMLVideoElement>(null);

@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import LogoIcon from '@/icons/logo.svg?react';
+import { motion } from 'framer-motion';
 
 export const StyledHeader = styled.header`
   position: fixed;
@@ -15,14 +16,15 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: ${({ theme }) => theme.spacing(15)}px;
 `;
 
 export const Nav = styled.nav`
   flex-grow: 1;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-right: ${({ theme }) => theme.spacing(15)}px;
 `;
 
 export const Logo = styled(LogoIcon)`
@@ -30,7 +32,14 @@ export const Logo = styled(LogoIcon)`
   height: 40px;
 `;
 
-export const List = styled.ul`
+export const LinksList = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 54px;
+`;
+
+export const List = styled(motion.ul)`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(10)}px;
@@ -44,6 +53,7 @@ export const Link = styled.a`
   font-size: 16px;
   font-weight: 400;
   line-height: 1.57;
+  white-space: nowrap;
 `;
 
 export const BookASessionBtn = styled.button`
@@ -75,4 +85,36 @@ export const IconWrap = styled.span`
   height: 40px;
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colors.white};
+`;
+
+export const AnimatedFullNavigationContainer = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
+export const FullNavigationContainer = styled(motion.div)`
+  position: relative;
+  background-color: #252525;
+`;
+
+export const FullNavigationBtn = styled(motion.button)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  color: ${({ theme }) => theme.colors.white};
+`;
+
+export const FullNavigationLinks = styled(motion.div)`
+  overflow: hidden;
+`;
+
+export const FullNavigationLinksList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(4)}px;
+  padding: ${({ theme: { spacing } }) =>
+    `0 ${spacing(7)}px ${spacing(5)}px ${spacing(4)}px`};
 `;
