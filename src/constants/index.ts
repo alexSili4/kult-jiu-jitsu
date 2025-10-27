@@ -7,3 +7,4 @@ export { default as programs } from './programs';
 export { default as ClassName } from './className';
 export { default as schedule } from './schedule';
 export { default as amenities } from './amenities';
+export { default as veterans } from './veterans';
