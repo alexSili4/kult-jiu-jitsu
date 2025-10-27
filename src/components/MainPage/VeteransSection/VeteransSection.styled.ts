@@ -134,6 +134,7 @@ export const Image = styled.img`
   *:is(:hover, :focus) > * > &,
   *:has(*:focus) > & {
     opacity: 0;
+    pointer-events: none;
   }
 `;
 

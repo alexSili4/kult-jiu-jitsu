@@ -59,12 +59,21 @@ export const Program = styled.button`
     transition: opacity ${({ theme }) => theme.transitionDurationAndFunc};
   }
 
+  & > .${ClassName.cursor}>* {
+    scale: 0;
+    transition: scale ${({ theme }) => theme.transitionDurationAndFunc};
+  }
+
   &:is(:hover, :focus) {
     cursor: none;
   }
 
   &:is(:hover, :focus) > .${ClassName.cursor} {
     opacity: 1;
+  }
+
+  &:is(:hover, :focus) > .${ClassName.cursor} > * {
+    scale: 1;
   }
 `;
 

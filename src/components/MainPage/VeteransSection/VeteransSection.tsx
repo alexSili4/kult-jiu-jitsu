@@ -1,5 +1,5 @@
 import GeneralContainer from '@CommonComponents/GeneralContainer';
-import { FC, useRef } from 'react';
+import { FC, MouseEvent, useRef } from 'react';
 import {
   Section,
   AzovIcon,
@@ -67,6 +67,10 @@ const FoundersCards: FC<IFoundersCardsProps> = ({ scrollYProgress }) => {
   const smoothNegativeRotateZ = useTransform(smoothRotateZ, (value) => -value);
   const smoothNegativeRotateY = useTransform(smoothRotateY, (value) => -value);
 
+  const onLinkClick = (e: MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.blur();
+  };
+
   return (
     <CardsList>
       {founders.map(({ img, instagram, name }, index) => {
@@ -99,6 +103,7 @@ const FoundersCards: FC<IFoundersCardsProps> = ({ scrollYProgress }) => {
                         href={instagram}
                         target='_blank'
                         rel='noopener noreferrer'
+                        onClick={onLinkClick}
                       >
                         <FaInstagram color='#D9D9D9' size={20} />
                       </Instagram>
@@ -108,6 +113,7 @@ const FoundersCards: FC<IFoundersCardsProps> = ({ scrollYProgress }) => {
                         href='https://www.azovangels.com/'
                         target='_blank'
                         rel='noopener noreferrer'
+                        onClick={onLinkClick}
                       >
                         <AngelsLogo />
                       </Angels>

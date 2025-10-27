@@ -1,14 +1,14 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, ReactNode, useEffect, useState } from 'react';
 import { Cursor } from './CustomCursor.styled';
 import { ClassName } from '@/constants';
 
 interface ICustomCursorProps {
-  img: string;
+  children: ReactNode;
   width: number;
   height: number;
 }
 
-const CustomCursor: FC<ICustomCursorProps> = ({ img, width, height }) => {
+const CustomCursor: FC<ICustomCursorProps> = ({ children, width, height }) => {
   const [pos, setPos] = useState({ x: -100, y: -100 });
 
   useEffect(() => {
@@ -27,7 +27,8 @@ const CustomCursor: FC<ICustomCursorProps> = ({ img, width, height }) => {
       style={{ left: pos.x, top: pos.y, width, height }}
       aria-hidden='true'
     >
-      <img src={img} alt='Курсор' />
+      {children}
+      {/* <img src={img} alt='Курсор' /> */}
     </Cursor>
   );
 };

@@ -8,3 +8,4 @@ export { default as ClassName } from './className';
 export { default as schedule } from './schedule';
 export { default as amenities } from './amenities';
 export { default as veterans } from './veterans';
+export { default as faqs } from './faqs';
