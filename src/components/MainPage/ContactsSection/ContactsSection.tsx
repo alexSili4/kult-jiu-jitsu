@@ -9,6 +9,7 @@ import {
   MapWrap,
 } from './ContactsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
+import { SectionId } from '@/constants';
 
 const Map: FC = () => {
   return (
@@ -33,7 +34,7 @@ const ContactsSection: FC = () => {
 
       <Container>
         <GeneralContainer>
-          <Content>
+          <Content id={SectionId.contacts}>
             <ContactForm />
           </Content>
         </GeneralContainer>

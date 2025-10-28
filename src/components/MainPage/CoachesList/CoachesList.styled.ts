@@ -96,16 +96,17 @@ export const CardWrapper = styled(motion.div)`
   perspective: 1500px;
 `;
 
-export const CardBtn = styled.button`
+export const CardLink = styled.a`
   position: relative;
+  display: inline-block;
   width: 100%;
   height: 100%;
   border-radius: 20px;
   border: 10px solid #252525;
   overflow: hidden;
+  cursor: none;
   transform-style: preserve-3d;
   transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
-  cursor: pointer;
 
   *:is(:hover, :focus) > &,
   &:focus {
@@ -113,34 +114,72 @@ export const CardBtn = styled.button`
   }
 `;
 
-// export const Image = styled.img`
-//   width: 100%;
-//   height: 100%;
-//   object-fit: cover;
-//   opacity: 0;
-
-//   *:is(:hover, :focus) > * > &,
-//   *:focus > & {
-//     opacity: 0;
-//   }
-// `;
-
 export const Video = styled.div`
-  /* position: absolute;
-  top: 0;
-  left: 0; */
   width: 100%;
   height: 100%;
-  /* opacity: 0;
-
-  *:is(:hover, :focus) > * > &,
-  *:focus > & {
-    opacity: 1;
-  } */
 `;
 
 export const StyledVideo = styled.video`
   width: 100%;
   height: 100%;
   object-fit: cover;
+`;
+
+export const CoachCursorWrap = styled.div`
+  border-radius: 50%;
+  padding: ${({ theme }) => theme.spacing(2)}px;
+  background-color: #527324;
+  scale: 0.15;
+  transition: scale ${({ theme }) => theme.transitionDurationAndFunc};
+
+  div:has(a:is(:hover, :focus)) ~ div & {
+    scale: 1;
+  }
+`;
+
+export const LettersContainer = styled.div`
+  position: relative;
+  border-radius: 50%;
+  height: 148px;
+  margin: 0 auto;
+  width: 148px;
+  text-align: center;
+  rotate: -65deg;
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+  scale: 0;
+  transition: scale ${({ theme }) => theme.transitionDurationAndFunc};
+
+  div:has(a:is(:hover, :focus)) ~ div & {
+    scale: 1;
+  }
+`;
+
+export const Letter = styled.span`
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  color: #f9f9f9;
+  font-family: ${({ theme }) => theme.fontFamily.theater};
+  font-weight: 700;
+  font-size: 21.64px;
+  line-height: 1;
+`;
+
+export const LottieWrap = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  opacity: 0;
+  transition: opacity ${({ theme }) => theme.transitionDurationAndFunc};
+
+  div:has(a:is(:hover, :focus)) ~ div & {
+    opacity: 1;
+  }
 `;

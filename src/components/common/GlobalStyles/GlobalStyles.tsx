@@ -29,6 +29,10 @@ const GlobalStyles: FC = () => (
         font-weight: 700;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
           'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
