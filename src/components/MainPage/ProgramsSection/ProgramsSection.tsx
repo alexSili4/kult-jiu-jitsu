@@ -16,6 +16,7 @@ import {
   TitleWrap,
   DecorativeElement,
   DecorativeElementWrap,
+  CursorImg,
 } from './ProgramsSection.styled';
 import { programs } from '@/constants';
 import SectionTitle from '@CommonComponents/SectionTitle';
@@ -78,11 +79,14 @@ const ProgramsSection: FC = () => {
               <Row>
                 <Program>
                   {sectionInView && (
-                    <CustomCursor
-                      img={beginners.image}
-                      height={160}
-                      width={160}
-                    />
+                    <CustomCursor>
+                      <CursorImg
+                        src={beginners.image}
+                        alt={beginners.label}
+                        width={160}
+                        height={160}
+                      />
+                    </CustomCursor>
                   )}
 
                   <Name>{beginners.label}</Name>
@@ -90,7 +94,14 @@ const ProgramsSection: FC = () => {
                 </Program>
                 <Program>
                   {sectionInView && (
-                    <CustomCursor img={basic.image} width={160} height={200} />
+                    <CustomCursor>
+                      <CursorImg
+                        src={basic.image}
+                        alt={basic.label}
+                        width={160}
+                        height={200}
+                      />
+                    </CustomCursor>
                   )}
 
                   <Title>{basic.label}</Title>
@@ -100,7 +111,14 @@ const ProgramsSection: FC = () => {
               <Row>
                 <Program>
                   {sectionInView && (
-                    <CustomCursor img={mixed.image} width={160} height={200} />
+                    <CustomCursor>
+                      <CursorImg
+                        src={mixed.image}
+                        alt={mixed.label}
+                        width={160}
+                        height={200}
+                      />
+                    </CustomCursor>
                   )}
 
                   <Name>{mixed.label}</Name>
@@ -108,7 +126,14 @@ const ProgramsSection: FC = () => {
                 </Program>
                 <Program>
                   {sectionInView && (
-                    <CustomCursor img={kids.image} width={160} height={200} />
+                    <CustomCursor>
+                      <CursorImg
+                        src={kids.image}
+                        alt={kids.label}
+                        width={160}
+                        height={200}
+                      />
+                    </CustomCursor>
                   )}
 
                   <Name>{kids.label}</Name>
@@ -118,11 +143,14 @@ const ProgramsSection: FC = () => {
               <EndRow>
                 <Program>
                   {sectionInView && (
-                    <CustomCursor
-                      img={personal.image}
-                      width={160}
-                      height={160}
-                    />
+                    <CustomCursor>
+                      <CursorImg
+                        src={personal.image}
+                        alt={personal.label}
+                        width={160}
+                        height={160}
+                      />
+                    </CustomCursor>
                   )}
 
                   <Name>{personal.label}</Name>
@@ -132,7 +160,14 @@ const ProgramsSection: FC = () => {
               <StartRow>
                 <Program>
                   {sectionInView && (
-                    <CustomCursor img={events.image} width={192} height={200} />
+                    <CustomCursor>
+                      <CursorImg
+                        src={events.image}
+                        alt={events.label}
+                        width={192}
+                        height={200}
+                      />
+                    </CustomCursor>
                   )}
 
                   <Name>{events.label}</Name>

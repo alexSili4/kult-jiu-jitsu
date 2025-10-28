@@ -1,14 +1,9 @@
 import GeneralContainer from '@CommonComponents/GeneralContainer';
 import { FC } from 'react';
-import {
-  Content,
-  Section,
-  Container,
-  Symbol,
-  Title,
-} from './ScheduleSection.styled';
+import { Content, Section, Container } from './ScheduleSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import ScheduleDetails from '@MainPageComponents/ScheduleDetails';
+import SectionLabel from '@CommonComponents/SectionLabel';
 
 const ScheduleSection: FC = () => {
   return (
@@ -18,10 +13,7 @@ const ScheduleSection: FC = () => {
       <Content>
         <GeneralContainer>
           <Container>
-            <Title>
-              <Symbol>•</Symbol>
-              <span>[Розклад)</span>
-            </Title>
+            <SectionLabel text='Розклад' />
 
             <ScheduleDetails />
           </Container>

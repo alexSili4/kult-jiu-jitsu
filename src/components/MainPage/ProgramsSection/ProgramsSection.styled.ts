@@ -1,7 +1,6 @@
 import styled from '@emotion/styled';
 import decorativeIcon from '@/icons/programs/decotative-element.svg';
 import { motion } from 'framer-motion';
-import { ClassName } from '@/constants';
 
 export const Section = styled.section`
   position: sticky;
@@ -54,25 +53,16 @@ export const Program = styled.button`
   align-items: flex-start;
   gap: ${({ theme }) => theme.spacing(2.5)}px;
 
-  & > .${ClassName.cursor} {
-    opacity: 0;
-    transition: opacity ${({ theme }) => theme.transitionDurationAndFunc};
-  }
-
-  & > .${ClassName.cursor}>* {
-    scale: 0;
-    transition: scale ${({ theme }) => theme.transitionDurationAndFunc};
-  }
-
   &:is(:hover, :focus) {
     cursor: none;
   }
+`;
 
-  &:is(:hover, :focus) > .${ClassName.cursor} {
-    opacity: 1;
-  }
+export const CursorImg = styled.img`
+  scale: 0;
+  transition: scale ${({ theme }) => theme.transitionDurationAndFunc};
 
-  &:is(:hover, :focus) > .${ClassName.cursor} > * {
+  button:is(:hover, :focus) & {
     scale: 1;
   }
 `;

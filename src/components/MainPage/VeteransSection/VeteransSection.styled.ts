@@ -7,20 +7,6 @@ export const Section = styled.section`
   position: relative;
 `;
 
-export const BannerWrap = styled.div`
-  position: sticky;
-  top: 0;
-  left: 0;
-  height: 100dvh;
-  overflow: hidden;
-`;
-
-export const Banner = styled(motion.img)`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
-
 export const Container = styled.div`
   position: relative;
   background-color: #18181c;

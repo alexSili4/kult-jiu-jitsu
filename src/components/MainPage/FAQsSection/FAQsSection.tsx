@@ -1,59 +1,106 @@
 import GeneralContainer from '@CommonComponents/GeneralContainer';
 import { FC, useRef } from 'react';
 import {
-  Banner,
-  BannerWrap,
   Container,
   Content,
   Section,
-  Symbol,
-  Title,
+  Question,
+  QuestionContainer,
+  QuestionsList,
+  Answer,
+  AnswerText,
+  AnswerWrap,
+  QuestionBtn,
+  ListItem,
+  IconWrap,
 } from './FAQsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
-import {
-  SpringOptions,
-  useScroll,
-  useSpring,
-  useTransform,
-} from 'framer-motion';
-import banner from '@/images/faqs/banner.jpg';
+import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
 import { faqs } from '@/constants';
+import { IFAQ } from '@/types/faqs';
+import { FaPlus } from 'react-icons/fa';
+import { useAccordionElement } from '@/hooks';
+import SectionLabel from '@CommonComponents/SectionLabel';
+import ScaleBanner from '@CommonComponents/ScaleBanner';
+import banner from '@/images/faqs/banner.jpg';
 
-const FAQsSection: FC = () => {
-  const bannerRef = useRef<HTMLDivElement>(null);
+const QuestionDetails: FC<IFAQ> = ({ answer, question }) => {
+  const containerRef = useRef(null);
+  const { elementRef, elementScrollHeight, isShowElement, onQuestionBtnClick } =
+    useAccordionElement();
 
-  const { scrollYProgress } = useScroll({
-    target: bannerRef,
-    offset: ['start end', 'end start'],
-  });
+  const inView = useInView(containerRef, { amount: 1 });
 
-  const transition: SpringOptions = {
-    stiffness: 150,
-    damping: 100,
-    mass: 0.5,
+  const animate: VariantLabels = inView ? 'visible' : 'hidden';
+
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {},
   };
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1.5, 1]);
+  const transition: Transition = {
+    type: 'spring',
+    duration: 1,
+    bounce: 0.4,
+  };
 
-  const smoothScale = useSpring(scale, transition);
+  const itemVariants: Variants = {
+    hidden: { y: 60, opacity: 0, transition },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition,
+    },
+  };
 
+  return (
+    <QuestionContainer
+      ref={containerRef}
+      variants={containerVariants}
+      initial='hidden'
+      animate={animate}
+    >
+      <Question variants={itemVariants}>
+        <QuestionBtn onClick={onQuestionBtnClick}>
+          <span>{question}</span>
+          <IconWrap isShowElement={isShowElement}>
+            <FaPlus size={24} />
+          </IconWrap>
+        </QuestionBtn>
+
+        <AnswerWrap
+          ref={elementRef}
+          scrollHeight={elementScrollHeight}
+          isShowElement={isShowElement}
+        >
+          <Answer>
+            <AnswerText>{answer}</AnswerText>
+          </Answer>
+        </AnswerWrap>
+      </Question>
+    </QuestionContainer>
+  );
+};
+
+const FAQsSection: FC = () => {
   return (
     <Section>
       <SectionTitle text='Запитання та відповіді' isHidden />
 
-      <BannerWrap ref={bannerRef}>
-        <Banner src={banner} alt='Банер' style={{ scale: smoothScale }} />
-      </BannerWrap>
+      <ScaleBanner banner={banner} />
 
       <Container>
         <GeneralContainer>
           <Content>
-            <Title>
-              <Symbol>•</Symbol>
-              <span>[FAQs)</span>
-            </Title>
+            <SectionLabel text='FAQs' />
 
-            {/* {faqs} */}
+            <QuestionsList>
+              {faqs.map(({ answer, question }) => (
+                <ListItem key={question}>
+                  <QuestionDetails answer={answer} question={question} />
+                </ListItem>
+              ))}
+            </QuestionsList>
           </Content>
         </GeneralContainer>
       </Container>

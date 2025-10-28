@@ -4,8 +4,6 @@ import {
   Section,
   AzovIcon,
   AzovIconWrap,
-  Banner,
-  BannerWrap,
   Container,
   Content,
   Title,
@@ -40,6 +38,7 @@ import {
 } from 'framer-motion';
 import { veterans } from '@/constants';
 import { FaInstagram } from 'react-icons/fa';
+import ScaleBanner from '@/components/common/ScaleBanner';
 
 interface IFoundersCardsProps {
   scrollYProgress: MotionValue<number>;
@@ -132,14 +131,9 @@ const FoundersCards: FC<IFoundersCardsProps> = ({ scrollYProgress }) => {
 };
 
 const VeteransSection: FC = () => {
-  const bannerRef = useRef<HTMLDivElement>(null);
   const foundersRef = useRef<HTMLDivElement>(null);
 
-  const { scrollYProgress: bannerScrollYProgress } = useScroll({
-    target: bannerRef,
-    offset: ['start end', 'end start'],
-  });
-  const { scrollYProgress: foundersScrollYProgress } = useScroll({
+  const { scrollYProgress } = useScroll({
     target: foundersRef,
     offset: ['start end', 'end start'],
   });
@@ -150,10 +144,8 @@ const VeteransSection: FC = () => {
     mass: 0.5,
   };
 
-  const scale = useTransform(bannerScrollYProgress, [0, 1], [1.5, 1]);
-  const x = useTransform(foundersScrollYProgress, [0, 0.8], [400, 0]);
+  const x = useTransform(scrollYProgress, [0, 0.8], [400, 0]);
 
-  const smoothScale = useSpring(scale, transition);
   const smoothX = useSpring(x, transition);
 
   const smoothNegativeX = useTransform(smoothX, (value) => -value);
@@ -162,9 +154,7 @@ const VeteransSection: FC = () => {
     <Section>
       <SectionTitle text='Тренування для ветеранів' isHidden />
 
-      <BannerWrap ref={bannerRef}>
-        <Banner src={banner} alt='Банер' style={{ scale: smoothScale }} />
-      </BannerWrap>
+      <ScaleBanner banner={banner} />
 
       <Container>
         <GeneralContainer>
@@ -184,7 +174,7 @@ const VeteransSection: FC = () => {
                 <TitlePart style={{ x: smoothX }}>ветеранів</TitlePart>
               </Title>
 
-              <FoundersCards scrollYProgress={foundersScrollYProgress} />
+              <FoundersCards scrollYProgress={scrollYProgress} />
             </Content>
           </Founders>
 
