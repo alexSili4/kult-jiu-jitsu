@@ -60,19 +60,19 @@ export const MapImg = styled.img`
   object-position: bottom right;
 `;
 
-export const MetroIconWrap = styled.div`
+export const MetroBtn = styled.button`
   position: absolute;
   translate: 50% 50%;
-  rotate: 41deg;
 `;
 
 export const Metro = styled(MetroIcon)`
   position: relative;
   width: 32px;
   height: 32px;
+  rotate: 41deg;
 `;
 
-export const Finish = styled.div`
+export const FinishBtn = styled.button`
   position: absolute;
   width: 17px;
   height: 17px;
@@ -82,7 +82,27 @@ export const Finish = styled.div`
   translate: 50% 50%;
 `;
 
-export const Glow = styled.div`
+export const TooltipWrap = styled.span`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  display: block;
+  translate: -50% -32px;
+  opacity: 1;
+  transition: translate ${({ theme }) => theme.transitionDurationAndFunc},
+    opacity ${({ theme }) => theme.transitionDurationAndFunc};
+
+  button:not(:is(:hover, :focus)) > & {
+    translate: -50% 0px;
+    opacity: 0;
+  }
+`;
+
+export const MetroTooltipWrap = styled(TooltipWrap)`
+  translate: -50% -48px;
+`;
+
+export const Glow = styled.span`
   position: absolute;
   top: 50%;
   left: 50%;

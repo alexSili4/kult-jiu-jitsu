@@ -45,16 +45,18 @@ import {
   ListItem,
   OptionsList,
   OptionBtn,
-  MetroIconWrap,
+  MetroBtn,
   Metro,
   MapImgWrap,
-  Finish,
+  FinishBtn,
   Glow,
   MapPath,
   Svg,
   Path,
   PathShadow,
   Parking,
+  TooltipWrap,
+  MetroTooltipWrap,
 } from './ContactsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { contacts, SectionId } from '@/constants';
@@ -67,6 +69,7 @@ import { IoChevronDown } from 'react-icons/io5';
 import { useForm } from 'react-hook-form';
 import { IContactsForm, IPoint } from '@/types/contacts';
 import { getMapPath } from '@/utils';
+import Tooltip from '@CommonComponents/Tooltip';
 
 interface IInputProps {
   placeholder: string;
@@ -132,7 +135,7 @@ const Map: FC = () => {
 
           {isImageLoaded && <RoundedPathMap path={map.path} radius={7} />}
 
-          <MetroIconWrap
+          <MetroBtn
             style={{
               bottom: map.start.bottom,
               right: map.start.right,
@@ -140,16 +143,22 @@ const Map: FC = () => {
           >
             <Glow></Glow>
             <Metro />
-          </MetroIconWrap>
+            <MetroTooltipWrap>
+              <Tooltip text='метро Контрактова' />
+            </MetroTooltipWrap>
+          </MetroBtn>
 
-          <Finish
+          <FinishBtn
             style={{
               bottom: map.finish.bottom,
               right: map.finish.right,
             }}
           >
             <Glow></Glow>
-          </Finish>
+            <TooltipWrap>
+              <Tooltip text='Ми знаходимось тут' />
+            </TooltipWrap>
+          </FinishBtn>
 
           {map.parking.map(({ bottom, right }, index) => (
             <Parking key={index} style={{ bottom, right }} />
