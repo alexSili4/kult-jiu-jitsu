@@ -70,6 +70,7 @@ import { useForm } from 'react-hook-form';
 import { IContactsForm, IPoint } from '@/types/contacts';
 import { getMapPath } from '@/utils';
 import Tooltip from '@CommonComponents/Tooltip';
+import { Transition } from 'framer-motion';
 
 interface IInputProps {
   placeholder: string;
@@ -104,6 +105,12 @@ const RoundedPathMap: FC<IRoundedPathMapProps> = ({ path, radius = 12 }) => {
     return () => window.removeEventListener('resize', updatePath);
   }, [path, radius]);
 
+  const transition: Transition = {
+    duration: 8,
+    repeat: Infinity,
+    ease: 'easeInOut',
+  };
+
   return (
     <MapPath ref={containerRef}>
       <Svg xmlns='http://www.w3.org/2000/svg'>
@@ -112,8 +119,25 @@ const RoundedPathMap: FC<IRoundedPathMapProps> = ({ path, radius = 12 }) => {
           fill='none'
           strokeLinecap='round'
           strokeLinejoin='round'
+          initial={{ pathLength: 0, pathOffset: 0 }}
+          animate={{
+            pathLength: [0, 1, 0],
+            pathOffset: [0, 0, 1],
+          }}
+          transition={transition}
         />
-        <Path d={d} fill='none' strokeLinecap='round' strokeLinejoin='round' />
+        <Path
+          d={d}
+          fill='none'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+          initial={{ pathLength: 0, pathOffset: 0 }}
+          animate={{
+            pathLength: [0, 1, 0],
+            pathOffset: [0, 0, 1],
+          }}
+          transition={transition}
+        />
       </Svg>
     </MapPath>
   );

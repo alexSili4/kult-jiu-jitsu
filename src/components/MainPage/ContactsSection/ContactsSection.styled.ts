@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import { IStyledOpenSelectBtnIconProps } from './ContactsSection.types';
 import MetroIcon from '@/icons/contacts/metro.svg?react';
 import ParkingIcon from '@/icons/contacts/parking.svg?react';
+import { motion } from 'framer-motion';
 
 const linksGap = theme.spacing(2.5);
 
@@ -133,12 +134,12 @@ export const Svg = styled.svg`
   box-shadow: 0px 0px 42.5px 0px #000000;
 `;
 
-export const Path = styled.path`
+export const Path = styled(motion.path)`
   stroke: #88a94b;
   stroke-width: 6px;
 `;
 
-export const PathShadow = styled.path`
+export const PathShadow = styled(motion.path)`
   stroke: rgba(136, 169, 75, 0.35);
   stroke-width: 14px;
 `;
