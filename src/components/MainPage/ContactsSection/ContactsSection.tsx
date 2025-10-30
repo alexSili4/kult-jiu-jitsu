@@ -1,5 +1,12 @@
 import GeneralContainer from '@CommonComponents/GeneralContainer';
-import { ChangeEvent, FC, MouseEvent, useState } from 'react';
+import {
+  ChangeEvent,
+  FC,
+  MouseEvent,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import {
   MapContainer,
   MapImg,
@@ -38,6 +45,16 @@ import {
   ListItem,
   OptionsList,
   OptionBtn,
+  MetroIconWrap,
+  Metro,
+  MapImgWrap,
+  Finish,
+  Glow,
+  MapPath,
+  Svg,
+  Path,
+  PathShadow,
+  Parking,
 } from './ContactsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { contacts, SectionId } from '@/constants';
@@ -48,7 +65,8 @@ import { FaInstagram } from 'react-icons/fa';
 import banner from '@/images/contacts/banner.png';
 import { IoChevronDown } from 'react-icons/io5';
 import { useForm } from 'react-hook-form';
-import { IContactsForm } from '@/types/contacts';
+import { IContactsForm, IPoint } from '@/types/contacts';
+import { getMapPath } from '@/utils';
 
 interface IInputProps {
   placeholder: string;
@@ -58,11 +76,85 @@ interface IInputProps {
   settings: object;
 }
 
+interface IRoundedPathMapProps {
+  path: IPoint[];
+  stroke?: string;
+  strokeWidth?: number;
+  radius?: number;
+}
+
+const RoundedPathMap: FC<IRoundedPathMapProps> = ({ path, radius = 12 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [d, setD] = useState('');
+
+  useEffect(() => {
+    const updatePath = () => {
+      const el = containerRef.current;
+      if (!el) return;
+      const { width, height } = el.getBoundingClientRect();
+      const newD = getMapPath(path, width, height, radius);
+      setD(newD);
+    };
+
+    updatePath();
+    window.addEventListener('resize', updatePath);
+    return () => window.removeEventListener('resize', updatePath);
+  }, [path, radius]);
+
+  return (
+    <MapPath ref={containerRef}>
+      <Svg xmlns='http://www.w3.org/2000/svg'>
+        <PathShadow
+          d={d}
+          fill='none'
+          strokeLinecap='round'
+          strokeLinejoin='round'
+        />
+        <Path d={d} fill='none' strokeLinecap='round' strokeLinejoin='round' />
+      </Svg>
+    </MapPath>
+  );
+};
+
 const Map: FC = () => {
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const { map } = contacts;
+
+  const onImgLoad = () => {
+    setIsImageLoaded(true);
+  };
+
   return (
     <MapContainer>
       <MapWrap>
-        <MapImg src='' alt='Мапа' />
+        <MapImgWrap>
+          <MapImg src={map.img} alt='Мапа' onLoad={onImgLoad} />
+
+          {isImageLoaded && <RoundedPathMap path={map.path} radius={7} />}
+
+          <MetroIconWrap
+            style={{
+              bottom: map.start.bottom,
+              right: map.start.right,
+            }}
+          >
+            <Glow></Glow>
+            <Metro />
+          </MetroIconWrap>
+
+          <Finish
+            style={{
+              bottom: map.finish.bottom,
+              right: map.finish.right,
+            }}
+          >
+            <Glow></Glow>
+          </Finish>
+
+          {map.parking.map(({ bottom, right }, index) => (
+            <Parking key={index} style={{ bottom, right }} />
+          ))}
+        </MapImgWrap>
 
         <AddressContainer>
           <AddressTextWrap>

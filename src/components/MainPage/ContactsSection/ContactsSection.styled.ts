@@ -2,32 +2,12 @@ import { theme } from '@/constants';
 import { getFlexItemWidth } from '@/utils';
 import styled from '@emotion/styled';
 import { IStyledOpenSelectBtnIconProps } from './ContactsSection.types';
+import MetroIcon from '@/icons/contacts/metro.svg?react';
+import ParkingIcon from '@/icons/contacts/parking.svg?react';
 
 const linksGap = theme.spacing(2.5);
 
 export const Section = styled.section``;
-
-export const MapContainer = styled.div`
-  position: sticky;
-  top: 0;
-  left: 0;
-  height: 150dvh;
-`;
-
-export const MapWrap = styled.div`
-  position: sticky;
-  top: 0;
-  left: 0;
-  height: 100dvh;
-  background-color: #808080;
-  overflow: hidden;
-`;
-
-export const MapImg = styled.img`
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-`;
 
 export const Container = styled.div`
   position: relative;
@@ -45,6 +25,110 @@ export const Content = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing(20)}px;
 `;
 
+// Map
+export const MapContainer = styled.div`
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 150dvh;
+`;
+
+export const MapWrap = styled.div`
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #252525;
+  overflow: hidden;
+`;
+
+export const MapImgWrap = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  aspect-ratio: 1600 / 850;
+  overflow: hidden;
+`;
+
+export const MapImg = styled.img`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: bottom right;
+`;
+
+export const MetroIconWrap = styled.div`
+  position: absolute;
+  translate: 50% 50%;
+  rotate: 41deg;
+`;
+
+export const Metro = styled(MetroIcon)`
+  position: relative;
+  width: 32px;
+  height: 32px;
+`;
+
+export const Finish = styled.div`
+  position: absolute;
+  width: 17px;
+  height: 17px;
+  border: 3px solid ${({ theme }) => theme.colors.white};
+  border-radius: 50%;
+  background-color: #88a94b;
+  translate: 50% 50%;
+`;
+
+export const Glow = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background-image: radial-gradient(
+    50% 50% at 50% 50%,
+    rgba(136, 169, 75, 0.36) 0%,
+    rgba(136, 169, 75, 0) 100%
+  );
+  translate: -50% -50%;
+`;
+
+export const MapPath = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+`;
+
+export const Svg = styled.svg`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 42.5px 0px #000000;
+`;
+
+export const Path = styled.path`
+  stroke: #88a94b;
+  stroke-width: 6px;
+`;
+
+export const PathShadow = styled.path`
+  stroke: rgba(136, 169, 75, 0.35);
+  stroke-width: 14px;
+`;
+
+export const Parking = styled(ParkingIcon)`
+  position: absolute;
+  width: 24px;
+  height: 24px;
+`;
+
 // Address
 export const AddressContainer = styled.div`
   position: absolute;
@@ -56,8 +140,10 @@ export const AddressContainer = styled.div`
   width: 440px;
   height: 360px;
   background-color: #252525;
-  border-radius: 16px;
   padding: ${({ theme }) => theme.spacing(8)}px;
+  border-radius: 16px;
+  border: 1px solid ${({ theme }) => theme.colors.white10};
+  box-shadow: 0px -4px 30px rgba(0, 0, 0, 0.5);
 `;
 
 export const AddressTextWrap = styled.div`
