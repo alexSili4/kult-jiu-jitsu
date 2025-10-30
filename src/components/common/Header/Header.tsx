@@ -16,6 +16,7 @@ import {
   LinksList,
   FullNavigationLinks,
   FullNavigationLinksList,
+  AnimatedContainer,
 } from './Header.styled';
 import GeneralContainer from '@CommonComponents/GeneralContainer';
 import { navLinks } from '@/constants';
@@ -187,6 +188,13 @@ const Header: FC = () => {
     bounce: 0.4,
   };
 
+  const headerTransition: Transition = {
+    type: 'spring',
+    duration: 1,
+    bounce: 0.4,
+    delay: 0.6,
+  };
+
   const navigationVariants: Variants = {
     initial: (isBtn: boolean) => ({
       x: isBtn ? '210%' : '120%',
@@ -205,47 +213,67 @@ const Header: FC = () => {
     }),
   };
 
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {},
+  };
+
+  const headerVariants: Variants = {
+    hidden: { y: '-100%', opacity: 0, transition: headerTransition },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: headerTransition,
+    },
+  };
+
   return (
-    <StyledHeader>
-      <GeneralContainer>
-        <Container>
-          <Nav>
-            <Logo />
+    <AnimatedContainer
+      variants={containerVariants}
+      initial='hidden'
+      animate='visible'
+    >
+      <StyledHeader variants={headerVariants}>
+        <GeneralContainer>
+          <Container>
+            <Nav>
+              <Logo />
 
-            <LinksList>
-              <AnimatePresence mode='sync'>
-                {isScroll ? (
-                  <FullNavigation
-                    key='FullNavigation'
-                    navLinks={navLinks}
-                    animate={animate}
-                    exit={exit}
-                    initial={initial}
-                    variants={navigationVariants}
-                  />
-                ) : (
-                  <Navigation
-                    key='Navigation'
-                    navLinks={publicNavLinks}
-                    animate={animate}
-                    exit={exit}
-                    initial={initial}
-                    variants={navigationVariants}
-                  />
-                )}
-              </AnimatePresence>
-            </LinksList>
-          </Nav>
+              <LinksList>
+                <AnimatePresence mode='sync'>
+                  {isScroll ? (
+                    <FullNavigation
+                      key='FullNavigation'
+                      navLinks={navLinks}
+                      animate={animate}
+                      exit={exit}
+                      initial={initial}
+                      variants={navigationVariants}
+                    />
+                  ) : (
+                    <Navigation
+                      key='Navigation'
+                      navLinks={publicNavLinks}
+                      animate={animate}
+                      exit={exit}
+                      initial='animate'
+                      variants={navigationVariants}
+                    />
+                  )}
+                </AnimatePresence>
+              </LinksList>
+            </Nav>
 
-          <BookASessionBtn>
-            <Label>Записатись</Label>
-            <IconWrap>
-              <Lottie animationData={fire} loop={true} />
-            </IconWrap>
-          </BookASessionBtn>
-        </Container>
-      </GeneralContainer>
-    </StyledHeader>
+            <BookASessionBtn>
+              <Label>Записатись</Label>
+              <IconWrap>
+                <Lottie animationData={fire} loop={true} />
+              </IconWrap>
+            </BookASessionBtn>
+          </Container>
+        </GeneralContainer>
+      </StyledHeader>
+    </AnimatedContainer>
   );
 };
 

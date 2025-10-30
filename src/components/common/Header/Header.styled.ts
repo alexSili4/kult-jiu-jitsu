@@ -2,12 +2,15 @@ import styled from '@emotion/styled';
 import LogoIcon from '@/icons/logo.svg?react';
 import { motion } from 'framer-motion';
 
-export const StyledHeader = styled.header`
+export const AnimatedContainer = styled(motion.div)`
   position: fixed;
   z-index: 20;
   top: 0;
   left: 0;
   width: 100%;
+`;
+
+export const StyledHeader = styled(motion.header)`
   padding-top: ${({ theme }) => theme.spacing(5)}px;
   padding-bottom: ${({ theme }) => theme.spacing(5)}px;
 `;
