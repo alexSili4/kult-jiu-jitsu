@@ -151,10 +151,13 @@ export const Parking = styled(ParkingIcon)`
 `;
 
 // Address
-export const AddressContainer = styled.div`
+export const AddressContainer = styled(motion.div)`
   position: absolute;
   bottom: 64px;
   left: 60px;
+`;
+
+export const AddressWrap = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(11)}px;

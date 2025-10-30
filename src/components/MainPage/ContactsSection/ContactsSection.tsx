@@ -57,6 +57,7 @@ import {
   Parking,
   TooltipWrap,
   MetroTooltipWrap,
+  AddressWrap,
 } from './ContactsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { contacts, SectionId } from '@/constants';
@@ -70,7 +71,7 @@ import { useForm } from 'react-hook-form';
 import { IContactsForm, IPoint } from '@/types/contacts';
 import { getMapPath } from '@/utils';
 import Tooltip from '@CommonComponents/Tooltip';
-import { Transition } from 'framer-motion';
+import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
 
 interface IInputProps {
   placeholder: string;
@@ -144,8 +145,34 @@ const RoundedPathMap: FC<IRoundedPathMapProps> = ({ path, radius = 12 }) => {
 };
 
 const Map: FC = () => {
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
   const { map } = contacts;
+
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const containerRef = useRef(null);
+
+  const inView = useInView(containerRef, { amount: 1 });
+
+  const animate: VariantLabels = inView ? 'visible' : 'hidden';
+
+  const containerVariants: Variants = {
+    hidden: {},
+    visible: {},
+  };
+
+  const transition: Transition = {
+    type: 'spring',
+    duration: 1.4,
+    bounce: 0.4,
+  };
+
+  const itemVariants: Variants = {
+    hidden: { x: -60, opacity: 0, transition },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition,
+    },
+  };
 
   const onImgLoad = () => {
     setIsImageLoaded(true);
@@ -189,24 +216,31 @@ const Map: FC = () => {
           ))}
         </MapImgWrap>
 
-        <AddressContainer>
-          <AddressTextWrap>
-            <SectionLabel text='Як нас знайти' />
-            <Address>
-              <AddressTitle>вулиця Кирилівська, 6</AddressTitle>
-              <AddressText>Київ, Україна, 02000</AddressText>
-            </Address>
-          </AddressTextWrap>
-          <MapLink
-            href={contacts.mapLink}
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            <span>Прокласти маршрут</span>
-            <MapLinkIcon>
-              <FiArrowUpRight size={20} />
-            </MapLinkIcon>
-          </MapLink>
+        <AddressContainer
+          ref={containerRef}
+          variants={containerVariants}
+          initial='hidden'
+          animate={animate}
+        >
+          <AddressWrap variants={itemVariants}>
+            <AddressTextWrap>
+              <SectionLabel text='Як нас знайти' />
+              <Address>
+                <AddressTitle>вулиця Кирилівська, 6</AddressTitle>
+                <AddressText>Київ, Україна, 02000</AddressText>
+              </Address>
+            </AddressTextWrap>
+            <MapLink
+              href={contacts.mapLink}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              <span>Прокласти маршрут</span>
+              <MapLinkIcon>
+                <FiArrowUpRight size={20} />
+              </MapLinkIcon>
+            </MapLink>
+          </AddressWrap>
         </AddressContainer>
       </MapWrap>
     </MapContainer>
