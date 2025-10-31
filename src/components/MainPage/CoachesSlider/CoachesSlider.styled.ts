@@ -52,12 +52,18 @@ export const Rotate = styled(RotateIcon)`
 `;
 
 // CoachDetails
-export const DetailsContainer = styled.div``;
+export const DetailsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(6)}px;
+`;
 
 export const TextWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(4)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(6)}px;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.white10};
 `;
 
 export const NameWrap = styled.div`
@@ -90,6 +96,61 @@ export const Desc = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 1.4;
+`;
+
+export const CoachDescWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(6)}px;
+`;
+
+export const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+export const CoachDesc = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(2)}px;
+`;
+
+export const CoachDescItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: ${({ theme }) => theme.spacing(2)}px;
+`;
+
+export const DescText = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fontFamily.theater};
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: -0.48px;
+  text-transform: uppercase;
+`;
+
+export const DescTitle = styled.p`
+  color: #808080;
+  font-family: ${({ theme }) => theme.fontFamily.involve};
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.4;
+`;
+
+export const BookASessionLink = styled.a`
+  padding: ${({ theme }) => theme.spacing(4)}px;
+  border-radius: 100px;
+  background-color: #527324;
+  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fontFamily.theater};
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.2px;
+  text-align: center;
 `;
 
 // SwiperBullets

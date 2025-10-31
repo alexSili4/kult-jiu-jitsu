@@ -7,6 +7,10 @@ import {
 
 export const DaysList = styled.ul`
   width: 100%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    display: none;
+  }
 `;
 
 export const ListItem = styled.li``;

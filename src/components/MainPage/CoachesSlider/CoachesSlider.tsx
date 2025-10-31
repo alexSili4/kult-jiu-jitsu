@@ -15,6 +15,13 @@ import {
   Bullet,
   BulletsList,
   ListItem,
+  CoachDesc,
+  CoachDescItem,
+  DescText,
+  DescTitle,
+  CoachDescWrap,
+  Row,
+  BookASessionLink,
 } from './CoachesSlider.styled';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { coaches } from '@/constants';
@@ -80,9 +87,9 @@ const CoachDetails: FC<ICoachDetailsProps> = ({
   desc,
   number,
   totalLength,
-  //   qualification,
-  //   experience,
-  //   groups,
+  qualification,
+  experience,
+  groups,
 }) => {
   return (
     <GeneralContainer>
@@ -98,24 +105,28 @@ const CoachDetails: FC<ICoachDetailsProps> = ({
           <Desc>{desc}</Desc>
         </TextWrap>
 
-        {/* <CoachDescWrap>
-	        <CoachDesc>
-	          <CoachDescItem>
-	            <DescTitle>Кваліфікація</DescTitle>
-	            <DescText>{qualification}</DescText>
-	          </CoachDescItem>
-	          <CoachDescItem>
-	            <DescTitle>Досвід</DescTitle>
-	            <DescText>{experience}</DescText>
-	          </CoachDescItem>
-	          <CoachDescItem>
-	            <DescTitle>Групи</DescTitle>
-	            <DescText>{groups}</DescText>
-	          </CoachDescItem>
-	        </CoachDesc>
-	
-	        <BookASessionLink>Записатись</BookASessionLink>
-	      </CoachDescWrap> */}
+        <CoachDescWrap>
+          <CoachDesc>
+            <Row>
+              <CoachDescItem>
+                <DescTitle>Кваліфікація</DescTitle>
+                <DescText>{qualification}</DescText>
+              </CoachDescItem>
+              <CoachDescItem>
+                <DescTitle>Досвід</DescTitle>
+                <DescText>{experience}</DescText>
+              </CoachDescItem>
+            </Row>
+            <Row>
+              <CoachDescItem>
+                <DescTitle>Групи</DescTitle>
+                <DescText>{groups}</DescText>
+              </CoachDescItem>
+            </Row>
+          </CoachDesc>
+
+          <BookASessionLink>Записатись</BookASessionLink>
+        </CoachDescWrap>
       </DetailsContainer>
     </GeneralContainer>
   );
