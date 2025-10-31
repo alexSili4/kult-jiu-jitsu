@@ -2,6 +2,7 @@ import GeneralContainer from '@CommonComponents/GeneralContainer';
 import { FC } from 'react';
 import { Content, Section, Container } from './ScheduleSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
+import ScheduleAccordion from '@MainPageComponents/ScheduleAccordion';
 import ScheduleList from '@MainPageComponents/ScheduleList';
 import SectionLabel from '@CommonComponents/SectionLabel';
 
@@ -15,6 +16,7 @@ const ScheduleSection: FC = () => {
           <Container>
             <SectionLabel text='Розклад' />
 
+            <ScheduleAccordion />
             <ScheduleList />
           </Container>
         </GeneralContainer>

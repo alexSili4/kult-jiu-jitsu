@@ -1,9 +1,6 @@
 import styled from '@emotion/styled';
 
 export const Title = styled.p`
-  position: sticky;
-  top: 100px;
-  left: 0;
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(2)}px;
@@ -12,6 +9,12 @@ export const Title = styled.p`
   font-size: 16px;
   font-weight: 400;
   line-height: 19.2px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    position: sticky;
+    top: 100px;
+    left: 0;
+  }
 `;
 
 export const Symbol = styled.span`
