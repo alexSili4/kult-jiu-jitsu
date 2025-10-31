@@ -13,7 +13,6 @@ import {
   FullNavigationContainer,
   AnimatedFullNavigationContainer,
   FullNavigationBtn,
-  LinksList,
   FullNavigationLinks,
   FullNavigationLinksList,
   AnimatedContainer,
@@ -239,29 +238,27 @@ const Header: FC = () => {
             <Nav>
               <Logo />
 
-              <LinksList>
-                <AnimatePresence mode='sync'>
-                  {isScroll ? (
-                    <FullNavigation
-                      key='FullNavigation'
-                      navLinks={navLinks}
-                      animate={animate}
-                      exit={exit}
-                      initial={initial}
-                      variants={navigationVariants}
-                    />
-                  ) : (
-                    <Navigation
-                      key='Navigation'
-                      navLinks={publicNavLinks}
-                      animate={animate}
-                      exit={exit}
-                      initial='animate'
-                      variants={navigationVariants}
-                    />
-                  )}
-                </AnimatePresence>
-              </LinksList>
+              <AnimatePresence mode='sync'>
+                {isScroll ? (
+                  <FullNavigation
+                    key='FullNavigation'
+                    navLinks={navLinks}
+                    animate={animate}
+                    exit={exit}
+                    initial={initial}
+                    variants={navigationVariants}
+                  />
+                ) : (
+                  <Navigation
+                    key='Navigation'
+                    navLinks={publicNavLinks}
+                    animate={animate}
+                    exit={exit}
+                    initial='animate'
+                    variants={navigationVariants}
+                  />
+                )}
+              </AnimatePresence>
             </Nav>
 
             <DeskBookASessionLink>

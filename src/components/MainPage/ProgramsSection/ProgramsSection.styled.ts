@@ -4,9 +4,9 @@ import { motion } from 'framer-motion';
 
 export const Section = styled.section`
   position: sticky;
-  top: -200dvh;
+  top: -100dvh;
   left: 0;
-  height: 300dvh;
+  height: 200dvh;
   background-color: #18181c;
 `;
 

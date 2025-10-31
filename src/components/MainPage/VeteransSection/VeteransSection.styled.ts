@@ -16,7 +16,7 @@ export const Container = styled.div`
 
 export const Founders = styled.div`
   position: relative;
-  height: 300dvh;
+  height: 150dvh;
 `;
 
 export const Content = styled.div`

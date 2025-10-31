@@ -32,10 +32,8 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
-    padding-right: ${({ theme }) => theme.spacing(15)}px;
-  }
+  height: 54px;
+  padding-right: ${({ theme }) => theme.spacing(15)}px;
 `;
 
 export const Logo = styled(LogoIcon)`
@@ -48,21 +46,14 @@ export const Logo = styled(LogoIcon)`
   }
 `;
 
-export const LinksList = styled.div`
+export const List = styled(motion.ul)`
   display: none;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
-    position: relative;
     display: flex;
     align-items: center;
-    height: 54px;
+    gap: ${({ theme }) => theme.spacing(10)}px;
   }
-`;
-
-export const List = styled(motion.ul)`
-  display: flex;
-  align-items: center;
-  gap: ${({ theme }) => theme.spacing(10)}px;
 `;
 
 export const ListItem = styled.li``;
@@ -76,7 +67,9 @@ export const Link = styled.a`
   white-space: nowrap;
 `;
 
-export const BookASessionLink = styled.a`
+export const BookASessionLink = styled.button`
+  position: relative;
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(4)}px;
@@ -118,7 +111,8 @@ export const IconWrap = styled.span`
 export const AnimatedFullNavigationContainer = styled(motion.div)`
   position: absolute;
   top: 0;
-  right: 0;
+  right: 10px;
+  display: block;
 `;
 
 export const FullNavigationContainer = styled(motion.div)`

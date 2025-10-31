@@ -49,8 +49,11 @@ const PriceSection: FC = () => {
   const membershipsRef = useRef(null);
   const servicesRef = useRef(null);
 
-  const membershipsInView = useInView(membershipsRef, { amount: 0.7 });
-  const servicesInView = useInView(servicesRef, { amount: 1 });
+  const membershipsInView = useInView(membershipsRef, {
+    amount: 0.7,
+    once: true,
+  });
+  const servicesInView = useInView(servicesRef, { amount: 1, once: true });
 
   const animateMemberships: VariantLabels = membershipsInView
     ? 'visible'
