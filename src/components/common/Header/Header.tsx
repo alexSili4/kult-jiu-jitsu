@@ -6,7 +6,7 @@ import {
   Logo,
   Nav,
   Link,
-  BookASessionBtn,
+  DeskBookASessionLink,
   IconWrap,
   Label,
   Container,
@@ -264,12 +264,12 @@ const Header: FC = () => {
               </LinksList>
             </Nav>
 
-            <BookASessionBtn>
+            <DeskBookASessionLink>
               <Label>Записатись</Label>
               <IconWrap>
                 <Lottie animationData={fire} loop={true} />
               </IconWrap>
-            </BookASessionBtn>
+            </DeskBookASessionLink>
           </Container>
         </GeneralContainer>
       </StyledHeader>

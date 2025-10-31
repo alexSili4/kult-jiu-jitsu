@@ -11,8 +11,13 @@ export const AnimatedContainer = styled(motion.div)`
 `;
 
 export const StyledHeader = styled(motion.header)`
-  padding-top: ${({ theme }) => theme.spacing(5)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(5)}px;
+  padding-top: ${({ theme }) => theme.spacing(2)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(2)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    padding-top: ${({ theme }) => theme.spacing(5)}px;
+    padding-bottom: ${({ theme }) => theme.spacing(5)}px;
+  }
 `;
 
 export const Container = styled.div`
@@ -27,19 +32,31 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-right: ${({ theme }) => theme.spacing(15)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    padding-right: ${({ theme }) => theme.spacing(15)}px;
+  }
 `;
 
 export const Logo = styled(LogoIcon)`
-  width: 128px;
-  height: 40px;
+  width: 77px;
+  height: 24px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    width: 128px;
+    height: 40px;
+  }
 `;
 
 export const LinksList = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 54px;
+  display: none;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 54px;
+  }
 `;
 
 export const List = styled(motion.ul)`
@@ -59,7 +76,7 @@ export const Link = styled.a`
   white-space: nowrap;
 `;
 
-export const BookASessionBtn = styled.button`
+export const BookASessionLink = styled.a`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(4)}px;
@@ -67,6 +84,14 @@ export const BookASessionBtn = styled.button`
   padding-left: ${({ theme }) => theme.spacing(8)}px;
   border-radius: 100px;
   background-color: #527324;
+`;
+
+export const DeskBookASessionLink = styled(BookASessionLink)`
+  display: none;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    display: flex;
+  }
 `;
 
 export const Label = styled.span`

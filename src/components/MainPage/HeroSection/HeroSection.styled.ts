@@ -5,15 +5,23 @@ export const Section = styled.section`
   top: 0;
   left: 0;
   height: 100dvh;
-  padding-bottom: ${({ theme }) => theme.spacing(10)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(14)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    padding-bottom: ${({ theme }) => theme.spacing(10)}px;
+  }
 `;
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: ${({ theme }) => theme.spacing(12)}px;
+  gap: ${({ theme }) => theme.spacing(8)}px;
   height: 100%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    gap: ${({ theme }) => theme.spacing(12)}px;
+  }
 `;
 
 export const Location = styled.p`
@@ -25,6 +33,10 @@ export const Location = styled.p`
   font-size: 16px;
   font-weight: 400;
   line-height: 1.2;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 `;
 
 export const Country = styled.span`
@@ -32,11 +44,18 @@ export const Country = styled.span`
 `;
 
 export const PageTitle = styled.h1`
-  font-family: ${({ theme }) => theme.fontFamily.theater};
   color: #f9f9f9;
-  font-size: 200px;
+  font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
-  letter-spacing: -8.3px;
+  font-size: 125.3px;
+  line-height: 111.75px;
+  letter-spacing: -7.58px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 240px;
+    line-height: 200px;
+    letter-spacing: -8.3px;
+  }
 `;
 
 export const Symbol = styled.span`

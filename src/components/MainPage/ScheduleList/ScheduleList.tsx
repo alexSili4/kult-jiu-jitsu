@@ -14,7 +14,7 @@ import {
   Time,
   Symbol,
   Wrapper,
-} from './ScheduleDetails.styled';
+} from './ScheduleList.styled';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
 
 interface IDayDetailsProps {
@@ -48,7 +48,7 @@ const ProgramDetails: FC<IProgramDetailsProps> = ({ program }) => {
 const DayDetails: FC<IDayDetailsProps> = ({ programs, days }) => {
   const containerRef = useRef(null);
 
-  const inView = useInView(containerRef, { amount: 1 });
+  const inView = useInView(containerRef, { amount: 1, once: true });
 
   const animate: VariantLabels = inView ? 'visible' : 'hidden';
 
@@ -94,7 +94,7 @@ const DayDetails: FC<IDayDetailsProps> = ({ programs, days }) => {
   );
 };
 
-const ScheduleDetails: FC = () => {
+const ScheduleList: FC = () => {
   return (
     <List>
       {schedule.map(({ days, programs }) => (
@@ -106,4 +106,4 @@ const ScheduleDetails: FC = () => {
   );
 };
 
-export default ScheduleDetails;
+export default ScheduleList;

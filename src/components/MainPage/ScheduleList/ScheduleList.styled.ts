@@ -2,7 +2,12 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 export const List = styled.ul`
-  width: 66.7vw;
+  display: none;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    display: block;
+    width: 66.7vw;
+  }
 `;
 
 export const ListItem = styled.li``;

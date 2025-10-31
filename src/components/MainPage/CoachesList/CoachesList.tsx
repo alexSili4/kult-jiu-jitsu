@@ -32,7 +32,7 @@ import {
   Variants,
 } from 'framer-motion';
 import { useSpring } from 'framer-motion';
-import CustomCursor from '@/components/common/CustomCursor';
+import CustomCursor from '@CommonComponents/CustomCursor';
 import fire from '@/lottiefiles/fire.json';
 import Lottie from 'lottie-react';
 
@@ -115,12 +115,16 @@ const CoachCard: FC<ICoachCardProps> = ({
   const smoothRotate = useSpring(rotate, transition);
   const smoothY = useSpring(y, transition);
 
+  const onFocus = () => setIsActive(true);
+
+  const onBlur = () => setIsActive(false);
+
   return (
     <CardWrapper
-      onMouseEnter={() => setIsActive(true)}
-      onMouseLeave={() => setIsActive(false)}
-      onFocus={() => setIsActive(true)}
-      onBlur={() => setIsActive(false)}
+      onMouseEnter={onFocus}
+      onMouseLeave={onBlur}
+      onFocus={onFocus}
+      onBlur={onBlur}
       style={{
         y: smoothY,
         scale: smoothScale,

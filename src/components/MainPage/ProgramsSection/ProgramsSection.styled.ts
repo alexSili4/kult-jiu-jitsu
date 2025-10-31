@@ -13,7 +13,11 @@ export const Section = styled.section`
 export const Container = styled.div`
   position: relative;
   height: 100%;
-  padding-top: ${({ theme }) => theme.spacing(30)}px;
+  padding-top: ${({ theme }) => theme.spacing(14)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    padding-top: ${({ theme }) => theme.spacing(30)}px;
+  }
 `;
 
 export const Content = styled.div`
@@ -25,33 +29,63 @@ export const Content = styled.div`
   flex-direction: column;
   width: 100%;
   height: 100dvh;
+  padding-top: ${({ theme }) => theme.spacing(10)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(10)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    padding-top: ${({ theme }) => theme.spacing(30)}px;
+    padding-bottom: ${({ theme }) => theme.spacing(30)}px;
+  }
 `;
 
 export const List = styled.div`
+  flex-grow: 1;
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(2)}px;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing(6)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    gap: ${({ theme }) => theme.spacing(2)}px;
+  }
 `;
 
 export const Row = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(6)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+  }
 `;
 
 export const EndRow = styled(Row)`
-  justify-content: flex-end;
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    justify-content: flex-end;
+  }
 `;
 
 export const StartRow = styled(Row)`
-  justify-content: flex-start;
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    justify-content: flex-start;
+  }
 `;
 
 export const Program = styled.button`
   display: flex;
   align-items: flex-start;
-  gap: ${({ theme }) => theme.spacing(2.5)}px;
+  gap: ${({ theme }) => theme.spacing(2)}px;
+  width: 100%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    gap: ${({ theme }) => theme.spacing(2.5)}px;
+    width: auto;
+  }
 
   &:is(:hover, :focus) {
     cursor: none;
@@ -71,18 +105,30 @@ export const Name = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
-  font-stretch: condensed;
-  font-size: 160px;
+  font-size: 40px;
+  line-height: 1;
+  letter-spacing: -1.6px;
   text-transform: uppercase;
-  line-height: 0.93;
-  letter-spacing: -7px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-stretch: condensed;
+    font-size: 160px;
+    line-height: 0.93;
+    letter-spacing: -7px;
+  }
 `;
 
 export const Desc = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 500;
-  font-size: 24px;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.56px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 24px;
+  }
 `;
 
 export const TitleWrap = styled.div`
@@ -96,8 +142,14 @@ export const TitleWrap = styled.div`
 export const Title = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
-  font-size: 20px;
+  font-weight: 400;
+  font-size: 16px;
   line-height: 1.2;
+  text-transform: capitalize;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 `;
 
 export const Symbol = styled.div`
@@ -109,9 +161,15 @@ export const Symbol = styled.div`
 
 export const DecorativeElementWrap = styled.div`
   position: absolute;
-  top: 3dvh;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(-50%);
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    top: 3dvh;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `;
 
 export const DecorativeElement = styled(motion.div)`

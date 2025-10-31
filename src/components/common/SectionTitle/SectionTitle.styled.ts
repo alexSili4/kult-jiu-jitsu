@@ -9,7 +9,6 @@ export const Title = styled.h2<IStyledTitleProps>`
 
 export const Text = styled.span`
   font-family: ${({ theme }) => theme.fontFamily.theater};
-  color: pink;
   font-weight: 700;
   background: linear-gradient(
     0deg,

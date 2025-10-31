@@ -1,6 +1,6 @@
 import { FC, lazy } from 'react';
 import Header from '@CommonComponents/Header';
-import Footer from '@CommonComponents/Footer';
+// import Footer from '@CommonComponents/Footer';
 
 const MainPage = lazy(() => import('@/pages/MainPage'));
 
@@ -11,7 +11,7 @@ const App: FC = () => {
       <main>
         <MainPage />
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

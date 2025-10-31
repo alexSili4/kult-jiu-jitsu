@@ -27,7 +27,7 @@ import {
   Description,
   DescriptionWrap,
 } from './VeteransSection.styled';
-import SectionTitle from '@/components/common/SectionTitle';
+import SectionTitle from '@CommonComponents/SectionTitle';
 import banner from '@/images/veterans/banner.jpg';
 import {
   MotionValue,
@@ -38,7 +38,7 @@ import {
 } from 'framer-motion';
 import { veterans } from '@/constants';
 import { FaInstagram } from 'react-icons/fa';
-import ScaleBanner from '@/components/common/ScaleBanner';
+import ScaleBanner from '@CommonComponents/ScaleBanner';
 
 interface IFoundersCardsProps {
   scrollYProgress: MotionValue<number>;

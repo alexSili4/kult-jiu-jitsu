@@ -104,7 +104,7 @@ const ProgramsSection: FC = () => {
                     </CustomCursor>
                   )}
 
-                  <Title>{basic.label}</Title>
+                  <Name>{basic.label}</Name>
                   <GroupDesc desc={basic.desc} />
                 </Program>
               </Row>

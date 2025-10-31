@@ -4,11 +4,11 @@ import CoachesSection from '@MainPageComponents/CoachesSection';
 import HeroSection from '@MainPageComponents/HeroSection';
 import ScheduleSection from '@MainPageComponents/ScheduleSection';
 import ProgramsSection from '@MainPageComponents/ProgramsSection';
-import PriceSection from '@MainPageComponents/PriceSection';
-import AmenitiesSection from '@MainPageComponents/AmenitiesSection';
-import VeteransSection from '@MainPageComponents/VeteransSection';
-import FAQsSection from '@MainPageComponents/FAQsSection';
-import ContactsSection from '@MainPageComponents/ContactsSection';
+// import PriceSection from '@MainPageComponents/PriceSection';
+// import AmenitiesSection from '@MainPageComponents/AmenitiesSection';
+// import VeteransSection from '@MainPageComponents/VeteransSection';
+// import FAQsSection from '@MainPageComponents/FAQsSection';
+// import ContactsSection from '@MainPageComponents/ContactsSection';
 import SectionsWrap from '@MainPageComponents/SectionsWrap';
 
 const MainPage: FC = () => {
@@ -23,11 +23,11 @@ const MainPage: FC = () => {
         <ProgramsSection />
         <ScheduleSection />
       </SectionsWrap>
-      <PriceSection />
-      <AmenitiesSection />
-      <VeteransSection />
-      <FAQsSection />
-      <ContactsSection />
+      {/* <PriceSection /> */}
+      {/* <AmenitiesSection /> */}
+      {/* <VeteransSection /> */}
+      {/* <FAQsSection /> */}
+      {/* <ContactsSection /> */}
     </>
   );
 };

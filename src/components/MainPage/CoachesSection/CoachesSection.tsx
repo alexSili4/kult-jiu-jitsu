@@ -4,6 +4,7 @@ import { Container, Content, Section } from './CoachesSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import CoachesList from '@MainPageComponents/CoachesList';
 import { useScroll } from 'framer-motion';
+import CoachesSlider from '@MainPageComponents/CoachesSlider';
 
 const CoachesSection: FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -22,6 +23,7 @@ const CoachesSection: FC = () => {
             <CoachesList scrollYProgress={scrollYProgress} />
           </Content>
         </GeneralContainer>
+        <CoachesSlider />
       </Container>
     </Section>
   );
