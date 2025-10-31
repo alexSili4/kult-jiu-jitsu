@@ -27,19 +27,13 @@ export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 54px;
   padding-right: ${({ theme }) => theme.spacing(15)}px;
 `;
 
 export const Logo = styled(LogoIcon)`
   width: 128px;
   height: 40px;
-`;
-
-export const LinksList = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-  height: 54px;
 `;
 
 export const List = styled(motion.ul)`
@@ -60,6 +54,8 @@ export const Link = styled.a`
 `;
 
 export const BookASessionBtn = styled.button`
+  position: relative;
+  z-index: 10;
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(4)}px;
@@ -93,7 +89,7 @@ export const IconWrap = styled.span`
 export const AnimatedFullNavigationContainer = styled(motion.div)`
   position: absolute;
   top: 0;
-  right: 0;
+  right: 10px;
 `;
 
 export const FullNavigationContainer = styled(motion.div)`

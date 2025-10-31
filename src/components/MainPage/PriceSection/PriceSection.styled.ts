@@ -42,8 +42,17 @@ export const MembershipDetails = styled(motion.div)`
   background-color: #252525;
   padding: ${({ theme }) => theme.spacing(10)}px;
   border-radius: 16px;
+  transition: background-color ${({ theme }) => theme.transitionDurationAndFunc};
 
-  li:first-of-type > & {
+  ul:not(:has(div:is(:hover, :focus))) > li:first-of-type > & {
+    background-color: #88a94b;
+  }
+
+  li:has(div:is(:hover, :focus)) > &:not(:is(:hover, :focus)) {
+    background-color: #252525;
+  }
+
+  &:is(:hover, :focus) {
     background-color: #88a94b;
   }
 `;
@@ -82,8 +91,13 @@ export const BenefitText = styled.p`
   font-weight: 400;
   font-size: 20px;
   line-height: 1.4;
+  transition: color ${({ theme }) => theme.transitionDurationAndFunc};
 
   li:first-of-type & {
+    color: #f9f9f9;
+  }
+
+  li:has(*:is(:hover, :focus)) & {
     color: #f9f9f9;
   }
 `;
@@ -112,8 +126,13 @@ export const PricePeriod = styled.span`
   color: #808080;
   font-size: 20px;
   line-height: 1.2;
+  transition: color ${({ theme }) => theme.transitionDurationAndFunc};
 
   li:first-of-type & {
+    color: ${({ theme }) => theme.colors.white60};
+  }
+
+  li:has(*:is(:hover, :focus)) & {
     color: ${({ theme }) => theme.colors.white60};
   }
 `;
@@ -128,6 +147,13 @@ export const Button = styled.button`
   font-weight: 700;
   font-size: 24px;
   letter-spacing: -0.2px;
+  transition: background-color ${({ theme }) => theme.transitionDurationAndFunc},
+    color ${({ theme }) => theme.transitionDurationAndFunc};
+
+  &:is(:hover, :focus) {
+    background-color: ${({ theme }) => theme.colors.white};
+    color: #18181c;
+  }
 `;
 
 export const FavoriteLabel = styled.div`
@@ -140,7 +166,13 @@ export const FavoriteLabel = styled.div`
   border-radius: 100px;
   padding-left: ${({ theme }) => theme.spacing(3.5)}px;
   padding-right: ${({ theme }) => theme.spacing(3.5)}px;
-  border: 1px solid #88a94b;
+  border: 1px solid;
+  border-color: #88a94b;
+  transition: border-color ${({ theme }) => theme.transitionDurationAndFunc};
+
+  li:has(*:is(:hover, :focus)) & {
+    border-color: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 export const FavoriteText = styled.p`
@@ -152,6 +184,11 @@ export const FavoriteText = styled.p`
   font-weight: 500;
   font-size: 14px;
   line-height: 1.29;
+  transition: color ${({ theme }) => theme.transitionDurationAndFunc};
+
+  li:has(*:is(:hover, :focus)) & {
+    color: ${({ theme }) => theme.colors.white};
+  }
 `;
 
 export const Symbol = styled.span`
