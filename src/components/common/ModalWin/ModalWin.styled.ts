@@ -3,13 +3,11 @@ import { motion } from 'framer-motion';
 
 export const Container = styled(motion.div)`
   position: fixed;
-  z-index: 1000;
+  z-index: 100;
   top: 0;
   left: 0;
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  min-height: 100%;
+  height: 100%;
   overflow: auto;
 `;
 

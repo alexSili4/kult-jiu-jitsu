@@ -26,7 +26,7 @@ const useModalWin = ({ setModalWinState }: IUseModalWinProps): IUseModalWin => {
       document.body.style.overflow = '';
       window.removeEventListener('keydown', hideModalWin);
     };
-  }, [setModalWinState]);
+  }, []);
 
   const onCloseBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.currentTarget.blur();

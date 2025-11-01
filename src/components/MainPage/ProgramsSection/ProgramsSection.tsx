@@ -28,7 +28,7 @@ import {
   useTransform,
 } from 'framer-motion';
 import CustomCursor from '@CommonComponents/CustomCursor';
-import KidsProgramModalWin from '@MainPageComponents/KidsProgramModalWin';
+import AnimatedKidsProgramModalWin from '@MainPageComponents/KidsProgramModalWin';
 
 interface IGroupDescProps {
   desc: string | null;
@@ -199,12 +199,10 @@ const ProgramsSection: FC = () => {
         </GeneralContainer>
       </Section>
 
-      {showKidsProgramModalWin && (
-        <KidsProgramModalWin
-          isOpen={showKidsProgramModalWin}
-          setModalWinState={toggleShowKidsProgramModalWin}
-        />
-      )}
+      <AnimatedKidsProgramModalWin
+        isOpen={showKidsProgramModalWin}
+        setModalWinState={toggleShowKidsProgramModalWin}
+      />
     </>
   );
 };
