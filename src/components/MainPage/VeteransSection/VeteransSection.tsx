@@ -36,7 +36,7 @@ import {
   useSpring,
   useTransform,
 } from 'framer-motion';
-import { veterans } from '@/constants';
+import { SectionId, veterans } from '@/constants';
 import { FaInstagram } from 'react-icons/fa';
 import ScaleBanner from '@CommonComponents/ScaleBanner';
 
@@ -151,7 +151,7 @@ const VeteransSection: FC = () => {
   const smoothNegativeX = useTransform(smoothX, (value) => -value);
 
   return (
-    <Section>
+    <Section id={SectionId.veterans}>
       <SectionTitle text='Тренування для ветеранів' isHidden />
 
       <ScaleBanner banner={banner} />

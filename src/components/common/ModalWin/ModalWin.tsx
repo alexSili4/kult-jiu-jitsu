@@ -17,7 +17,7 @@ const ModalWin: FC<IModalWinProps> = ({ children, setModalWinState }) => {
   });
 
   const transition: Transition = {
-    duration: 0.6,
+    duration: 0.4,
     ease: [0.25, 0.1, 0.25, 1],
   };
 

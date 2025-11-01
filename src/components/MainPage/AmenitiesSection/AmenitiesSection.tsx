@@ -15,7 +15,7 @@ import {
   Image,
   ImageWrap,
 } from './AmenitiesSection.styled';
-import { amenities } from '@/constants';
+import { amenities, SectionId } from '@/constants';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { IconType } from 'react-icons';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
@@ -79,7 +79,7 @@ const AmenitiesSection: FC = () => {
   const { list, images } = amenities;
 
   return (
-    <Section>
+    <Section id={SectionId.amenities}>
       <Container>
         <GeneralContainer>
           <SectionTitle text='зручності' />

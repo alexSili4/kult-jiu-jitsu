@@ -5,10 +5,11 @@ import SectionTitle from '@CommonComponents/SectionTitle';
 import ScheduleAccordion from '@MainPageComponents/ScheduleAccordion';
 import ScheduleList from '@MainPageComponents/ScheduleList';
 import SectionLabel from '@CommonComponents/SectionLabel';
+import { SectionId } from '@/constants';
 
 const ScheduleSection: FC = () => {
   return (
-    <Section>
+    <Section id={SectionId.schedule}>
       <SectionTitle text='Розклад' isHidden />
 
       <Content>

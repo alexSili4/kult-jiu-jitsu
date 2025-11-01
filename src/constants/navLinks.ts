@@ -12,7 +12,7 @@ const navLinks: INavLink[] = [
   { href: `#${SectionId.price}`, label: 'Прайс', isPublic: true },
   { href: `#${SectionId.amenities}`, label: 'Зручності', isPublic: true },
   { href: `#${SectionId.veterans}`, label: 'Для ветеранів', isPublic: true },
-  { href: `#${SectionId.contacts}`, label: 'Як знайти', isPublic: true },
+  { href: `#${SectionId.map}`, label: 'Як знайти', isPublic: true },
 ];
 
 export default navLinks;

@@ -179,7 +179,7 @@ const Map: FC = () => {
   };
 
   return (
-    <MapContainer>
+    <MapContainer id={SectionId.map}>
       <MapWrap>
         <MapImgWrap>
           <MapImg src={map.img} alt='Мапа' onLoad={onImgLoad} />
@@ -337,7 +337,7 @@ const ContactsForm: FC = () => {
   };
 
   return (
-    <FormContainer>
+    <FormContainer id={SectionId.contacts}>
       <FormHeader>
         <FormTitle>Записатись на заняття</FormTitle>
         <FormText>
@@ -412,7 +412,7 @@ const ContactsSection: FC = () => {
 
       <Container>
         <GeneralContainer>
-          <Content id={SectionId.contacts}>
+          <Content>
             <Contacts />
           </Content>
         </GeneralContainer>

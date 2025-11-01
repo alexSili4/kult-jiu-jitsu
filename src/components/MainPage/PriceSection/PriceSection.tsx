@@ -33,6 +33,7 @@ import {
 import price from '@/constants/price';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
+import { SectionId } from '@/constants';
 
 const FavoriteStatus: FC = () => {
   return (
@@ -91,7 +92,7 @@ const PriceSection: FC = () => {
   const { memberships, services } = price;
 
   return (
-    <Section>
+    <Section id={SectionId.price}>
       <SectionTitle text='Вартість' isHidden />
 
       <Content>

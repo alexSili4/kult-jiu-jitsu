@@ -18,7 +18,7 @@ import {
   DecorativeElementWrap,
   CursorImg,
 } from './ProgramsSection.styled';
-import { programs } from '@/constants';
+import { programs, SectionId } from '@/constants';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import {
   SpringOptions,
@@ -74,7 +74,7 @@ const ProgramsSection: FC = () => {
 
   return (
     <>
-      <Section ref={containerRef}>
+      <Section ref={containerRef} id={SectionId.programs}>
         <SectionTitle text='Програми занять' isHidden />
 
         <GeneralContainer>
