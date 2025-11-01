@@ -10,6 +10,7 @@ import VeteransSection from '@MainPageComponents/VeteransSection';
 import FAQsSection from '@MainPageComponents/FAQsSection';
 import ContactsSection from '@MainPageComponents/ContactsSection';
 import SectionsWrap from '@MainPageComponents/SectionsWrap';
+import { faqs } from '@/constants';
 
 const MainPage: FC = () => {
   return (
@@ -26,7 +27,7 @@ const MainPage: FC = () => {
       <PriceSection />
       <AmenitiesSection />
       <VeteransSection />
-      <FAQsSection />
+      <FAQsSection faqs={faqs.all} />
       <ContactsSection />
     </>
   );

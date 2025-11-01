@@ -1,6 +1,6 @@
 import { IFAQ } from '@/types/faqs';
 
-const faqs: IFAQ[] = [
+const all: IFAQ[] = [
   {
     question: 'Що потрібно взяти на перше тренування?',
     answer:
@@ -62,4 +62,23 @@ const faqs: IFAQ[] = [
   },
 ];
 
-export default faqs;
+const kids: IFAQ[] = [
+  {
+    question: 'Як часто варто відвідувати тренування?',
+    answer: 'Відповідь',
+  },
+  {
+    question: 'Коли моя дитина може почати брати участь у змаганнях?',
+    answer: 'Відповідь',
+  },
+  {
+    question: 'Скільки дітей у групі?',
+    answer: 'Відповідь',
+  },
+  {
+    question: 'Чи проводите ви змагання або семінари?',
+    answer: 'Відповідь',
+  },
+];
+
+export default { all, kids };

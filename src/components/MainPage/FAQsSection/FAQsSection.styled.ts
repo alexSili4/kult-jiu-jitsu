@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import {
   IStyledAnswerWrapProps,
+  IStyledContainerProps,
+  IStyledContentProps,
   IStyledIconWrapProps,
 } from './FAQsSection.types';
 
@@ -9,20 +11,22 @@ export const Section = styled.section`
   position: relative;
 `;
 
-export const Container = styled.div`
+export const Container = styled.div<IStyledContainerProps>`
   position: relative;
   background-color: #18181c;
-  border-top-right-radius: 20px;
-  border-top-left-radius: 20px;
+  border-top-right-radius: ${({ isModalWin }) => (isModalWin ? 0 : 20)}px;
+  border-top-left-radius: ${({ isModalWin }) => (isModalWin ? 0 : 20)}px;
 `;
 
-export const Content = styled.div`
+export const Content = styled.div<IStyledContentProps>`
   position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding-top: ${({ theme }) => theme.spacing(40)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(67)}px;
+  padding-top: ${({ theme: { spacing }, isModalWin }) =>
+    spacing(isModalWin ? 10 : 40)}px;
+  padding-bottom: ${({ theme: { spacing }, isModalWin }) =>
+    spacing(isModalWin ? 16 : 67)}px;
 `;
 
 export const QuestionsList = styled.ul`
