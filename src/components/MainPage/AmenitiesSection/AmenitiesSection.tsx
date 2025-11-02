@@ -6,7 +6,6 @@ import {
   Details,
   Section,
   Text,
-  AmenitiesList,
   AmenitiesCard,
   AmenitiesListItem,
   CardText,
@@ -14,6 +13,8 @@ import {
   AmenitiesAnimatedCard,
   Image,
   ImageWrap,
+  AmenitiesListDesk,
+  AmenitiesListMob,
 } from './AmenitiesSection.styled';
 import { amenities, SectionId } from '@/constants';
 import SectionTitle from '@CommonComponents/SectionTitle';
@@ -102,13 +103,20 @@ const AmenitiesSection: FC = () => {
                 щирим і своїм.
               </Text>
 
-              <AmenitiesList>
-                {list.map(({ icon, text }) => (
+              <AmenitiesListMob>
+                {list.mob.map(({ icon, text }) => (
                   <AmenitiesListItem key={text}>
                     <AmenitiesListCard icon={icon} text={text} />
                   </AmenitiesListItem>
                 ))}
-              </AmenitiesList>
+              </AmenitiesListMob>
+              <AmenitiesListDesk>
+                {list.desk.map(({ icon, text }) => (
+                  <AmenitiesListItem key={text}>
+                    <AmenitiesListCard icon={icon} text={text} />
+                  </AmenitiesListItem>
+                ))}
+              </AmenitiesListDesk>
             </Details>
           </GeneralContainer>
         </Content>
