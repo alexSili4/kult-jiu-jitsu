@@ -5,7 +5,7 @@ declare module '@emotion/react' {
 interface ITheme {
   colors: Record<'white' | 'white10' | 'white50' | 'white60' | 'black', string>;
   fontFamily: Record<'involve' | 'theater', string>;
-  breakpoints: Record<'desk', number>;
+  breakpoints: Record<'mob' | 'tablet' | 'desk', number>;
   transitionDurationAndFunc: string;
   spacing: (value?: number) => number;
 }
@@ -23,6 +23,8 @@ const theme: ITheme = {
     theater: 'Theater',
   },
   breakpoints: {
+    mob: 797,
+    tablet: 1204,
     desk: 1600,
   },
   transitionDurationAndFunc: '400ms cubic-bezier(0.4, 0, 0.2, 1)',

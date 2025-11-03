@@ -13,13 +13,20 @@ export const Container = styled(motion.div)`
 
 export const Button = styled.button`
   position: absolute;
-  top: 20px;
-  right: 40px;
+  top: 8px;
+  right: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 54px;
-  height: 54px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background-color: #88a94b;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    top: 20px;
+    right: 40px;
+    width: 54px;
+    height: 54px;
+  }
 `;

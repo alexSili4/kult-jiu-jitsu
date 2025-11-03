@@ -5,7 +5,11 @@ import { IStyledBulletProps } from './CoachesSlider.types';
 export const Container = styled.div`
   padding-top: ${({ theme }) => theme.spacing(6)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    padding-top: ${({ theme }) => theme.spacing(5)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     display: none;
   }
 `;
@@ -15,6 +19,13 @@ export const CoachCard = styled.div`
   align-items: center;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(10)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    flex-direction: row;
+    gap: ${({ theme }) => theme.spacing(16.5)}px;
+    padding-left: ${({ theme }) => theme.spacing(14)}px;
+    padding-right: ${({ theme }) => theme.spacing(8)}px;
+  }
 `;
 
 // CoachVideo;
@@ -34,6 +45,11 @@ export const VideoBtn = styled.button`
   *:is(:hover, :focus) > &,
   &:focus {
     transform: rotateY(180deg);
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: 30.8vw;
+    aspect-ratio: 249.5 / 378;
   }
 `;
 
@@ -56,6 +72,10 @@ export const DetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(6)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(4)}px;
+  }
 `;
 
 export const TextWrap = styled.div`
@@ -70,6 +90,10 @@ export const NameWrap = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    align-items: center;
+  }
 `;
 
 export const Name = styled.p`
@@ -102,18 +126,32 @@ export const CoachDescWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(6)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(7)}px;
+  }
 `;
 
 export const Row = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    flex-direction: row;
+    gap: ${({ theme }) => theme.spacing(11)}px;
+  }
 `;
 
 export const CoachDesc = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(2)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    flex-direction: row;
+    gap: ${({ theme }) => theme.spacing(11)}px;
+  }
 `;
 
 export const CoachDescItem = styled.div`
@@ -151,6 +189,10 @@ export const BookASessionLink = styled.a`
   line-height: 1;
   letter-spacing: -0.2px;
   text-align: center;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    padding: ${({ theme }) => theme.spacing(5)}px;
+  }
 `;
 
 // SwiperBullets
@@ -161,6 +203,11 @@ export const BulletsList = styled.ul`
   gap: ${({ theme }) => theme.spacing(2)}px;
   padding-top: ${({ theme }) => theme.spacing(11)}px;
   padding-bottom: ${({ theme }) => theme.spacing(23)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    padding-top: ${({ theme }) => theme.spacing(14)}px;
+    padding-bottom: ${({ theme }) => theme.spacing(28)}px;
+  }
 `;
 
 export const ListItem = styled.li``;

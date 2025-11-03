@@ -15,7 +15,7 @@ export const StyledHeader = styled(motion.header)`
   padding-top: ${({ theme }) => theme.spacing(2)}px;
   padding-bottom: ${({ theme }) => theme.spacing(2)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     padding-top: ${({ theme }) => theme.spacing(5)}px;
     padding-bottom: ${({ theme }) => theme.spacing(5)}px;
   }
@@ -34,7 +34,7 @@ export const Nav = styled.nav`
   align-items: center;
   justify-content: space-between;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     height: 54px;
     padding-right: ${({ theme }) => theme.spacing(15)}px;
   }
@@ -43,7 +43,7 @@ export const Nav = styled.nav`
 export const NavigationList = styled.div`
   display: none;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     display: block;
   }
 `;
@@ -54,6 +54,11 @@ export const Logo = styled(LogoIcon)`
   width: 77px;
   height: 24px;
 
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: 99px;
+    height: 32px;
+  }
+
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     width: 128px;
     height: 40px;
@@ -63,7 +68,7 @@ export const Logo = styled(LogoIcon)`
 export const List = styled(motion.ul)`
   display: none;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     display: flex;
     align-items: center;
     gap: ${({ theme }) => theme.spacing(10)}px;
@@ -95,7 +100,7 @@ export const BookASessionLink = styled.a`
 export const DeskBookASessionLink = styled(BookASessionLink)`
   display: none;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     display: flex;
     gap: ${({ theme }) => theme.spacing(4)}px;
   }
@@ -111,7 +116,11 @@ export const Label = styled.span`
   letter-spacing: -0.2px;
   line-height: 1;
   text-align: center;
-  translate: 0 2px;
+  translate: 0.2px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 24px;
+  }
 `;
 
 export const IconWrap = styled.span`
@@ -158,7 +167,7 @@ export const FullNavigationLinksList = styled.ul`
 `;
 
 export const MobileMenuContainer = styled.div`
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     display: none;
   }
 `;

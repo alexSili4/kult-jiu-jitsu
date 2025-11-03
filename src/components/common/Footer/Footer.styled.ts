@@ -11,9 +11,12 @@ export const Container = styled.div`
   padding-top: ${({ theme }) => theme.spacing(10)}px;
   padding-bottom: ${({ theme }) => theme.spacing(10)}px;
 
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    padding-top: ${({ theme }) => theme.spacing(20)}px;
+  }
+
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     gap: ${({ theme }) => theme.spacing(1.5)}px;
-    padding-top: ${({ theme }) => theme.spacing(20)}px;
   }
 `;
 
@@ -23,7 +26,7 @@ export const TextWrap = styled.div`
   gap: ${({ theme }) => theme.spacing(2)}px;
   flex-direction: column;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     gap: 0px;
     justify-content: space-between;
     flex-direction: row;

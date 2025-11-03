@@ -14,6 +14,7 @@ export const Title = styled.p`
     position: sticky;
     top: 100px;
     left: 0;
+    font-size: 20px;
   }
 `;
 

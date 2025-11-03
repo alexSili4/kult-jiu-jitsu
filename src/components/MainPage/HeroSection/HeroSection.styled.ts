@@ -7,7 +7,7 @@ export const Section = styled.section`
   height: 100dvh;
   padding-bottom: ${({ theme }) => theme.spacing(14)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     padding-bottom: ${({ theme }) => theme.spacing(10)}px;
   }
 `;
@@ -19,8 +19,16 @@ export const Container = styled.div`
   gap: ${({ theme }) => theme.spacing(8)}px;
   height: 100%;
 
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(6)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    gap: ${({ theme }) => theme.spacing(14.5)}px;
+  }
+
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
-    gap: ${({ theme }) => theme.spacing(12)}px;
+    gap: ${({ theme }) => theme.spacing(14)}px;
   }
 `;
 
@@ -48,12 +56,23 @@ export const PageTitle = styled.h1`
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
   font-size: 125.3px;
-  line-height: 111.75px;
+  line-height: 0.89;
   letter-spacing: -7.58px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    font-size: 173.6px;
+    line-height: 1;
+    letter-spacing: -6px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    font-size: 200px;
+    line-height: 0.85;
+  }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     font-size: 240px;
-    line-height: 200px;
+    line-height: 0.83;
     letter-spacing: -8.3px;
   }
 `;

@@ -12,8 +12,12 @@ export const Content = styled.div`
   padding-top: ${({ theme }) => theme.spacing(16)}px;
   padding-bottom: ${({ theme }) => theme.spacing(30)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     padding-top: ${({ theme }) => theme.spacing(40)}px;
+    padding-bottom: ${({ theme }) => theme.spacing(60)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     padding-bottom: ${({ theme }) => theme.spacing(110)}px;
   }
 `;
@@ -25,7 +29,11 @@ export const Container = styled.div`
   align-items: flex-start;
   justify-content: space-between;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(10)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     flex-direction: row;
     gap: 0;
   }
@@ -37,6 +45,17 @@ export const Text = styled.p`
   font-weight: 400;
   font-size: 24px;
   line-height: 1.3;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    font-size: 44px;
+    line-height: 1.3;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: 67.2vw;
+    font-size: 44px;
+    line-height: 1.32;
+  }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     width: 64.4vw;

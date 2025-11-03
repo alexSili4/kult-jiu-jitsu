@@ -7,8 +7,18 @@ export const Container = styled.div`
   padding-left: ${({ theme }) => theme.spacing(5)}px;
   padding-right: ${({ theme }) => theme.spacing(5)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    padding-left: ${({ theme }) => theme.spacing(8)}px;
+    padding-right: ${({ theme }) => theme.spacing(8)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     padding-left: ${({ theme }) => theme.spacing(10)}px;
     padding-right: ${({ theme }) => theme.spacing(10)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    padding-left: ${({ theme }) => theme.spacing(15)}px;
+    padding-right: ${({ theme }) => theme.spacing(15)}px;
   }
 `;
