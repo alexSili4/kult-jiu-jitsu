@@ -15,6 +15,7 @@ export const Container = styled.div`
   background-color: #18181c;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;
+  overflow: hidden;
 `;
 
 export const Content = styled.div`
@@ -22,8 +23,12 @@ export const Content = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding-top: ${({ theme }) => theme.spacing(25)}px;
+  padding-top: ${({ theme }) => theme.spacing(10)}px;
   padding-bottom: ${({ theme }) => theme.spacing(20)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    padding-top: ${({ theme }) => theme.spacing(25)}px;
+  }
 `;
 
 // Map
@@ -48,10 +53,16 @@ export const MapWrap = styled.div`
 
 export const MapImgWrap = styled.div`
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 100px;
+  right: -270px;
+  height: 100%;
   aspect-ratio: 1600 / 850;
   overflow: hidden;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    right: 0;
+    bottom: 0;
+  }
 `;
 
 export const MapImg = styled.img`
@@ -99,8 +110,24 @@ export const TooltipWrap = styled.span`
   }
 `;
 
+export const KultTooltipWrap = styled(TooltipWrap)`
+  left: 200%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    bottom: 0;
+    left: 50%;
+    translate: -50% -32px;
+  }
+`;
+
 export const MetroTooltipWrap = styled(TooltipWrap)`
+  bottom: 0;
+  left: -60%;
   translate: -50% -48px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    left: 50%;
+  }
 `;
 
 export const Glow = styled.span`
@@ -153,50 +180,80 @@ export const Parking = styled(ParkingIcon)`
 // Address
 export const AddressContainer = styled(motion.div)`
   position: absolute;
-  bottom: 64px;
-  left: 60px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    bottom: 64px;
+    left: 60px;
+  }
 `;
 
 export const AddressWrap = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(11)}px;
-  width: 440px;
-  height: 360px;
+  gap: ${({ theme }) => theme.spacing(8)}px;
+  width: 100%;
   background-color: #252525;
   padding: ${({ theme }) => theme.spacing(8)}px;
-  border-radius: 16px;
-  border: 1px solid ${({ theme }) => theme.colors.white10};
-  box-shadow: 0px -4px 30px rgba(0, 0, 0, 0.5);
+  padding-left: ${({ theme }) => theme.spacing(5)}px;
+  padding-right: ${({ theme }) => theme.spacing(5)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    gap: ${({ theme }) => theme.spacing(11)}px;
+    width: 440px;
+    height: 360px;
+    border-radius: 16px;
+    border: 1px solid ${({ theme }) => theme.colors.white10};
+    box-shadow: 0px -4px 30px rgba(0, 0, 0, 0.5);
+    padding: ${({ theme }) => theme.spacing(8)}px;
+  }
 `;
 
 export const AddressTextWrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(7)}px;
+  gap: ${({ theme }) => theme.spacing(6)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    gap: ${({ theme }) => theme.spacing(7)}px;
+  }
 `;
 
 export const Address = styled.address`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(4)}px;
+  gap: ${({ theme }) => theme.spacing(2)}px;
   font-style: normal;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    gap: ${({ theme }) => theme.spacing(4)}px;
+  }
 `;
 
 export const AddressTitle = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 44px;
+  font-size: 24px;
   line-height: 1.2;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 44px;
+  }
 `;
 
 export const AddressText = styled.p`
   color: #808080;
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.2;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 `;
 
 export const MapLink = styled.a`
@@ -204,17 +261,26 @@ export const MapLink = styled.a`
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: ${({ theme }) => theme.spacing(4)}px;
-  min-width: 252px;
+  min-width: 100%;
   background-color: #18181c;
   border-radius: 100px;
   padding: ${({ theme }) => theme.spacing(2)}px;
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
   letter-spacing: -0.2px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    min-width: 252px;
+    font-size: 24px;
+  }
+`;
+
+export const MapLinkTitle = styled.span`
+  flex-grow: 1;
+  text-align: center;
 `;
 
 export const MapLinkIcon = styled.span`
@@ -230,18 +296,26 @@ export const MapLinkIcon = styled.span`
 // Contacts
 export const ContactsContainer = styled.div`
   display: flex;
+  flex-direction: column;
   gap: ${({ theme }) => theme.spacing(3)}px;
   width: 100%;
   background-color: #252525;
   padding: ${({ theme }) => theme.spacing(3)}px;
   border-radius: 20px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    flex-direction: row;
+  }
 `;
 
 export const ContactsWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(3)}px;
-  width: 40.4%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    width: 40.4%;
+  }
 `;
 
 export const ContactsLinks = styled.div`
@@ -260,10 +334,24 @@ export const SocialLink = styled.a`
   align-items: center;
   justify-content: center;
   width: calc(${getFlexItemWidth({ listGap: linksGap, listLength: 2 })});
-  height: 140px;
+  height: 80px;
   background-color: #18181c;
   border-radius: 20px;
   color: #808080;
+
+  & > svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    height: 140px;
+
+    & > svg {
+      width: 60px;
+      height: 60px;
+    }
+  }
 `;
 
 export const ContactPhone = styled.a`
@@ -271,14 +359,19 @@ export const ContactPhone = styled.a`
   align-items: center;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(4)}px;
-  height: 132px;
+  height: 80px;
   background-color: #18181c;
   border-radius: 20px;
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.4;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    height: 132px;
+    font-size: 24px;
+  }
 `;
 
 export const Symbol = styled.span`
@@ -290,10 +383,14 @@ export const Symbol = styled.span`
 
 export const ContactsBannerWrap = styled.div`
   width: 100%;
-  height: 100%;
+  height: 180px;
   background-color: #18181c;
   border-radius: 20px;
   overflow: hidden;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    height: 100%;
+  }
 `;
 
 export const ContactsBanner = styled.img`
@@ -309,7 +406,11 @@ export const FormContainer = styled.div`
   gap: ${({ theme }) => theme.spacing(10)}px;
   background-color: #18181c;
   border-radius: 16px;
-  padding: ${({ theme }) => theme.spacing(14)}px;
+  padding: ${({ theme }) => theme.spacing(6)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    padding: ${({ theme }) => theme.spacing(14)}px;
+  }
 `;
 
 export const FormHeader = styled.div`
@@ -322,17 +423,25 @@ export const FormTitle = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
-  font-size: 56px;
+  font-size: 40px;
   line-height: 1;
   letter-spacing: -0.88px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 56px;
+  }
 `;
 
 export const FormText = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.4;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 `;
 
 export const Form = styled.form`
@@ -370,10 +479,14 @@ export const StyledInput = styled.input`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1;
   outline: none;
   transition: border-color ${({ theme }) => theme.transitionDurationAndFunc};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 
   &::placeholder {
     color: ${({ theme }) => theme.colors.white50};
@@ -437,7 +550,11 @@ export const OptionBtn = styled.button`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1;
   text-align: left;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 `;

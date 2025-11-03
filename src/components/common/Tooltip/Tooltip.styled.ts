@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { IStyledArrowProps } from './Tooltip.types';
 
 export const Container = styled.span`
   display: block;
@@ -7,16 +8,21 @@ export const Container = styled.span`
   padding: ${({ theme }) => theme.spacing(1.5)}px;
 `;
 
-export const Arrow = styled.span`
+export const Arrow = styled.span<IStyledArrowProps>`
   position: absolute;
   top: 100%;
-  left: 50%;
+  left: ${({ isLeftPosition, isRightPosition }) =>
+    isLeftPosition ? 77 : isRightPosition ? 36 : 50}%;
   display: block;
   width: 7px;
   height: 7px;
   background-color: #88a94b;
   translate: -50% -50%;
   rotate: 45deg;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    left: 50%;
+  }
 `;
 
 export const Text = styled.span`

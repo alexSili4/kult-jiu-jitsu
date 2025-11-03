@@ -1,8 +1,11 @@
-import { FC } from 'react';
-import { IProps } from './GeneralContainer.types';
+import { FC, ReactNode } from 'react';
 import { Container } from './GeneralContainer.styled';
 
-const GeneralContainer: FC<IProps> = ({ children }) => {
+interface IGeneralContainerProps {
+  children: ReactNode;
+}
+
+const GeneralContainer: FC<IGeneralContainerProps> = ({ children }) => {
   return <Container>{children}</Container>;
 };
 

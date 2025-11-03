@@ -55,9 +55,10 @@ import {
   Path,
   PathShadow,
   Parking,
-  TooltipWrap,
   MetroTooltipWrap,
   AddressWrap,
+  KultTooltipWrap,
+  MapLinkTitle,
 } from './ContactsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { contacts, SectionId } from '@/constants';
@@ -150,7 +151,7 @@ const Map: FC = () => {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
   const containerRef = useRef(null);
 
-  const inView = useInView(containerRef, { amount: 1 });
+  const inView = useInView(containerRef, { amount: 0.3 });
 
   const animate: VariantLabels = inView ? 'visible' : 'hidden';
 
@@ -195,7 +196,7 @@ const Map: FC = () => {
             <Glow></Glow>
             <Metro />
             <MetroTooltipWrap>
-              <Tooltip text='метро Контрактова' />
+              <Tooltip text='метро Контрактова' isLeftPosition />
             </MetroTooltipWrap>
           </MetroBtn>
 
@@ -206,9 +207,9 @@ const Map: FC = () => {
             }}
           >
             <Glow></Glow>
-            <TooltipWrap>
-              <Tooltip text='Ми знаходимось тут' />
-            </TooltipWrap>
+            <KultTooltipWrap>
+              <Tooltip text='Ми знаходимось тут' isRightPosition />
+            </KultTooltipWrap>
           </FinishBtn>
 
           {map.parking.map(({ bottom, right }, index) => (
@@ -235,7 +236,7 @@ const Map: FC = () => {
               target='_blank'
               rel='noopener noreferrer'
             >
-              <span>Прокласти маршрут</span>
+              <MapLinkTitle>Прокласти маршрут</MapLinkTitle>
               <MapLinkIcon>
                 <FiArrowUpRight size={20} />
               </MapLinkIcon>
@@ -379,11 +380,11 @@ const Contacts: FC = () => {
         <ContactsLinks>
           <SocialLinks>
             <SocialLink href='/' target='_blank' rel='noopener noreferrer'>
-              <FaInstagram size={60} />
+              <FaInstagram />
             </SocialLink>
 
             <SocialLink href='/' target='_blank' rel='noopener noreferrer'>
-              <PiTelegramLogo size={60} />
+              <PiTelegramLogo />
             </SocialLink>
           </SocialLinks>
 
