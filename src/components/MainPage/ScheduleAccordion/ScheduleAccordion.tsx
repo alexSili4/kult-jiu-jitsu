@@ -14,6 +14,7 @@ import {
   Programs,
   Symbol,
   Time,
+  DaysWrap,
 } from './ScheduleAccordion.styled';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
 import { FaPlus } from 'react-icons/fa';
@@ -78,20 +79,22 @@ const ScheduleDetails: FC<IScheduleDetailsProps> = ({ day, programs }) => {
           <Programs>
             {programs.map((program, index) => (
               <ListItem key={index}>
-                <Days>
-                  {program.map(({ coach, program, time }) => (
-                    <ListItem key={time}>
-                      <DayInfo>
-                        <Time>
-                          <Symbol>*</Symbol>
-                          <span>{time}</span>
-                        </Time>
-                        <Program>{program}</Program>
-                        <Coach>{coach}</Coach>
-                      </DayInfo>
-                    </ListItem>
-                  ))}
-                </Days>
+                <DaysWrap>
+                  <Days>
+                    {program.map(({ coach, program, time }) => (
+                      <ListItem key={time}>
+                        <DayInfo>
+                          <Time>
+                            <Symbol>*</Symbol>
+                            <span>{time}</span>
+                          </Time>
+                          <Program>{program}</Program>
+                          <Coach>{coach}</Coach>
+                        </DayInfo>
+                      </ListItem>
+                    ))}
+                  </Days>
+                </DaysWrap>
               </ListItem>
             ))}
           </Programs>

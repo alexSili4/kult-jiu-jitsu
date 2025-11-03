@@ -64,6 +64,10 @@ export const Programs = styled.ul`
   gap: ${({ theme }) => theme.spacing(7)}px;
 `;
 
+export const DaysWrap = styled.div`
+  padding-top: ${({ theme }) => theme.spacing(8)}px;
+`;
+
 export const Days = styled.ul`
   display: flex;
   flex-direction: column;
