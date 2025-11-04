@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { theme } from '@/constants';
 import { motion } from 'framer-motion';
+import { getFlexItemWidth } from '@/utils';
 
 const listGap = theme.spacing(5);
 
@@ -9,7 +10,7 @@ export const Container = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(10)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     display: none;
   }
 `;
@@ -19,11 +20,20 @@ export const Memberships = styled.ul`
   display: flex;
   flex-direction: column;
   gap: ${listGap}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 `;
 
 export const ListItem = styled.li``;
 
-export const MembershipsListItem = styled(ListItem)``;
+export const MembershipsListItem = styled(ListItem)`
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: calc(${getFlexItemWidth({ listGap, listLength: 2 })});
+  }
+`;
 
 export const MembershipDetailsWrap = styled(motion.div)``;
 
@@ -36,6 +46,11 @@ export const MembershipDetails = styled(motion.div)`
   padding: ${({ theme }) => theme.spacing(5)}px;
   border-radius: 16px;
   transition: background-color ${({ theme }) => theme.transitionDurationAndFunc};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(10)}px;
+    padding: ${({ theme }) => theme.spacing(8)}px;
+  }
 
   ul:not(:has(div:is(:hover, :focus))) > li:first-of-type & {
     background-color: #88a94b;
@@ -54,6 +69,10 @@ export const MembershipContent = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(4)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    padding-bottom: ${({ theme }) => theme.spacing(6)}px;
+  }
 `;
 
 export const Header = styled.div`
@@ -101,6 +120,10 @@ export const MembershipPrice = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(8)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    gap: ${({ theme }) => theme.spacing(10)}px;
+  }
 `;
 
 export const Price = styled.p`
@@ -164,11 +187,15 @@ export const ServiceWrap = styled(motion.div)``;
 export const Service = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(2)}px;
+  gap: ${({ theme }) => theme.spacing(6)}px;
   padding-top: ${({ theme }) => theme.spacing(6)}px;
   padding-bottom: ${({ theme }) => theme.spacing(6)}px;
 
-  *:not(:first-of-type) > & {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    padding: ${({ theme }) => theme.spacing(8)}px;
+  }
+
+  *:not(:first-of-type) > * > & {
     border-top: 1px solid ${({ theme }) => theme.colors.white10};
   }
 `;
@@ -203,7 +230,6 @@ export const ServiceName = styled.p`
 
 export const ServicePrice = styled.p`
   flex-shrink: 1;
-  color: ${({ theme }) => theme.colors.white};
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;

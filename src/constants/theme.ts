@@ -23,8 +23,8 @@ const theme: ITheme = {
     theater: 'Theater',
   },
   breakpoints: {
-    mob: 797,
-    tablet: 1204,
+    mob: 810,
+    tablet: 1200,
     desk: 1600,
   },
   transitionDurationAndFunc: '400ms cubic-bezier(0.4, 0, 0.2, 1)',

@@ -10,8 +10,12 @@ export const Content = styled.div`
   border-top-left-radius: 20px;
   padding-top: ${({ theme }) => theme.spacing(15)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     min-height: 100dvh;
+    padding-bottom: ${({ theme }) => theme.spacing(10)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     padding-top: ${({ theme }) => theme.spacing(25)}px;
     padding-bottom: ${({ theme }) => theme.spacing(16)}px;
   }
@@ -24,7 +28,11 @@ export const Container = styled.div`
   align-items: flex-start;
   justify-content: space-between;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(10)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     flex-direction: row;
   }
 `;

@@ -15,8 +15,16 @@ export const Container = styled.div`
   height: 100%;
   padding-top: ${({ theme }) => theme.spacing(14)}px;
 
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    padding-top: ${({ theme }) => theme.spacing(25)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    padding-top: ${({ theme }) => theme.spacing(85)}px;
+  }
+
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
-    padding-top: ${({ theme }) => theme.spacing(30)}px;
+    padding-top: ${({ theme }) => theme.spacing(100)}px;
   }
 `;
 
@@ -25,14 +33,14 @@ export const Content = styled.div`
   top: 0;
   left: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
   width: 100%;
   height: 100dvh;
   padding-top: ${({ theme }) => theme.spacing(10)}px;
   padding-bottom: ${({ theme }) => theme.spacing(10)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     padding-top: ${({ theme }) => theme.spacing(30)}px;
     padding-bottom: ${({ theme }) => theme.spacing(30)}px;
   }
@@ -46,8 +54,12 @@ export const List = styled.div`
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(6)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
-    gap: ${({ theme }) => theme.spacing(2)}px;
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: 0;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    flex-grow: 0;
   }
 `;
 
@@ -57,21 +69,24 @@ export const Row = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(6)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
-    flex-direction: row;
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     gap: 0;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    flex-direction: row;
     justify-content: space-between;
   }
 `;
 
 export const EndRow = styled(Row)`
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     justify-content: flex-end;
   }
 `;
 
 export const StartRow = styled(Row)`
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     justify-content: flex-start;
   }
 `;
@@ -82,8 +97,11 @@ export const Program = styled.button`
   gap: ${({ theme }) => theme.spacing(2)}px;
   width: 100%;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     gap: ${({ theme }) => theme.spacing(2.5)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     width: auto;
   }
 
@@ -109,6 +127,17 @@ export const Name = styled.p`
   line-height: 1;
   letter-spacing: -1.6px;
   text-transform: uppercase;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    font-size: 93.9px;
+    line-height: 1;
+    letter-spacing: -4.5px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    font-size: 120px;
+    letter-spacing: -4.8px;
+  }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     font-stretch: condensed;

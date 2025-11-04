@@ -4,8 +4,16 @@ import { motion } from 'framer-motion';
 export const List = styled.ul`
   display: none;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     display: block;
+    width: 100%;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: 67.2vw;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     width: 66.7vw;
   }
 `;
@@ -16,9 +24,14 @@ export const Container = styled(motion.div)``;
 
 export const Wrapper = styled(motion.div)`
   display: flex;
-  padding-top: ${({ theme }) => theme.spacing(15)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(15)}px;
+  padding-top: ${({ theme }) => theme.spacing(10)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(10)}px;
   border-top: 1px solid ${({ theme }) => theme.colors.white10};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    padding-top: ${({ theme }) => theme.spacing(15)}px;
+    padding-bottom: ${({ theme }) => theme.spacing(15)}px;
+  }
 `;
 
 export const Day = styled.p`
@@ -34,8 +47,16 @@ export const Day = styled.p`
 export const Programs = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(5.5)}px;
+  gap: ${({ theme }) => theme.spacing(11)}px;
   width: 73.7%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: 57.5%;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    gap: ${({ theme }) => theme.spacing(5.5)}px;
+  }
 `;
 
 export const Days = styled.ul`
@@ -57,23 +78,39 @@ export const Time = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.4;
+  white-space: nowrap;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: 30%;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 `;
 
 export const Symbol = styled.span`
   color: #88a94b;
   font-weight: 500;
-  font-size: 22px;
 `;
 
 export const Program = styled.p`
-  width: 59%;
+  width: 39%;
   color: #808080;
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.4;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: 59%;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 `;
 
 export const Coach = styled.p`
@@ -81,6 +118,10 @@ export const Coach = styled.p`
   color: #808080;
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.4;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 `;

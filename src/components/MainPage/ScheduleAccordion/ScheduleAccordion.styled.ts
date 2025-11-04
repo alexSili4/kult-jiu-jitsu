@@ -8,7 +8,7 @@ import {
 export const DaysList = styled.ul`
   width: 100%;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     display: none;
   }
 `;
@@ -93,7 +93,6 @@ export const Time = styled.p`
 export const Symbol = styled.span`
   color: #88a94b;
   font-weight: 500;
-  /* font-size: 22px; */
 `;
 
 export const Program = styled.p`

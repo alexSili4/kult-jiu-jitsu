@@ -8,7 +8,7 @@ const listGap = theme.spacing(5);
 export const Container = styled.div`
   display: none;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     display: flex;
     flex-direction: column;
     gap: ${({ theme }) => theme.spacing(11)}px;
@@ -35,9 +35,13 @@ export const MembershipDetails = styled(motion.div)`
   gap: ${({ theme }) => theme.spacing(10)}px;
   height: 100%;
   background-color: #252525;
-  padding: ${({ theme }) => theme.spacing(10)}px;
+  padding: ${({ theme }) => theme.spacing(8)}px;
   border-radius: 16px;
   transition: background-color ${({ theme }) => theme.transitionDurationAndFunc};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    padding: ${({ theme }) => theme.spacing(10)}px;
+  }
 
   ul:not(:has(div:is(:hover, :focus))) > li:first-of-type > & {
     background-color: #88a94b;
@@ -71,9 +75,13 @@ export const Name = styled.p`
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
   font-style: Bold Condensed;
-  font-size: 44px;
+  font-size: 40px;
   line-height: 1;
   letter-spacing: -0.8px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    font-size: 44px;
+  }
 `;
 
 export const Benefits = styled.ul`
@@ -86,9 +94,13 @@ export const BenefitText = styled.p`
   color: #808080;
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.4;
   transition: color ${({ theme }) => theme.transitionDurationAndFunc};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 
   li:first-of-type & {
     color: #f9f9f9;
@@ -115,15 +127,23 @@ export const Price = styled.p`
 
 export const PriceAmount = styled.span`
   color: #f9f9f9;
-  font-size: 32px;
+  font-size: 30px;
   line-height: 1;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 32px;
+  }
 `;
 
 export const PricePeriod = styled.span`
   color: #808080;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.2;
   transition: color ${({ theme }) => theme.transitionDurationAndFunc};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 
   li:first-of-type & {
     color: ${({ theme }) => theme.colors.white60};
@@ -142,10 +162,14 @@ export const Button = styled.button`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: -0.2px;
   transition: background-color ${({ theme }) => theme.transitionDurationAndFunc},
     color ${({ theme }) => theme.transitionDurationAndFunc};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 24px;
+  }
 
   &:is(:hover, :focus) {
     background-color: ${({ theme }) => theme.colors.white};
@@ -188,7 +212,7 @@ export const ServiceTitle = styled.p`
 export const ServicesList = styled.ul`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(4)}px;
+  gap: ${({ theme }) => theme.spacing(6)}px;
 `;
 
 export const ServiceItem = styled.div`
