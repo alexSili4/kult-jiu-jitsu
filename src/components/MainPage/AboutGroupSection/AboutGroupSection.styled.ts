@@ -26,9 +26,13 @@ export const Title = styled.p`
   color: #f9f9f9;
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
-  font-size: 200px;
+  font-size: 100px;
   line-height: 1;
   letter-spacing: -8.3px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    font-size: 200px;
+  }
 
   &::after {
     content: '*';
@@ -40,36 +44,57 @@ export const Container = styled.div``;
 
 export const Content = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: flex-start;
-  padding-top: ${({ theme }) => theme.spacing(37)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(10)}px;
+  gap: ${({ theme }) => theme.spacing(8)}px;
+  padding-top: ${({ theme }) => theme.spacing(14)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(8)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: ${({ theme }) => theme.spacing(37)}px;
+    padding-bottom: ${({ theme }) => theme.spacing(10)}px;
+  }
 `;
 
 export const Details = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(20)}px;
-  width: 67.2vw;
+  gap: ${({ theme }) => theme.spacing(8)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    gap: ${({ theme }) => theme.spacing(20)}px;
+    width: 67.2vw;
+  }
 `;
 
 export const AboutText = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 44px;
+  font-size: 24px;
   line-height: 1.32;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    font-size: 44px;
+  }
 `;
 
 export const About = styled.ul`
   display: flex;
   gap: ${aboutListGap}px;
+  flex-wrap: wrap;
 `;
 
 export const ListItem = styled.li``;
 
 export const AboutListItem = styled(ListItem)`
-  width: calc(${getFlexItemWidth({ listGap: aboutListGap, listLength: 3 })});
+  width: calc(${getFlexItemWidth({ listGap: aboutListGap, listLength: 2 })});
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: calc(${getFlexItemWidth({ listGap: aboutListGap, listLength: 3 })});
+  }
 `;
 
 export const AboutCard = styled.div`
@@ -77,9 +102,20 @@ export const AboutCard = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(7)}px;
 
-  li:not(:first-of-type) > & {
+  li:not(:nth-of-type(2n + 1)) > & {
     border-left: 1px solid ${({ theme }) => theme.colors.white10};
     padding-left: ${({ theme }) => theme.spacing(8)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    li:not(:nth-of-type(2n + 1)) > & {
+      border-left: none;
+    }
+
+    li:not(:nth-of-type(3n + 1)) > & {
+      border-left: 1px solid ${({ theme }) => theme.colors.white10};
+      padding-left: ${({ theme }) => theme.spacing(8)}px;
+    }
   }
 `;
 
@@ -91,6 +127,11 @@ export const IconWrap = styled.div`
   height: 80px;
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 50%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: 64px;
+    height: 64px;
+  }
 
   & > svg {
     width: 32px;
@@ -110,15 +151,23 @@ export const Desc = styled.p`
 export const Category = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(8)}px;
+  gap: ${({ theme }) => theme.spacing(4)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    gap: ${({ theme }) => theme.spacing(8)}px;
+  }
 `;
 
 export const Subtitle = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 44px;
+  font-size: 24px;
   line-height: 1.32;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    font-size: 44px;
+  }
 `;
 
 export const List = styled.ul`
@@ -154,4 +203,8 @@ export const Levels = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(4)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    gap: ${({ theme }) => theme.spacing(4)}px;
+  }
 `;

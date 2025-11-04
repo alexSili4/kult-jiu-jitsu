@@ -30,17 +30,34 @@ export const Content = styled.div<IStyledContentProps>`
   padding-bottom: ${({ theme: { spacing }, isModalWin }) =>
     spacing(isModalWin ? 6 : 31)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(10)}px;
+    padding-top: ${({ theme: { spacing }, isModalWin }) =>
+      spacing(isModalWin ? 10 : 35)}px;
+    padding-bottom: ${({ theme: { spacing }, isModalWin }) =>
+      spacing(isModalWin ? 6 : 47)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     flex-direction: row;
     gap: 0;
     padding-top: ${({ theme: { spacing }, isModalWin }) =>
       spacing(isModalWin ? 10 : 40)}px;
+    padding-bottom: ${({ theme: { spacing }, isModalWin }) =>
+      spacing(isModalWin ? 6 : 72)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     padding-bottom: ${({ theme: { spacing }, isModalWin }) =>
       spacing(isModalWin ? 16 : 67)}px;
   }
 `;
 
 export const QuestionsList = styled.ul`
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: 67.2vw;
+  }
+
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     width: 66.7vw;
   }
@@ -55,7 +72,7 @@ export const Question = styled(motion.div)`
   padding-bottom: ${({ theme }) => theme.spacing(6)}px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.white10};
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     padding-top: ${({ theme }) => theme.spacing(8)}px;
     padding-bottom: ${({ theme }) => theme.spacing(8)}px;
   }
@@ -73,6 +90,10 @@ export const QuestionBtn = styled.button`
   font-size: 32px;
   line-height: 1;
   text-align: start;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    font-size: 40px;
+  }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     font-size: 44px;

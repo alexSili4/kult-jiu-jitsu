@@ -3,6 +3,16 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import Azov from '@/icons/veterans/azov.svg?react';
 
+export const Founders = styled.div`
+  display: none;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    position: relative;
+    display: block;
+    height: 150dvh;
+  }
+`;
+
 export const CardsList = styled.ul`
   position: absolute;
   top: 50%;
@@ -21,13 +31,20 @@ export const CardContainer = styled(motion.div)`
 
 export const Card = styled.div`
   position: relative;
-  width: 21.6vw;
-  aspect-ratio: 345.59 / 511.18;
+  width: 24vw;
+  aspect-ratio: 288 / 426;
   background-color: #252525;
-  border: 10px solid #252525;
-  border-radius: 24px;
+  border: 8px solid #252525;
+  border-radius: 16px;
   overflow: hidden;
   transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    width: 21.6vw;
+    aspect-ratio: 345.59 / 511.18;
+    border: 10px solid #252525;
+    border-radius: 24px;
+  }
 
   *:is(:hover, :focus) > &,
   &:has(*:focus) {
@@ -77,9 +94,13 @@ export const CardName = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.2;
   letter-spacing: -0.4px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 `;
 
 export const CardDesc = styled.div`
@@ -94,8 +115,12 @@ export const CardText = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1.4;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 16px;
+  }
 `;
 
 export const CardLinks = styled.ul`
@@ -108,10 +133,15 @@ export const Instagram = styled.a`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 56px;
-  height: 56px;
+  width: 46px;
+  height: 46px;
   background-color: #18181c;
   border-radius: 50%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    width: 56px;
+    height: 56px;
+  }
 `;
 
 export const Angels = styled.a`
@@ -121,17 +151,12 @@ export const Angels = styled.a`
 `;
 
 export const AngelsLogo = styled(AngelsLogoIcon)`
-  width: 140px;
-  height: 33px;
-`;
-
-export const Founders = styled.div`
-  display: none;
+  width: 117px;
+  height: 28px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
-    position: relative;
-    display: block;
-    height: 150dvh;
+    width: 140px;
+    height: 33px;
   }
 `;
 
@@ -152,10 +177,14 @@ export const Title = styled.h3`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
-  font-size: 180px;
+  font-size: 140px;
   line-height: 0.9;
   letter-spacing: -4.2px;
   text-transform: uppercase;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 180px;
+  }
 `;
 
 export const TitlePart = styled(motion.span)`
@@ -169,8 +198,13 @@ export const AzovIconWrap = styled.span`
 `;
 
 export const AzovIcon = styled(Azov)`
-  width: 93px;
-  height: 140px;
+  width: 68px;
+  height: 102px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    width: 93px;
+    height: 140px;
+  }
 `;
 
 export const Accent = styled.span`

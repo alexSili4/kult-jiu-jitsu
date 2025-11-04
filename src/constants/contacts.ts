@@ -1,24 +1,45 @@
-import mapImg from '@/images/contacts/map.jpg';
+import mapImgDesk from '@/images/contacts/map-desk.jpg';
+import mapImgMob from '@/images/contacts/map-mob.jpg';
+import { IMap } from '@/types/contacts';
 
-const start = { bottom: '45.44%', right: '23.34%' };
-const finish = { bottom: '62.13%', right: '44.9%' };
+const startMob = { bottom: '46%', right: '8%' };
+const startDesk = { bottom: '45.44%', right: '23.34%' };
 
-const map = {
-  img: mapImg,
-  start,
-  finish,
-  path: [
-    start,
-    { bottom: '22.85%', right: '35.44%' },
-    { bottom: '41.68%', right: '46%' },
-    { bottom: '51.9%', right: '40.88%' },
-    { bottom: '60.25%', right: '46%' },
-    { bottom: '61.19%', right: '45.5%' },
-  ],
-  parking: [
-    { bottom: '47.18%', right: '39%' },
-    { bottom: '55.4%', right: '47.94%' },
-  ],
+const map: Record<'mob' | 'desk', IMap> = {
+  mob: {
+    img: mapImgMob,
+    start: startMob,
+    finish: { bottom: '62.13%', right: '44.9%' },
+    path: [
+      startMob,
+      { bottom: '25.7%', right: '29%' },
+      { bottom: '43%', right: '48%' },
+      { bottom: '52%', right: '39%' },
+      { bottom: '59%', right: '48%' },
+      { bottom: '61.19%', right: '46%' },
+    ],
+    parking: [
+      { bottom: '47.18%', right: '39%' },
+      { bottom: '55.4%', right: '47.94%' },
+    ],
+  },
+  desk: {
+    img: mapImgDesk,
+    start: startDesk,
+    finish: { bottom: '62.13%', right: '44.9%' },
+    path: [
+      startDesk,
+      { bottom: '22.85%', right: '35.44%' },
+      { bottom: '41.68%', right: '46%' },
+      { bottom: '51.9%', right: '40.88%' },
+      { bottom: '60.25%', right: '46%' },
+      { bottom: '61.19%', right: '45.5%' },
+    ],
+    parking: [
+      { bottom: '47.18%', right: '39%' },
+      { bottom: '55.4%', right: '47.94%' },
+    ],
+  },
 };
 
 const mapLink =

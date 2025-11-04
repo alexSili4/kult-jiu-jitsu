@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { IStyledArrowProps } from './Tooltip.types';
 
 export const Container = styled.span`
   display: block;
@@ -8,11 +7,10 @@ export const Container = styled.span`
   padding: ${({ theme }) => theme.spacing(1.5)}px;
 `;
 
-export const Arrow = styled.span<IStyledArrowProps>`
+export const Arrow = styled.span`
   position: absolute;
   top: 100%;
-  left: ${({ isLeftPosition, isRightPosition }) =>
-    isLeftPosition ? 77 : isRightPosition ? 36 : 50}%;
+  left: 50%;
   display: block;
   width: 7px;
   height: 7px;

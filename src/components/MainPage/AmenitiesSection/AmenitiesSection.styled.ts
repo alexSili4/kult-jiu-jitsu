@@ -18,6 +18,11 @@ export const Container = styled.div`
   padding-top: ${({ theme }) => theme.spacing(20)}px;
   padding-bottom: ${({ theme }) => theme.spacing(20)}px;
 
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    padding-top: ${({ theme }) => theme.spacing(16)}px;
+    padding-bottom: ${({ theme }) => theme.spacing(27)}px;
+  }
+
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     padding-top: ${({ theme }) => theme.spacing()}px;
     padding-bottom: ${({ theme }) => theme.spacing(45.5)}px;
@@ -28,6 +33,18 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(41)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(50)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    gap: ${({ theme }) => theme.spacing(56)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    gap: ${({ theme }) => theme.spacing(41)}px;
+  }
 `;
 
 export const Details = styled.div`
@@ -35,10 +52,18 @@ export const Details = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(14)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(20)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     gap: ${({ theme }) => theme.spacing(16)}px;
-    width: 66.7vw;
+    width: 67.2vw;
     margin-left: auto;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    width: 66.7vw;
   }
 `;
 
@@ -49,7 +74,7 @@ export const Text = styled.p`
   font-size: 24px;
   line-height: 1.32;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     font-size: 44px;
   }
 `;
@@ -60,7 +85,7 @@ export const AmenitiesList = styled.ul`
   gap: ${amenitiesListGapMob}px;
   row-gap: ${({ theme }) => theme.spacing(7)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     flex-wrap: wrap-reverse;
     gap: ${amenitiesListGapDesk}px;
     row-gap: ${({ theme }) => theme.spacing(12.5)}px;
@@ -68,7 +93,7 @@ export const AmenitiesList = styled.ul`
 `;
 
 export const AmenitiesListMob = styled(AmenitiesList)`
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     display: none;
   }
 `;
@@ -76,7 +101,7 @@ export const AmenitiesListMob = styled(AmenitiesList)`
 export const AmenitiesListDesk = styled(AmenitiesList)`
   display: none;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     display: flex;
   }
 `;
@@ -86,7 +111,7 @@ export const AmenitiesListItem = styled.li`
     ${getFlexItemWidth({ listGap: amenitiesListGapMob, listLength: 2 })}
   );
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     width: calc(
       ${getFlexItemWidth({ listGap: amenitiesListGapDesk, listLength: 3 })}
     );
@@ -105,11 +130,15 @@ export const AmenitiesCard = styled(motion.div)`
     border-left: 1px solid ${({ theme }) => theme.colors.white10};
   }
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     gap: ${({ theme }) => theme.spacing(7)}px;
     min-height: 147px;
     padding-left: ${({ theme }) => theme.spacing(8)}px;
     padding-right: ${({ theme }) => theme.spacing(8)}px;
+
+    li:not(:nth-of-type(2n + 1)) & {
+      border-left: none;
+    }
 
     li:not(:nth-of-type(3n + 1)) & {
       border-left: 1px solid ${({ theme }) => theme.colors.white10};
@@ -126,7 +155,7 @@ export const IconWrap = styled.div`
   border-radius: 50%;
   background-color: ${({ theme }) => theme.colors.white};
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     width: 80px;
     height: 80px;
   }
@@ -159,9 +188,14 @@ export const Image = styled.img`
   object-fit: cover;
   overflow: hidden;
 
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: 780px;
+    height: 520px;
+    border-radius: 20px;
+  }
+
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     width: 774px;
     height: 520px;
-    border-radius: 20px;
   }
 `;

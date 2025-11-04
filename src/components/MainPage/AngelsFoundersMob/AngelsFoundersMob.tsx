@@ -46,9 +46,9 @@ const FoundersCards: FC<IFoundersCardsProps> = ({ scrollYProgress }) => {
   };
 
   const rotateFirstZ = useTransform(scrollYProgress, [0.3, 0.42], [15, 0]);
-  const rotateFirsY = useTransform(scrollYProgress, [0.3, 0.42], [60, 0]);
+  const rotateFirsY = useTransform(scrollYProgress, [0.3, 0.42], [40, 0]);
   const rotateSecondZ = useTransform(scrollYProgress, [0.35, 0.5], [15, 0]);
-  const rotateSecondY = useTransform(scrollYProgress, [0.35, 0.5], [60, 0]);
+  const rotateSecondY = useTransform(scrollYProgress, [0.35, 0.5], [40, 0]);
   const y1 = useTransform(scrollYProgress, [0.35, 0.5], [1100, 0]);
   const y2 = useTransform(scrollYProgress, [0.45, 0.5], [1000, 0]);
 

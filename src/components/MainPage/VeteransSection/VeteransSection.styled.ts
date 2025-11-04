@@ -15,11 +15,18 @@ export const DescriptionWrap = styled.div`
   padding-top: ${({ theme }) => theme.spacing(10)}px;
   padding-bottom: ${({ theme }) => theme.spacing(20)}px;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
-    width: 66.7vw;
-    margin-left: auto;
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     padding-top: ${({ theme }) => theme.spacing(20)}px;
     padding-bottom: ${({ theme }) => theme.spacing(45)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: 67.2vw;
+    margin-left: auto;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    width: 66.7vw;
   }
 `;
 
@@ -30,7 +37,7 @@ export const Description = styled.p`
   font-size: 24px;
   line-height: 1.32;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     font-size: 44px;
   }
 `;

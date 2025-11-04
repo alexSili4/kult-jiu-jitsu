@@ -7,7 +7,7 @@ export const Founders = styled.div`
   position: relative;
   height: 250dvh;
 
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     display: none;
   }
 `;
@@ -33,6 +33,10 @@ export const Title = styled.h3`
   line-height: 0.9;
   letter-spacing: -4.2px;
   text-transform: uppercase;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    font-size: 140px;
+  }
 `;
 
 export const TitlePart = styled(motion.span)`
@@ -48,6 +52,11 @@ export const AzovIconWrap = styled.span`
 export const AzovIcon = styled(Azov)`
   width: 43px;
   height: 64px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: 68px;
+    height: 102px;
+  }
 `;
 
 export const Accent = styled.span`
@@ -63,6 +72,10 @@ export const CardsList = styled.ul`
   align-items: center;
   gap: ${({ theme }) => theme.spacing(5)}px;
   translate: -50% -75%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(35)}px;
+  }
 `;
 
 export const ListItem = styled.li``;
@@ -84,6 +97,11 @@ export const Card = styled.div`
   *:is(:hover, :focus) > &,
   &:has(*:focus) {
     transform: rotateY(180deg);
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: 40vw;
+    aspect-ratio: 324 / 479.25;
   }
 `;
 
@@ -123,6 +141,10 @@ export const CardHeader = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(1.5)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(2)}px;
+  }
 `;
 
 export const CardName = styled.p`
@@ -140,6 +162,10 @@ export const CardDesc = styled.div`
   font-weight: 400;
   font-size: 14px;
   line-height: 1.2;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    font-size: 16px;
+  }
 `;
 
 export const CardText = styled.p`
@@ -148,6 +174,10 @@ export const CardText = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 1.4;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    font-size: 16px;
+  }
 `;
 
 export const CardLinks = styled.ul`
@@ -164,6 +194,11 @@ export const Instagram = styled.a`
   height: 44px;
   background-color: #18181c;
   border-radius: 50%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: 56px;
+    height: 56px;
+  }
 `;
 
 export const Angels = styled.a`
@@ -175,4 +210,9 @@ export const Angels = styled.a`
 export const AngelsLogo = styled(AngelsLogoIcon)`
   width: 118px;
   height: 28px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: 140px;
+    height: 33px;
+  }
 `;

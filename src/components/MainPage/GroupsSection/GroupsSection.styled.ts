@@ -11,25 +11,45 @@ export const Section = styled.section`
 
 export const Content = styled.div`
   background-color: #18181c;
-  padding-top: ${({ theme }) => theme.spacing(10)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(35)}px;
+  padding-top: ${({ theme }) => theme.spacing(8)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(30)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    padding-top: ${({ theme }) => theme.spacing(10)}px;
+    padding-bottom: ${({ theme }) => theme.spacing(35)}px;
+  }
 `;
 
 export const Container = styled.div`
   position: relative;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(8)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    flex-direction: row;
+    gap: 0;
+    justify-content: space-between;
+  }
 `;
 
 export const List = styled.ul`
   display: flex;
   gap: ${listGap}px;
-  width: 67.2vw;
+  flex-direction: column;
+  width: 100%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    flex-direction: row;
+    width: 67.2vw;
+  }
 `;
 
 export const ListItem = styled.li`
-  width: calc(${getFlexItemWidth({ listGap, listLength: 3 })});
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: calc(${getFlexItemWidth({ listGap, listLength: 3 })});
+  }
 `;
 
 export const AnimatedContainer = styled(motion.div)``;
@@ -39,8 +59,12 @@ export const Card = styled(motion.div)`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(12)}px;
   background-color: #252525;
-  padding: ${({ theme }) => theme.spacing(8)}px;
+  padding: ${({ theme }) => theme.spacing(5)}px;
   border-radius: 16px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    padding: ${({ theme }) => theme.spacing(8)}px;
+  }
 `;
 
 export const Info = styled.div`

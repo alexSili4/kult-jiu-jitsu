@@ -47,7 +47,7 @@ const DayDetails: FC<IDayDetailsProps> = ({
 }) => {
   const containerRef = useRef(null);
 
-  const inView = useInView(containerRef, { amount: 1, once: true });
+  const inView = useInView(containerRef, { amount: 0.1, once: true });
 
   const animate: VariantLabels = inView ? 'visible' : 'hidden';
 
