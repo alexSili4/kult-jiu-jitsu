@@ -154,7 +154,7 @@ export const PricePeriod = styled.span`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled.a`
   background-color: #18181c;
   padding-top: ${({ theme }) => theme.spacing(5)}px;
   padding-bottom: ${({ theme }) => theme.spacing(5)}px;
@@ -163,6 +163,7 @@ export const Button = styled.button`
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
   font-size: 20px;
+  text-align: center;
   letter-spacing: -0.2px;
   transition: background-color ${({ theme }) => theme.transitionDurationAndFunc},
     color ${({ theme }) => theme.transitionDurationAndFunc};

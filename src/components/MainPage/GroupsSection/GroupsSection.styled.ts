@@ -149,7 +149,7 @@ export const Text = styled.p`
   line-height: 1.4;
 `;
 
-export const Button = styled.button`
+export const Button = styled.a`
   background-color: #18181c;
   padding: ${({ theme }) => theme.spacing(5)}px;
   border-radius: 100px;
@@ -158,6 +158,7 @@ export const Button = styled.button`
   font-weight: 700;
   font-size: 20px;
   line-height: 1;
+  text-align: center;
   letter-spacing: -0.2px;
   transition: background-color ${({ theme }) => theme.transitionDurationAndFunc},
     color ${({ theme }) => theme.transitionDurationAndFunc};

@@ -29,6 +29,7 @@ import {
 import price from '@/constants/price';
 import FavoriteMembershipStatus from '@MainPageComponents/FavoriteMembershipStatus';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
+import { SectionId } from '@/constants';
 
 interface IMembershipCardProps {
   name: string;
@@ -108,7 +109,7 @@ const MembershipCard: FC<IMembershipCardProps> = ({
             <PriceAmount>{amount}</PriceAmount>
             <PricePeriod>{`/ ${period}`}</PricePeriod>
           </Price>
-          <Button type='button'>Спробувати</Button>
+          <Button href={`#${SectionId.contacts}`}>Спробувати</Button>
         </MembershipPrice>
       </MembershipDetails>
     </MembershipDetailsWrap>

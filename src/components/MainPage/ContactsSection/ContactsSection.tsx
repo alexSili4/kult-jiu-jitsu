@@ -184,11 +184,19 @@ const Contacts: FC = () => {
       <ContactsWrap>
         <ContactsLinks>
           <SocialLinks>
-            <SocialLink href='/' target='_blank' rel='noopener noreferrer'>
+            <SocialLink
+              href={contacts.externalLinks.instagram}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               <FaInstagram />
             </SocialLink>
 
-            <SocialLink href='/' target='_blank' rel='noopener noreferrer'>
+            <SocialLink
+              href={contacts.externalLinks.telegram}
+              target='_blank'
+              rel='noopener noreferrer'
+            >
               <PiTelegramLogo />
             </SocialLink>
           </SocialLinks>

@@ -25,6 +25,7 @@ import SectionTitle from '@CommonComponents/SectionTitle';
 import SectionLabel from '@CommonComponents/SectionLabel';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
 import { IGroup } from '@/types/groups';
+import { SectionId } from '@/constants';
 
 interface IGroupsSectionProps {
   groups: IGroup[];
@@ -106,7 +107,7 @@ const DayDetails: FC<IDayDetailsProps> = ({
           </About>
         </Info>
 
-        <Button>Спробувати</Button>
+        <Button href={`#${SectionId.contacts}`}>Спробувати</Button>
       </Card>
     </AnimatedContainer>
   );

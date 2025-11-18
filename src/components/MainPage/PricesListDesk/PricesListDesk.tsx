@@ -27,6 +27,7 @@ import {
 import price from '@/constants/price';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
 import FavoriteMembershipStatus from '@MainPageComponents/FavoriteMembershipStatus';
+import { SectionId } from '@/constants';
 
 const PricesListDesk: FC = () => {
   const membershipsRef = useRef(null);
@@ -105,7 +106,7 @@ const PricesListDesk: FC = () => {
                     <PriceAmount>{amount}</PriceAmount>
                     <PricePeriod>{`/ ${period}`}</PricePeriod>
                   </Price>
-                  <Button type='button'>Спробувати</Button>
+                  <Button href={`#${SectionId.contacts}`}>Спробувати</Button>
                 </MembershipPrice>
               </MembershipDetails>
             </MembershipsListItem>

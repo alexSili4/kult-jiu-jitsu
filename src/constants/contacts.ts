@@ -54,4 +54,9 @@ const instasport: INavLink = {
   isPublic: true,
 };
 
-export default { mapLink, coaches, map, instasport };
+const externalLinks = {
+  instagram: 'https://www.instagram.com/kult.jiujitsu/',
+  telegram: 'https://t.me/+7GmaiAL3sdM4OGYy',
+};
+
+export default { mapLink, coaches, map, instasport, externalLinks };
