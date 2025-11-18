@@ -1,26 +1,9 @@
 import GeneralContainer from '@CommonComponents/GeneralContainer';
+import { ChangeEvent, FC, MouseEvent, useState } from 'react';
 import {
-  ChangeEvent,
-  FC,
-  MouseEvent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import {
-  MapContainer,
-  MapImg,
   Section,
   Container,
   Content,
-  MapWrap,
-  Address,
-  AddressContainer,
-  AddressTextWrap,
-  AddressTitle,
-  AddressText,
-  MapLinkIcon,
-  MapLink,
   ContactsContainer,
   ContactsWrap,
   ContactsLinks,
@@ -45,33 +28,18 @@ import {
   ListItem,
   OptionsList,
   OptionBtn,
-  MetroBtn,
-  Metro,
-  MapImgWrap,
-  FinishBtn,
-  Glow,
-  MapPath,
-  Svg,
-  Path,
-  PathShadow,
-  Parking,
-  TooltipWrap,
-  MetroTooltipWrap,
-  AddressWrap,
+  SubmitBtnLabelMain,
+  SubmitBtnLabelAlt,
 } from './ContactsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { contacts, SectionId } from '@/constants';
-import { FiArrowUpRight } from 'react-icons/fi';
-import SectionLabel from '@CommonComponents/SectionLabel';
 import { PiTelegramLogo } from 'react-icons/pi';
 import { FaInstagram } from 'react-icons/fa';
 import banner from '@/images/contacts/banner.png';
 import { IoChevronDown } from 'react-icons/io5';
 import { useForm } from 'react-hook-form';
-import { IContactsForm, IPoint } from '@/types/contacts';
-import { getMapPath } from '@/utils';
-import Tooltip from '@CommonComponents/Tooltip';
-import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
+import { IContactsForm } from '@/types/contacts';
+import Map from '@MainPageComponents/Map';
 
 interface IInputProps {
   placeholder: string;
@@ -80,172 +48,6 @@ interface IInputProps {
   onOptionChange?: (option: string) => void;
   settings: object;
 }
-
-interface IRoundedPathMapProps {
-  path: IPoint[];
-  stroke?: string;
-  strokeWidth?: number;
-  radius?: number;
-}
-
-const RoundedPathMap: FC<IRoundedPathMapProps> = ({ path, radius = 12 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [d, setD] = useState('');
-
-  useEffect(() => {
-    const updatePath = () => {
-      const el = containerRef.current;
-      if (!el) return;
-      const { width, height } = el.getBoundingClientRect();
-      const newD = getMapPath(path, width, height, radius);
-      setD(newD);
-    };
-
-    updatePath();
-    window.addEventListener('resize', updatePath);
-    return () => window.removeEventListener('resize', updatePath);
-  }, [path, radius]);
-
-  const transition: Transition = {
-    duration: 8,
-    repeat: Infinity,
-    ease: 'easeInOut',
-  };
-
-  return (
-    <MapPath ref={containerRef}>
-      <Svg xmlns='http://www.w3.org/2000/svg'>
-        <PathShadow
-          d={d}
-          fill='none'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          initial={{ pathLength: 0, pathOffset: 0 }}
-          animate={{
-            pathLength: [0, 1, 0],
-            pathOffset: [0, 0, 1],
-          }}
-          transition={transition}
-        />
-        <Path
-          d={d}
-          fill='none'
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          initial={{ pathLength: 0, pathOffset: 0 }}
-          animate={{
-            pathLength: [0, 1, 0],
-            pathOffset: [0, 0, 1],
-          }}
-          transition={transition}
-        />
-      </Svg>
-    </MapPath>
-  );
-};
-
-const Map: FC = () => {
-  const { map } = contacts;
-
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const containerRef = useRef(null);
-
-  const inView = useInView(containerRef, { amount: 1 });
-
-  const animate: VariantLabels = inView ? 'visible' : 'hidden';
-
-  const containerVariants: Variants = {
-    hidden: {},
-    visible: {},
-  };
-
-  const transition: Transition = {
-    type: 'spring',
-    duration: 1.4,
-    bounce: 0.4,
-  };
-
-  const itemVariants: Variants = {
-    hidden: { x: -60, opacity: 0, transition },
-    visible: {
-      x: 0,
-      opacity: 1,
-      transition,
-    },
-  };
-
-  const onImgLoad = () => {
-    setIsImageLoaded(true);
-  };
-
-  return (
-    <MapContainer>
-      <MapWrap>
-        <MapImgWrap>
-          <MapImg src={map.img} alt='Мапа' onLoad={onImgLoad} />
-
-          {isImageLoaded && <RoundedPathMap path={map.path} radius={7} />}
-
-          <MetroBtn
-            style={{
-              bottom: map.start.bottom,
-              right: map.start.right,
-            }}
-          >
-            <Glow></Glow>
-            <Metro />
-            <MetroTooltipWrap>
-              <Tooltip text='метро Контрактова' />
-            </MetroTooltipWrap>
-          </MetroBtn>
-
-          <FinishBtn
-            style={{
-              bottom: map.finish.bottom,
-              right: map.finish.right,
-            }}
-          >
-            <Glow></Glow>
-            <TooltipWrap>
-              <Tooltip text='Ми знаходимось тут' />
-            </TooltipWrap>
-          </FinishBtn>
-
-          {map.parking.map(({ bottom, right }, index) => (
-            <Parking key={index} style={{ bottom, right }} />
-          ))}
-        </MapImgWrap>
-
-        <AddressContainer
-          ref={containerRef}
-          variants={containerVariants}
-          initial='hidden'
-          animate={animate}
-        >
-          <AddressWrap variants={itemVariants}>
-            <AddressTextWrap>
-              <SectionLabel text='Як нас знайти' />
-              <Address>
-                <AddressTitle>вулиця Кирилівська, 6</AddressTitle>
-                <AddressText>Київ, Україна, 02000</AddressText>
-              </Address>
-            </AddressTextWrap>
-            <MapLink
-              href={contacts.mapLink}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <span>Прокласти маршрут</span>
-              <MapLinkIcon>
-                <FiArrowUpRight size={20} />
-              </MapLinkIcon>
-            </MapLink>
-          </AddressWrap>
-        </AddressContainer>
-      </MapWrap>
-    </MapContainer>
-  );
-};
 
 const Input: FC<IInputProps> = ({
   placeholder,
@@ -337,7 +139,7 @@ const ContactsForm: FC = () => {
   };
 
   return (
-    <FormContainer>
+    <FormContainer id={SectionId.contacts}>
       <FormHeader>
         <FormTitle>Записатись на заняття</FormTitle>
         <FormText>
@@ -366,7 +168,11 @@ const ContactsForm: FC = () => {
             isSelect
           />
         </InputsWrap>
-        <SubmitBtn>записатись</SubmitBtn>
+        <SubmitBtn>
+          <span>записатись</span>
+          <SubmitBtnLabelMain>записатись</SubmitBtnLabelMain>
+          <SubmitBtnLabelAlt>записатись</SubmitBtnLabelAlt>
+        </SubmitBtn>
       </Form>
     </FormContainer>
   );
@@ -379,13 +185,23 @@ const Contacts: FC = () => {
         <ContactsLinks>
           <SocialLinks>
             <SocialLink href='/' target='_blank' rel='noopener noreferrer'>
-              <FaInstagram size={60} />
+              <FaInstagram />
             </SocialLink>
 
             <SocialLink href='/' target='_blank' rel='noopener noreferrer'>
-              <PiTelegramLogo size={60} />
+              <PiTelegramLogo />
             </SocialLink>
           </SocialLinks>
+
+          <a></a>
+
+          <ContactPhone
+            href={contacts.instasport.href}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            {contacts.instasport.label}
+          </ContactPhone>
 
           <ContactPhone href='tel:+380998882233'>
             <Symbol></Symbol>
@@ -412,7 +228,7 @@ const ContactsSection: FC = () => {
 
       <Container>
         <GeneralContainer>
-          <Content id={SectionId.contacts}>
+          <Content>
             <Contacts />
           </Content>
         </GeneralContainer>

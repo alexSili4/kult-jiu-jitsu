@@ -17,6 +17,10 @@ export const Arrow = styled.span`
   background-color: #88a94b;
   translate: -50% -50%;
   rotate: 45deg;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    left: 50%;
+  }
 `;
 
 export const Text = styled.span`

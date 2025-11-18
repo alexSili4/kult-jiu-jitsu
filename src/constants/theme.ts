@@ -5,13 +5,7 @@ declare module '@emotion/react' {
 interface ITheme {
   colors: Record<'white' | 'white10' | 'white50' | 'white60' | 'black', string>;
   fontFamily: Record<'involve' | 'theater', string>;
-  padding: {
-    container: number;
-  };
-  containerWidth: {
-    desktop: number;
-    mobile: number;
-  };
+  breakpoints: Record<'mob' | 'tablet' | 'desk', number>;
   transitionDurationAndFunc: string;
   spacing: (value?: number) => number;
 }
@@ -28,17 +22,11 @@ const theme: ITheme = {
     involve: 'Involve',
     theater: 'Theater',
   },
-  // fontWeight: {  },
-  // fontSize: {  },
-  padding: {
-    container: 16,
+  breakpoints: {
+    mob: 810,
+    tablet: 1200,
+    desk: 1600,
   },
-  // borderRadius: {  },
-  containerWidth: {
-    desktop: 1376,
-    mobile: 375,
-  },
-  // shadows: {  },
   transitionDurationAndFunc: '400ms cubic-bezier(0.4, 0, 0.2, 1)',
   spacing: (value = 1) => value * 4,
 };

@@ -6,7 +6,6 @@ import {
   Details,
   Section,
   Text,
-  AmenitiesList,
   AmenitiesCard,
   AmenitiesListItem,
   CardText,
@@ -14,12 +13,19 @@ import {
   AmenitiesAnimatedCard,
   Image,
   ImageWrap,
+  AmenitiesListDesk,
+  AmenitiesListMob,
+  Message,
+  Hand,
+  AdditionalText,
+  DetailsWrap,
 } from './AmenitiesSection.styled';
-import { amenities } from '@/constants';
+import { amenities, SectionId } from '@/constants';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { IconType } from 'react-icons';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
-import Marquee from 'react-fast-marquee';
+import useEmblaCarousel from 'embla-carousel-react';
+import AutoScroll from 'embla-carousel-auto-scroll';
 
 interface IAmenitiesListCardProps {
   icon: IconType | null;
@@ -78,38 +84,77 @@ const AmenitiesListCard: FC<IAmenitiesListCardProps> = ({
 const AmenitiesSection: FC = () => {
   const { list, images } = amenities;
 
+  const [emblaRef] = useEmblaCarousel(
+    {
+      loop: true,
+      dragFree: true,
+      containScroll: false,
+    },
+    [
+      AutoScroll({
+        speed: 1,
+        stopOnInteraction: false,
+        stopOnMouseEnter: true,
+      }),
+    ]
+  );
+
   return (
-    <Section>
+    <Section id={SectionId.amenities}>
       <Container>
         <GeneralContainer>
           <SectionTitle text='зручності' />
         </GeneralContainer>
 
         <Content>
-          <Marquee>
-            {images.map(({ src, alt }) => (
-              <ImageWrap key={src}>
-                <Image src={src} alt={alt} />
-              </ImageWrap>
-            ))}
-          </Marquee>
+          <div
+            ref={emblaRef}
+            style={{
+              overflow: 'hidden',
+              cursor: 'grab',
+            }}
+          >
+            <div style={{ display: 'flex' }}>
+              {[...images, ...images].map(({ src, alt }, index) => (
+                <div key={index} style={{ flex: '0 0 auto' }}>
+                  <ImageWrap>
+                    <Image src={src} alt={alt} draggable={false} />
+                  </ImageWrap>
+                </div>
+              ))}
+            </div>
+          </div>
 
           <GeneralContainer>
-            <Details>
-              <Text>
-                Ми створили простір, у якому можна відчути баланс. Комфорт перед
-                тренуванням, розмови й сміх після. Ми зробили його простим,
-                щирим і своїм.
-              </Text>
+            <DetailsWrap>
+              <Details>
+                <Text>
+                  Ми створили простір, у якому можна відчути баланс. Комфорт
+                  перед тренуванням, розмови й сміх після. Ми зробили його
+                  простим, щирим і своїм.
+                </Text>
 
-              <AmenitiesList>
-                {list.map(({ icon, text }) => (
-                  <AmenitiesListItem key={text}>
-                    <AmenitiesListCard icon={icon} text={text} />
-                  </AmenitiesListItem>
-                ))}
-              </AmenitiesList>
-            </Details>
+                <AmenitiesListMob>
+                  {list.mob.map(({ icon, text }) => (
+                    <AmenitiesListItem key={text}>
+                      <AmenitiesListCard icon={icon} text={text} />
+                    </AmenitiesListItem>
+                  ))}
+                </AmenitiesListMob>
+                <AmenitiesListDesk>
+                  {list.desk.map(({ icon, text }) => (
+                    <AmenitiesListItem key={text}>
+                      <AmenitiesListCard icon={icon} text={text} />
+                    </AmenitiesListItem>
+                  ))}
+                </AmenitiesListDesk>
+              </Details>
+              <AdditionalText>
+                Ще є наш Двіж-двір <Hand />. Місце куди можна зайти просто
+                поговорити, пограти в теніс або потрапити на тематичний вечір{' '}
+                <Message />. Це продовження залу, тільки без правил і графіка.
+              </AdditionalText>
+            </DetailsWrap>
           </GeneralContainer>
         </Content>
       </Container>

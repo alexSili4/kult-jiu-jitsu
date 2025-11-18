@@ -12,3 +12,16 @@ export interface IPoint {
   x?: number;
   y?: number;
 }
+
+export interface IMapPoint {
+  bottom: string;
+  right: string;
+}
+
+export interface IMap {
+  img: string;
+  start: IMapPoint;
+  finish: IMapPoint;
+  path: IMapPoint[];
+  parking: IMapPoint[];
+}

@@ -1,26 +1,17 @@
 import GeneralContainer from '@CommonComponents/GeneralContainer';
 import { FC } from 'react';
-import {
-  Section,
-  Content,
-  Container,
-  Symbol,
-  Text,
-  Title,
-} from './AboutSection.styled';
+import { Section, Content, Container, Text } from './AboutSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
+import SectionLabel from '@CommonComponents/SectionLabel';
 
 const AboutSection: FC = () => {
   return (
     <Section>
-      <SectionTitle text='Про нас' isHidden />
+      <SectionTitle text='Про Культ' isHidden />
       <Content>
         <GeneralContainer>
           <Container>
-            <Title>
-              <Symbol>•</Symbol>
-              <span>[Про нас)</span>
-            </Title>
+            <SectionLabel text='Про Культ' />
             <Text>
               Ми не про змагання, ми про відчуття моменту. Про спокій у русі,
               про сміх після спарингу, про повагу без пафосу. Ми живемо життя,

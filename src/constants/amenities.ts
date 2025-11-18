@@ -10,14 +10,23 @@ import photo1 from '@/images/amenities/photo-1.png';
 import photo2 from '@/images/amenities/photo-2.png';
 import photo3 from '@/images/amenities/photo-3.png';
 
-const list: IAmenitiesItem[] = [
-  { icon: LuCupSoda, text: 'Кав’ярня з фільтром і чаєм' },
-  { icon: LuBone, text: 'Пет-френдлі простір' },
-  { icon: LuCarFront, text: 'Парковка' },
-  { icon: LuShowerHead, text: 'Душ і роздягальня' },
-  { icon: LuAccessibility, text: 'Інклюзивний санвузол та  підйомник' },
-  { icon: null, text: null },
-];
+const list: Record<'mob' | 'desk', IAmenitiesItem[]> = {
+  mob: [
+    { icon: LuShowerHead, text: 'Душ і роздягальня' },
+    { icon: LuAccessibility, text: 'Інклюзивний санвузол та  підйомник' },
+    { icon: LuCupSoda, text: 'Кав’ярня з фільтром і чаєм' },
+    { icon: LuBone, text: 'Пет-френдлі простір' },
+    { icon: LuCarFront, text: 'Парковка поруч' },
+  ],
+  desk: [
+    { icon: LuCupSoda, text: 'Кав’ярня з фільтром і чаєм' },
+    { icon: LuBone, text: 'Пет-френдлі простір' },
+    { icon: LuCarFront, text: 'Парковка поруч' },
+    { icon: LuShowerHead, text: 'Душ і роздягальня' },
+    { icon: LuAccessibility, text: 'Інклюзивний санвузол та  підйомник' },
+    { icon: null, text: null },
+  ],
+};
 
 const images: IImage[] = [
   { src: photo1, alt: 'Душ' },

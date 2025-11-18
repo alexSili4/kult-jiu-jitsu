@@ -23,7 +23,7 @@ const Footer: FC = () => {
               target='_blank'
               rel='noopener noreferrer'
             >
-              Створено сонцем☼
+              Створено Сонцем☼
             </Sun>
           </TextWrap>
         </Container>

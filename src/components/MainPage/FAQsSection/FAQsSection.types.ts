@@ -6,3 +6,11 @@ export interface IStyledAnswerWrapProps {
 export interface IStyledIconWrapProps {
   isShowElement: boolean;
 }
+
+export interface IStyledContainerProps {
+  isModalWin: boolean;
+}
+
+export interface IStyledContentProps {
+  isModalWin: boolean;
+}

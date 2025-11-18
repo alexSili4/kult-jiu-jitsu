@@ -16,13 +16,17 @@ import {
 } from './FAQsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
-import { faqs } from '@/constants';
 import { IFAQ } from '@/types/faqs';
 import { FaPlus } from 'react-icons/fa';
 import { useAccordionElement } from '@/hooks';
 import SectionLabel from '@CommonComponents/SectionLabel';
 import ScaleBanner from '@CommonComponents/ScaleBanner';
 import banner from '@/images/faqs/banner.jpg';
+
+interface IFAQsSectionProps {
+  faqs: IFAQ[];
+  isModalWin?: boolean;
+}
 
 const QuestionDetails: FC<IFAQ> = ({ answer, question }) => {
   const containerRef = useRef(null);
@@ -82,16 +86,16 @@ const QuestionDetails: FC<IFAQ> = ({ answer, question }) => {
   );
 };
 
-const FAQsSection: FC = () => {
+const FAQsSection: FC<IFAQsSectionProps> = ({ faqs, isModalWin = false }) => {
   return (
     <Section>
       <SectionTitle text='Запитання та відповіді' isHidden />
 
-      <ScaleBanner banner={banner} />
+      {!isModalWin && <ScaleBanner banner={banner} />}
 
-      <Container>
+      <Container isModalWin={isModalWin}>
         <GeneralContainer>
-          <Content>
+          <Content isModalWin={isModalWin}>
             <SectionLabel text='FAQs' />
 
             <QuestionsList>

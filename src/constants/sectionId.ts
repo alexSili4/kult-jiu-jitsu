@@ -6,6 +6,7 @@ const enum SectionId {
   contacts = 'contacts',
   programs = 'programs',
   schedule = 'schedule',
+  map = 'map',
 }
 
 export default SectionId;

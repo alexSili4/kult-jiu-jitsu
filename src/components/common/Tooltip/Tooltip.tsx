@@ -3,13 +3,18 @@ import { Container, Arrow, Text } from './Tooltip.styled';
 
 interface ITooltipProps {
   text: string;
+
 }
 
-const Tooltip: FC<ITooltipProps> = ({ text }) => {
+const Tooltip: FC<ITooltipProps> = ({
+  text,
+}) => {
   return (
     <Container>
       <Text>{text}</Text>
-      <Arrow></Arrow>
+      <Arrow
+       
+      ></Arrow>
     </Container>
   );
 };

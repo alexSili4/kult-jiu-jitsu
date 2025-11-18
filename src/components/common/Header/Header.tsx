@@ -1,4 +1,11 @@
-import { FC, forwardRef, MouseEvent, useState } from 'react';
+import {
+  FC,
+  forwardRef,
+  MouseEvent,
+  MouseEventHandler,
+  useEffect,
+  useState,
+} from 'react';
 import {
   StyledHeader,
   List,
@@ -6,7 +13,7 @@ import {
   Logo,
   Nav,
   Link,
-  BookASessionBtn,
+  DeskBookASessionLink,
   IconWrap,
   Label,
   Container,
@@ -16,9 +23,19 @@ import {
   FullNavigationLinks,
   FullNavigationLinksList,
   AnimatedContainer,
+  NavigationList,
+  MobileMenuBtn,
+  MobileMenuBackdrop,
+  MobileMenuLinks,
+  BookASessionLink,
+  MobileMenuContainer,
+  LabelLabelMain,
+  LabelLabelAlt,
+  BookASessionLinkLabelAlt,
+  BookASessionLinkLabelMain,
 } from './Header.styled';
 import GeneralContainer from '@CommonComponents/GeneralContainer';
-import { navLinks } from '@/constants';
+import { navLinks, SectionId } from '@/constants';
 import fire from '@/lottiefiles/fire.json';
 import Lottie from 'lottie-react';
 import { useIsScrollingPageUp } from '@/hooks';
@@ -37,6 +54,10 @@ export interface INavigationProps {
   animate: VariantLabels;
   initial: VariantLabels;
   variants: Variants;
+}
+
+interface IMobileMenuProps {
+  onLinkClick: MouseEventHandler;
 }
 
 export interface IFullNavigationProps {
@@ -137,7 +158,19 @@ const FullNavigation: FC<IFullNavigationProps> = forwardRef<
           <FullNavigationLinksList>
             {navLinks.map(({ href, label }) => (
               <ListItem key={href}>
-                <Link href={href}>{label}</Link>
+                {href.startsWith('#') ? (
+                  <Link href={href}>
+                    <span>{label}</span>
+                    <LabelLabelMain>{label}</LabelLabelMain>
+                    <LabelLabelAlt>{label}</LabelLabelAlt>
+                  </Link>
+                ) : (
+                  <Link href={href} target='_blank' rel='noopener noreferrer'>
+                    <span>{label}</span>
+                    <LabelLabelMain>{label}</LabelLabelMain>
+                    <LabelLabelAlt>{label}</LabelLabelAlt>
+                  </Link>
+                )}
               </ListItem>
             ))}
           </FullNavigationLinksList>
@@ -163,7 +196,19 @@ const Navigation: FC<INavigationProps> = forwardRef<
     >
       {navLinks.map(({ href, label }) => (
         <ListItem key={href}>
-          <Link href={href}>{label}</Link>
+          {href.startsWith('#') ? (
+            <Link href={href}>
+              <span>{label}</span>
+              <LabelLabelMain>{label}</LabelLabelMain>
+              <LabelLabelAlt>{label}</LabelLabelAlt>
+            </Link>
+          ) : (
+            <Link href={href} target='_blank' rel='noopener noreferrer'>
+              <span>{label}</span>
+              <LabelLabelMain>{label}</LabelLabelMain>
+              <LabelLabelAlt>{label}</LabelLabelAlt>
+            </Link>
+          )}
         </ListItem>
       ))}
     </List>
@@ -171,6 +216,106 @@ const Navigation: FC<INavigationProps> = forwardRef<
 });
 
 Navigation.displayName = 'Navigation';
+
+const MobileMenu: FC<IMobileMenuProps> = ({ onLinkClick }) => {
+  const transition: Transition = {
+    duration: 0.6,
+    ease: [0.25, 0.1, 0.25, 1],
+  };
+
+  const containerVariants: Variants = {
+    initial: {
+      y: '-100dvh',
+      transition,
+    },
+    animate: {
+      y: 0,
+      transition,
+    },
+    exit: {
+      y: '-100dvh',
+      transition,
+    },
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
+
+  return (
+    <MobileMenuBackdrop
+      variants={containerVariants}
+      initial='initial'
+      animate='animate'
+      exit='exit'
+    >
+      <MobileMenuLinks>
+        {navLinks.map(({ href, label }) => (
+          <ListItem key={href}>
+            {href.startsWith('#') ? (
+              <Link href={href} onClick={onLinkClick}>
+                <span>{label}</span>
+                <LabelLabelMain>{label}</LabelLabelMain>
+                <LabelLabelAlt>{label}</LabelLabelAlt>
+              </Link>
+            ) : (
+              <Link href={href} target='_blank' rel='noopener noreferrer'>
+                <span>{label}</span>
+                <LabelLabelMain>{label}</LabelLabelMain>
+                <LabelLabelAlt>{label}</LabelLabelAlt>
+              </Link>
+            )}
+          </ListItem>
+        ))}
+      </MobileMenuLinks>
+      <BookASessionLink href={`#${SectionId.contacts}`} onClick={onLinkClick}>
+        <Label>
+          <span>Записатись</span>
+          <BookASessionLinkLabelMain>Записатись</BookASessionLinkLabelMain>
+          <BookASessionLinkLabelAlt>Записатись</BookASessionLinkLabelAlt>
+        </Label>
+
+        <IconWrap>
+          <Lottie animationData={fire} loop={true} />
+        </IconWrap>
+      </BookASessionLink>
+    </MobileMenuBackdrop>
+  );
+};
+
+const MobileNavigation: FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const toggleIsOpen = () => {
+    setIsOpen((prevState) => !prevState);
+  };
+
+  const onMobileMenuBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.blur();
+
+    toggleIsOpen();
+  };
+
+  return (
+    <MobileMenuContainer>
+      <AnimatePresence>
+        {isOpen && <MobileMenu onLinkClick={toggleIsOpen} />}
+      </AnimatePresence>
+      <MobileMenuBtn
+        type='button'
+        onClick={onMobileMenuBtnClick}
+        isOpen={isOpen}
+      >
+        <RxDotFilled size={16} />
+        <RxDotFilled size={16} />
+      </MobileMenuBtn>
+    </MobileMenuContainer>
+  );
+};
 
 const Header: FC = () => {
   const { isScroll } = useIsScrollingPageUp(500);
@@ -238,35 +383,44 @@ const Header: FC = () => {
             <Nav>
               <Logo />
 
-              <AnimatePresence mode='sync'>
-                {isScroll ? (
-                  <FullNavigation
-                    key='FullNavigation'
-                    navLinks={navLinks}
-                    animate={animate}
-                    exit={exit}
-                    initial={initial}
-                    variants={navigationVariants}
-                  />
-                ) : (
-                  <Navigation
-                    key='Navigation'
-                    navLinks={publicNavLinks}
-                    animate={animate}
-                    exit={exit}
-                    initial='animate'
-                    variants={navigationVariants}
-                  />
-                )}
-              </AnimatePresence>
+              <MobileNavigation />
+              <NavigationList>
+                <AnimatePresence mode='sync'>
+                  {isScroll ? (
+                    <FullNavigation
+                      key='FullNavigation'
+                      navLinks={navLinks}
+                      animate={animate}
+                      exit={exit}
+                      initial={initial}
+                      variants={navigationVariants}
+                    />
+                  ) : (
+                    <Navigation
+                      key='Navigation'
+                      navLinks={publicNavLinks}
+                      animate={animate}
+                      exit={exit}
+                      initial='animate'
+                      variants={navigationVariants}
+                    />
+                  )}
+                </AnimatePresence>
+              </NavigationList>
             </Nav>
 
-            <BookASessionBtn>
-              <Label>Записатись</Label>
+            <DeskBookASessionLink href={`#${SectionId.contacts}`}>
+              <Label>
+                <span>Записатись</span>
+                <BookASessionLinkLabelMain>
+                  Записатись
+                </BookASessionLinkLabelMain>
+                <BookASessionLinkLabelAlt>Записатись</BookASessionLinkLabelAlt>
+              </Label>
               <IconWrap>
                 <Lottie animationData={fire} loop={true} />
               </IconWrap>
-            </BookASessionBtn>
+            </DeskBookASessionLink>
           </Container>
         </GeneralContainer>
       </StyledHeader>

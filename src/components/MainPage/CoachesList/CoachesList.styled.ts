@@ -2,7 +2,13 @@ import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 
 export const Container = styled(motion.div)`
-  position: relative;
+  display: none;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    position: relative;
+    display: block;
+    translate:0 -50%
+  }
 `;
 
 export const CoachInfo = styled.div`
@@ -27,17 +33,25 @@ export const DescText = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
-  font-size: 48px;
+  font-size: 40px;
   letter-spacing: -1px;
   text-transform: uppercase;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 48px;
+  }
 `;
 
 export const DescTitle = styled.p`
   color: #808080;
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.4;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 `;
 
 export const CoachName = styled(motion.div)`
@@ -73,17 +87,25 @@ export const Name = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
-  font-size: 48px;
+  font-size: 40px;
   letter-spacing: -1px;
   text-transform: uppercase;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 48px;
+  }
 `;
 
 export const Desc = styled.p`
   color: #d9d9d9;
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 1.4;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    font-size: 20px;
+  }
 `;
 
 export const CardWrapper = styled(motion.div)`
@@ -101,12 +123,17 @@ export const CardLink = styled.a`
   display: inline-block;
   width: 100%;
   height: 100%;
-  border-radius: 20px;
-  border: 10px solid #252525;
+  border-radius: 16px;
+  border: 8px solid #252525;
   overflow: hidden;
   cursor: none;
   transform-style: preserve-3d;
   transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    border-radius: 20px;
+    border: 10px solid #252525;
+  }
 
   *:is(:hover, :focus) > &,
   &:focus {

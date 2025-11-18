@@ -14,7 +14,7 @@ import {
   Time,
   Symbol,
   Wrapper,
-} from './ScheduleDetails.styled';
+} from './ScheduleList.styled';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
 
 interface IDayDetailsProps {
@@ -37,7 +37,24 @@ const ProgramDetails: FC<IProgramDetailsProps> = ({ program }) => {
               <span>{time}</span>
             </Time>
             <Program>{program}</Program>
-            <Coach>{coach}</Coach>
+            <Coach
+              type='button'
+              onClick={() =>
+                window.scrollTo({
+                  top:
+                    coach.id === 'andrew'
+                      ? 2.8 * window.innerHeight
+                      : coach.id === 'buchecha'
+                      ? 4.5 * window.innerHeight
+                      : coach.id === 'volodymyr'
+                      ? 3.6 * window.innerHeight
+                      : 0,
+                  behavior: 'smooth',
+                })
+              }
+            >
+              {coach.name}
+            </Coach>
           </DayInfo>
         </ListItem>
       ))}
@@ -94,7 +111,7 @@ const DayDetails: FC<IDayDetailsProps> = ({ programs, days }) => {
   );
 };
 
-const ScheduleDetails: FC = () => {
+const ScheduleList: FC = () => {
   return (
     <List>
       {schedule.map(({ days, programs }) => (
@@ -106,4 +123,4 @@ const ScheduleDetails: FC = () => {
   );
 };
 
-export default ScheduleDetails;
+export default ScheduleList;
