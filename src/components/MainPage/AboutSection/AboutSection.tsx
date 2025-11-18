@@ -7,11 +7,11 @@ import SectionLabel from '@CommonComponents/SectionLabel';
 const AboutSection: FC = () => {
   return (
     <Section>
-      <SectionTitle text='Про нас' isHidden />
+      <SectionTitle text='Про Культ' isHidden />
       <Content>
         <GeneralContainer>
           <Container>
-            <SectionLabel text='Про нас' />
+            <SectionLabel text='Про Культ' />
             <Text>
               Ми не про змагання, ми про відчуття моменту. Про спокій у русі,
               про сміх після спарингу, про повагу без пафосу. Ми живемо життя,

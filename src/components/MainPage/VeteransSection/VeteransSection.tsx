@@ -21,16 +21,16 @@ const VeteransSection: FC = () => {
       <ScaleBanner banner={banner} />
 
       <Container>
-        <GeneralContainer>
-          <AngelsFoundersMob />
-          <AngelsFoundersDesk />
+        <AngelsFoundersMob />
+        <AngelsFoundersDesk />
 
+        <GeneralContainer>
           <DescriptionWrap>
             <Description>
               У співпраці з патронатною службою «Янголи» ми проводимо
               безкоштовні заняття для ветеранів. Це простір підтримки, руху і
               взаємоповаги — без формальностей, без бар’єрів. Місце, де можна
-              відновити тіло, розвантажити голову і просто бути серед своїх.
+              відновитист, розвантажити голову і просто бути серед своїх.
             </Description>
           </DescriptionWrap>
         </GeneralContainer>

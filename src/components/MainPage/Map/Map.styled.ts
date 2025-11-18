@@ -30,12 +30,22 @@ export const MapImgWrap = styled.div`
 `;
 
 export const MapImgWrapMob = styled(MapImgWrap)`
-  bottom: 100px;
+  top: -50px;
+  width: 100%;
   aspect-ratio: 810 / 850;
 
+  @media screen and (min-width: ${({ theme }) =>
+      (theme.breakpoints.mob / 5) * 3}px) {
+    top: -100px;
+  }
+
+  @media screen and (min-width: ${({ theme }) =>
+      (theme.breakpoints.mob / 5) * 4}px) {
+    top: -170px;
+  }
+
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
-    width: 100%;
-    bottom: 0;
+    top: -150px;
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {

@@ -2,6 +2,15 @@ import { theme } from '@/constants';
 import { getFlexItemWidth } from '@/utils';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
+import HandIcon from '@/icons/amenities/hand.svg?react';
+import MessageIcon from '@/icons/amenities/message.svg?react';
+import { css } from '@emotion/react';
+
+export const globalStyles = css`
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+`;
 
 const amenitiesListGapMob = theme.spacing(2);
 const amenitiesListGapDesk = theme.spacing(5);
@@ -47,6 +56,26 @@ export const Content = styled.div`
   }
 `;
 
+export const DetailsWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(16)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    gap: ${({ theme }) => theme.spacing(18)}px;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    gap: ${({ theme }) => theme.spacing(15)}px;
+    width: 67.2vw;
+    margin-left: auto;
+  }
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
+    width: 66.7vw;
+  }
+`;
+
 export const Details = styled.div`
   display: flex;
   flex-direction: column;
@@ -58,12 +87,6 @@ export const Details = styled.div`
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     gap: ${({ theme }) => theme.spacing(16)}px;
-    width: 67.2vw;
-    margin-left: auto;
-  }
-
-  @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
-    width: 66.7vw;
   }
 `;
 
@@ -175,6 +198,7 @@ export const CardText = styled.p`
 
 export const ImageWrap = styled.div`
   margin-right: ${({ theme }) => theme.spacing(5)}px;
+  user-select: none;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     margin-right: ${({ theme }) => theme.spacing(10)}px;
@@ -187,6 +211,7 @@ export const Image = styled.img`
   border-radius: 16px;
   object-fit: cover;
   overflow: hidden;
+  user-select: none;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     width: 780px;
@@ -197,5 +222,59 @@ export const Image = styled.img`
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     width: 774px;
     height: 520px;
+  }
+`;
+
+export const AdditionalText = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fontFamily.involve};
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.32;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    font-size: 44px;
+  }
+`;
+
+export const Hand = styled(HandIcon)`
+  display: inline-block;
+  width: 35px;
+  height: 34px;
+  vertical-align: middle;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: 52px;
+    height: 50px;
+  }
+`;
+
+export const Message = styled(MessageIcon)`
+  display: inline-block;
+  width: 43px;
+  height: 32px;
+  vertical-align: middle;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
+    width: 70px;
+    height: 52px;
+  }
+`;
+
+export const ScrollContainer = styled.div`
+  display: flex;
+  overflow-x: auto;
+  cursor: grab;
+  user-select: none;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &:active {
+    cursor: grabbing;
   }
 `;

@@ -108,10 +108,6 @@ export const IconWrap = styled.span<IStyledIconWrapProps>`
   height: 48px;
   transform: rotate(${({ isShowElement }) => (isShowElement ? 45 : 0)}deg);
   transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
-
-  button:is(:hover, :focus) > & {
-    transform: rotate(${({ isShowElement }) => (isShowElement ? 0 : 45)}deg);
-  }
 `;
 
 export const AnswerWrap = styled.div<IStyledAnswerWrapProps>`

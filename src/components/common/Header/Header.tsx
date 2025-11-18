@@ -29,6 +29,10 @@ import {
   MobileMenuLinks,
   BookASessionLink,
   MobileMenuContainer,
+  LabelLabelMain,
+  LabelLabelAlt,
+  BookASessionLinkLabelAlt,
+  BookASessionLinkLabelMain,
 } from './Header.styled';
 import GeneralContainer from '@CommonComponents/GeneralContainer';
 import { navLinks, SectionId } from '@/constants';
@@ -154,7 +158,19 @@ const FullNavigation: FC<IFullNavigationProps> = forwardRef<
           <FullNavigationLinksList>
             {navLinks.map(({ href, label }) => (
               <ListItem key={href}>
-                <Link href={href}>{label}</Link>
+                {href.startsWith('#') ? (
+                  <Link href={href}>
+                    <span>{label}</span>
+                    <LabelLabelMain>{label}</LabelLabelMain>
+                    <LabelLabelAlt>{label}</LabelLabelAlt>
+                  </Link>
+                ) : (
+                  <Link href={href} target='_blank' rel='noopener noreferrer'>
+                    <span>{label}</span>
+                    <LabelLabelMain>{label}</LabelLabelMain>
+                    <LabelLabelAlt>{label}</LabelLabelAlt>
+                  </Link>
+                )}
               </ListItem>
             ))}
           </FullNavigationLinksList>
@@ -180,7 +196,19 @@ const Navigation: FC<INavigationProps> = forwardRef<
     >
       {navLinks.map(({ href, label }) => (
         <ListItem key={href}>
-          <Link href={href}>{label}</Link>
+          {href.startsWith('#') ? (
+            <Link href={href}>
+              <span>{label}</span>
+              <LabelLabelMain>{label}</LabelLabelMain>
+              <LabelLabelAlt>{label}</LabelLabelAlt>
+            </Link>
+          ) : (
+            <Link href={href} target='_blank' rel='noopener noreferrer'>
+              <span>{label}</span>
+              <LabelLabelMain>{label}</LabelLabelMain>
+              <LabelLabelAlt>{label}</LabelLabelAlt>
+            </Link>
+          )}
         </ListItem>
       ))}
     </List>
@@ -228,14 +256,29 @@ const MobileMenu: FC<IMobileMenuProps> = ({ onLinkClick }) => {
       <MobileMenuLinks>
         {navLinks.map(({ href, label }) => (
           <ListItem key={href}>
-            <Link href={href} onClick={onLinkClick}>
-              {label}
-            </Link>
+            {href.startsWith('#') ? (
+              <Link href={href} onClick={onLinkClick}>
+                <span>{label}</span>
+                <LabelLabelMain>{label}</LabelLabelMain>
+                <LabelLabelAlt>{label}</LabelLabelAlt>
+              </Link>
+            ) : (
+              <Link href={href} target='_blank' rel='noopener noreferrer'>
+                <span>{label}</span>
+                <LabelLabelMain>{label}</LabelLabelMain>
+                <LabelLabelAlt>{label}</LabelLabelAlt>
+              </Link>
+            )}
           </ListItem>
         ))}
       </MobileMenuLinks>
       <BookASessionLink href={`#${SectionId.contacts}`} onClick={onLinkClick}>
-        <Label>Записатись</Label>
+        <Label>
+          <span>Записатись</span>
+          <BookASessionLinkLabelMain>Записатись</BookASessionLinkLabelMain>
+          <BookASessionLinkLabelAlt>Записатись</BookASessionLinkLabelAlt>
+        </Label>
+
         <IconWrap>
           <Lottie animationData={fire} loop={true} />
         </IconWrap>
@@ -367,7 +410,13 @@ const Header: FC = () => {
             </Nav>
 
             <DeskBookASessionLink href={`#${SectionId.contacts}`}>
-              <Label>Записатись</Label>
+              <Label>
+                <span>Записатись</span>
+                <BookASessionLinkLabelMain>
+                  Записатись
+                </BookASessionLinkLabelMain>
+                <BookASessionLinkLabelAlt>Записатись</BookASessionLinkLabelAlt>
+              </Label>
               <IconWrap>
                 <Lottie animationData={fire} loop={true} />
               </IconWrap>

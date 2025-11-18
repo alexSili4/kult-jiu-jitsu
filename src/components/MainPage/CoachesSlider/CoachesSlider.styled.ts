@@ -3,6 +3,9 @@ import RotateIcon from '@/icons/coaches/rotate.svg?react';
 import { IStyledBulletProps } from './CoachesSlider.types';
 
 export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(6)}px;
   padding-top: ${({ theme }) => theme.spacing(6)}px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {

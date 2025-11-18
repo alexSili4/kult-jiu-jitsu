@@ -12,9 +12,6 @@ import {
   Progress,
   Name,
   Desc,
-  Bullet,
-  BulletsList,
-  ListItem,
   CoachDesc,
   CoachDescItem,
   DescText,
@@ -23,12 +20,8 @@ import {
   Row,
   BookASessionLink,
 } from './CoachesSlider.styled';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
 import { coaches } from '@/constants';
 import GeneralContainer from '@CommonComponents/GeneralContainer';
-
-import 'swiper/css';
-import SwiperType from 'swiper';
 
 interface ICoachVideoProps {
   video: string;
@@ -42,10 +35,6 @@ interface ICoachDetailsProps {
   groups: string;
   number: number;
   totalLength: number;
-}
-
-interface ISwiperBulletsProps {
-  activeIndex: number;
 }
 
 const CoachVideo: FC<ICoachVideoProps> = ({ video }) => {
@@ -132,64 +121,29 @@ const CoachDetails: FC<ICoachDetailsProps> = ({
   );
 };
 
-const SwiperBullets: FC<ISwiperBulletsProps> = ({ activeIndex }) => {
-  const swiper = useSwiper();
-
-  return (
-    <BulletsList>
-      {Array.from({ length: swiper.slides.length }).map((_, index) => {
-        const onBulletBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
-          e.currentTarget.blur();
-
-          swiper.slideTo(index);
-        };
-
-        return (
-          <ListItem key={index}>
-            <Bullet
-              onClick={onBulletBtnClick}
-              isActive={activeIndex === index}
-            ></Bullet>
-          </ListItem>
-        );
-      })}
-    </BulletsList>
-  );
-};
-
 const CoachesSlider: FC = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-
-  const onSwiper = (swiper: SwiperType) => setActiveIndex(swiper.activeIndex);
-
   return (
     <Container>
-      <Swiper spaceBetween={50} slidesPerView='auto' onSlideChange={onSwiper}>
-        {coaches.map(
-          (
-            { name, video, desc, experience, groups, qualification },
-            index,
-            array
-          ) => (
-            <SwiperSlide key={name}>
-              <CoachCard>
-                <CoachVideo video={video} />
-                <CoachDetails
-                  desc={desc}
-                  experience={experience}
-                  groups={groups}
-                  name={name}
-                  qualification={qualification}
-                  number={index + 1}
-                  totalLength={array.length}
-                />
-              </CoachCard>
-            </SwiperSlide>
-          )
-        )}
-
-        <SwiperBullets activeIndex={activeIndex} />
-      </Swiper>
+      {coaches.map(
+        (
+          { name, video, desc, experience, groups, qualification },
+          index,
+          array
+        ) => (
+          <CoachCard key={name}>
+            <CoachVideo video={video} />
+            <CoachDetails
+              desc={desc}
+              experience={experience}
+              groups={groups}
+              name={name}
+              qualification={qualification}
+              number={index + 1}
+              totalLength={array.length}
+            />
+          </CoachCard>
+        )
+      )}
     </Container>
   );
 };

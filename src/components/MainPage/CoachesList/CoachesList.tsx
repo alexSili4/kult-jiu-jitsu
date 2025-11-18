@@ -47,6 +47,7 @@ interface ICoachCardProps {
   rotateEnd: number;
   video: string;
   scrollYProgress: MotionValue<number>;
+  id: string;
 }
 
 interface ICircularTextProps {
@@ -93,6 +94,7 @@ const CoachCard: FC<ICoachCardProps> = ({
   rotateEnd,
   scrollYProgress,
   video,
+  id,
 }) => {
   const [isActive, setIsActive] = useState(false);
 
@@ -121,6 +123,7 @@ const CoachCard: FC<ICoachCardProps> = ({
 
   return (
     <CardWrapper
+      id={id}
       onMouseEnter={onFocus}
       onMouseLeave={onBlur}
       onFocus={onFocus}
@@ -248,7 +251,7 @@ const CoachesList: FC<ICoachesListProps> = ({ scrollYProgress }) => {
         </CoachName>
       </CoachInfo>
 
-      {coachesData.map(({ name, video }, index) => {
+      {coachesData.map(({ name, video, id }, index) => {
         const start = index * 0.25;
         const rotateEnd = start + 0.25;
         const scaleStart = rotateEnd + 0.17;
@@ -263,6 +266,7 @@ const CoachesList: FC<ICoachesListProps> = ({ scrollYProgress }) => {
             start={start}
             scrollYProgress={scrollYProgress}
             video={video}
+            id={id}
           />
         );
       })}

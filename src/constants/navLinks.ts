@@ -1,5 +1,6 @@
 import { INavLink } from '@/types/common';
 import SectionId from './sectionId';
+import contacts from './contacts';
 
 const navLinks: INavLink[] = [
   { href: `#${SectionId.coaches}`, label: 'Тренери', isPublic: true },
@@ -13,6 +14,7 @@ const navLinks: INavLink[] = [
   { href: `#${SectionId.amenities}`, label: 'Зручності', isPublic: true },
   { href: `#${SectionId.veterans}`, label: 'Для ветеранів', isPublic: true },
   { href: `#${SectionId.map}`, label: 'Як знайти', isPublic: true },
+  contacts.instasport,
 ];
 
 export default navLinks;

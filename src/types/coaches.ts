@@ -5,4 +5,5 @@ export interface ICoach {
   qualification: string;
   experience: string;
   groups: string;
+  id: string;
 }

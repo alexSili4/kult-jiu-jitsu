@@ -28,6 +28,8 @@ import {
   ListItem,
   OptionsList,
   OptionBtn,
+  SubmitBtnLabelMain,
+  SubmitBtnLabelAlt,
 } from './ContactsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { contacts, SectionId } from '@/constants';
@@ -166,7 +168,11 @@ const ContactsForm: FC = () => {
             isSelect
           />
         </InputsWrap>
-        <SubmitBtn>записатись</SubmitBtn>
+        <SubmitBtn>
+          <span>записатись</span>
+          <SubmitBtnLabelMain>записатись</SubmitBtnLabelMain>
+          <SubmitBtnLabelAlt>записатись</SubmitBtnLabelAlt>
+        </SubmitBtn>
       </Form>
     </FormContainer>
   );
@@ -186,6 +192,16 @@ const Contacts: FC = () => {
               <PiTelegramLogo />
             </SocialLink>
           </SocialLinks>
+
+          <a></a>
+
+          <ContactPhone
+            href={contacts.instasport.href}
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            {contacts.instasport.label}
+          </ContactPhone>
 
           <ContactPhone href='tel:+380998882233'>
             <Symbol></Symbol>

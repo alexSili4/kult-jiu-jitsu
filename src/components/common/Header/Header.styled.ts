@@ -78,12 +78,41 @@ export const List = styled(motion.ul)`
 export const ListItem = styled.li``;
 
 export const Link = styled.a`
+  position: relative;
+  display: flex;
   font-family: ${({ theme }) => theme.fontFamily.involve};
-  color: #f9f9f9;
+  color: transparent;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.57;
   white-space: nowrap;
+  overflow: hidden;
+`;
+
+const LabelLabel = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #f9f9f9;
+  transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
+`;
+
+export const LabelLabelMain = styled(LabelLabel)`
+  a:is(:hover, :focus) > & {
+    transform: translateY(-100%);
+  }
+`;
+
+export const LabelLabelAlt = styled(LabelLabel)`
+  transform: translateY(100%);
+
+  a:is(:hover, :focus) > & {
+    transform: translateY(0%);
+  }
 `;
 
 export const BookASessionLink = styled.a`
@@ -109,17 +138,46 @@ export const DeskBookASessionLink = styled(BookASessionLink)`
 export const Label = styled.span`
   flex-grow: 1;
   position: relative;
+  display: flex;
   font-family: ${({ theme }) => theme.fontFamily.theater};
-  color: ${({ theme }) => theme.colors.white};
+  color: transparent;
   font-size: 20px;
   font-weight: 700;
   letter-spacing: -0.2px;
   line-height: 1;
   text-align: center;
   translate: 0.2px;
+  overflow: hidden;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     font-size: 24px;
+  }
+`;
+
+const BookASessionLinkLabel = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: ${({ theme }) => theme.colors.white};
+  transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
+`;
+
+export const BookASessionLinkLabelMain = styled(BookASessionLinkLabel)`
+  a:is(:hover, :focus) & {
+    transform: translateY(-100%);
+  }
+`;
+
+export const BookASessionLinkLabelAlt = styled(BookASessionLinkLabel)`
+  transform: translateY(100%);
+
+  a:is(:hover, :focus) & {
+    transform: translateY(0%);
   }
 `;
 
@@ -151,6 +209,8 @@ export const FullNavigationBtn = styled(motion.button)`
   justify-content: center;
   width: 54px;
   height: 54px;
+  background-color: #ff6600;
+  border-radius: 50%;
   color: ${({ theme }) => theme.colors.white};
 `;
 
@@ -179,7 +239,7 @@ export const MobileMenuBtn = styled.button<IStyledMobileMenuBtnProps>`
   justify-content: center;
   width: 48px;
   height: 48px;
-  background-color: #252525;
+  background-color: #ff6600;
   border-radius: 50%;
   transition: rotate ${({ theme }) => theme.transitionDurationAndFunc};
   color: ${({ theme }) => theme.colors.white};

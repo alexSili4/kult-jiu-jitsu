@@ -89,7 +89,7 @@ const ScheduleDetails: FC<IScheduleDetailsProps> = ({ day, programs }) => {
                             <span>{time}</span>
                           </Time>
                           <Program>{program}</Program>
-                          <Coach>{coach}</Coach>
+                          <Coach>{coach.name}</Coach>
                         </DayInfo>
                       </ListItem>
                     ))}

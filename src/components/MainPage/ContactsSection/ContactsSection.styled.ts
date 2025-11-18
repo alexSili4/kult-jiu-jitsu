@@ -130,7 +130,7 @@ export const ContactsBannerWrap = styled.div`
   overflow: hidden;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    height: 100%;
+    height: 300px;
   }
 `;
 
@@ -202,15 +202,44 @@ export const InputsWrap = styled.div`
 `;
 
 export const SubmitBtn = styled.button`
+  position: relative;
   padding: ${({ theme }) => theme.spacing(4)}px;
   background-color: #527324;
   border-radius: 100px;
-  color: ${({ theme }) => theme.colors.white};
+  color: transparent;
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;
-  font-size: 20px;
+  font-size: 28px;
   line-height: 1;
   letter-spacing: -0.2px;
+  overflow: hidden;
+`;
+
+const SubmitBtnLabel = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: ${({ theme }) => theme.colors.white};
+  transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
+`;
+
+export const SubmitBtnLabelMain = styled(SubmitBtnLabel)`
+  button:is(:hover, :focus) > & {
+    transform: translateY(-100%);
+  }
+`;
+
+export const SubmitBtnLabelAlt = styled(SubmitBtnLabel)`
+  transform: translateY(100%);
+
+  button:is(:hover, :focus) > & {
+    transform: translateY(0%);
+  }
 `;
 
 // Input
@@ -272,6 +301,7 @@ export const OpenSelectBtnIcon = styled.span<IStyledOpenSelectBtnIconProps>`
 
 export const OptionsContainer = styled.div`
   position: absolute;
+  z-index: 10;
   top: 100%;
   left: 0;
   width: 100%;

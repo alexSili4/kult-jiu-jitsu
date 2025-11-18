@@ -1,4 +1,4 @@
-import { FC, MouseEvent, useRef } from 'react';
+import { FC, MouseEvent, MouseEventHandler, useRef, useState } from 'react';
 import {
   MotionValue,
   SpringOptions,
@@ -35,6 +35,77 @@ import {
 interface IFoundersCardsProps {
   scrollYProgress: MotionValue<number>;
 }
+
+interface IFounderCardProps {
+  img: string;
+  name: string;
+  rotateZ: MotionValue<number>;
+  rotateY: MotionValue<number>;
+  y: MotionValue<number>;
+  instagram: string;
+  onLinkClick: MouseEventHandler;
+}
+
+const FounderCard: FC<IFounderCardProps> = ({
+  img,
+  name,
+  rotateZ,
+  rotateY,
+  y,
+  instagram,
+  onLinkClick,
+}) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+
+  const onCardClick = () => {
+    setIsActive((prevState) => !prevState);
+  };
+
+  return (
+    <CardContainer style={{ rotateZ, rotateY, y }}>
+      <Card isActive={isActive} onClick={onCardClick}>
+        <CardDetails isActive={isActive}>
+          <CardHeader>
+            <CardName>{name}</CardName>
+            <CardDesc>
+              Засновник першої в Україні Патронатної служби Янголи
+            </CardDesc>
+          </CardHeader>
+
+          <CardText>
+            Trust is the cornerstone of Airbnb's community, and identity
+            verfication is part of how we build it.
+          </CardText>
+
+          <CardLinks>
+            <ListItem>
+              <Instagram
+                href={instagram}
+                target='_blank'
+                rel='noopener noreferrer'
+                onClick={onLinkClick}
+              >
+                <FaInstagram color='#D9D9D9' size={20} />
+              </Instagram>
+            </ListItem>
+            <ListItem>
+              <Angels
+                href='https://www.azovangels.com/'
+                target='_blank'
+                rel='noopener noreferrer'
+                onClick={onLinkClick}
+              >
+                <AngelsLogo />
+              </Angels>
+            </ListItem>
+          </CardLinks>
+        </CardDetails>
+
+        <Image src={img} alt={name} isActive={isActive} />
+      </Card>
+    </CardContainer>
+  );
+};
 
 const FoundersCards: FC<IFoundersCardsProps> = ({ scrollYProgress }) => {
   const { founders } = veterans;
@@ -83,48 +154,15 @@ const FoundersCards: FC<IFoundersCardsProps> = ({ scrollYProgress }) => {
 
         return (
           <ListItem key={name}>
-            <CardContainer style={{ rotateZ, rotateY, y }}>
-              <Card>
-                <CardDetails>
-                  <CardHeader>
-                    <CardName>{name}</CardName>
-                    <CardDesc>
-                      Засновник першої в Україні Патронатної служби Янголи
-                    </CardDesc>
-                  </CardHeader>
-
-                  <CardText>
-                    Trust is the cornerstone of Airbnb's community, and identity
-                    verfication is part of how we build it.
-                  </CardText>
-
-                  <CardLinks>
-                    <ListItem>
-                      <Instagram
-                        href={instagram}
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        onClick={onLinkClick}
-                      >
-                        <FaInstagram color='#D9D9D9' size={20} />
-                      </Instagram>
-                    </ListItem>
-                    <ListItem>
-                      <Angels
-                        href='https://www.azovangels.com/'
-                        target='_blank'
-                        rel='noopener noreferrer'
-                        onClick={onLinkClick}
-                      >
-                        <AngelsLogo />
-                      </Angels>
-                    </ListItem>
-                  </CardLinks>
-                </CardDetails>
-
-                <Image src={img} alt={name} />
-              </Card>
-            </CardContainer>
+            <FounderCard
+              img={img}
+              instagram={instagram}
+              name={name}
+              onLinkClick={onLinkClick}
+              rotateY={rotateY}
+              rotateZ={rotateZ}
+              y={y}
+            />
           </ListItem>
         );
       })}

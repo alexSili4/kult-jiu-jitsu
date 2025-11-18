@@ -7,6 +7,7 @@ export const Container = styled(motion.div)`
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     position: relative;
     display: block;
+    translate:0 -50%
   }
 `;
 

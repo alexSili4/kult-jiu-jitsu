@@ -3,16 +3,10 @@ import decorativeIcon from '@/icons/programs/decotative-element.svg';
 import { motion } from 'framer-motion';
 
 export const Section = styled.section`
-  position: sticky;
-  top: -100dvh;
-  left: 0;
-  height: 200dvh;
+  display: flex;
+  flex-direction: column;
   background-color: #18181c;
-`;
-
-export const Container = styled.div`
-  position: relative;
-  height: 100%;
+  padding-bottom: ${({ theme }) => theme.spacing(14)}px;
   padding-top: ${({ theme }) => theme.spacing(14)}px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
@@ -28,6 +22,18 @@ export const Container = styled.div`
   }
 `;
 
+export const Wrapper = styled.div`
+  position: sticky;
+  top: -100dvh;
+  left: 0;
+  height: 200dvh;
+`;
+
+export const Container = styled.div`
+  position: relative;
+  height: 100%;
+`;
+
 export const Content = styled.div`
   position: sticky;
   top: 0;
@@ -39,11 +45,18 @@ export const Content = styled.div`
   height: 100dvh;
   padding-top: ${({ theme }) => theme.spacing(10)}px;
   padding-bottom: ${({ theme }) => theme.spacing(10)}px;
+  overflow: hidden;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     padding-top: ${({ theme }) => theme.spacing(30)}px;
     padding-bottom: ${({ theme }) => theme.spacing(30)}px;
   }
+`;
+
+export const ListWrap = styled.ul`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 `;
 
 export const List = styled.div`

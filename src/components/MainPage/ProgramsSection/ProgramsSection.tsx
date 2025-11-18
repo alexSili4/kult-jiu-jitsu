@@ -17,6 +17,8 @@ import {
   DecorativeElement,
   DecorativeElementWrap,
   CursorImg,
+  ListWrap,
+  Wrapper,
 } from './ProgramsSection.styled';
 import { programs, SectionId } from '@/constants';
 import SectionTitle from '@CommonComponents/SectionTitle';
@@ -57,7 +59,7 @@ const ProgramsSection: FC = () => {
   };
 
   const rotate = useTransform(scrollYProgress, [0.2, 0.8], [0, 15]);
-  const scale = useTransform(scrollYProgress, [0.2, 0.8], [1, 8]);
+  const scale = useTransform(scrollYProgress, [0.4, 0.8], [1, 15]);
 
   const smoothScale = useSpring(scale, transition);
   const smoothRotate = useSpring(rotate, transition);
@@ -74,129 +76,135 @@ const ProgramsSection: FC = () => {
 
   return (
     <>
-      <Section ref={containerRef} id={SectionId.programs}>
-        <SectionTitle text='Програми занять' isHidden />
-
+      <Section id={SectionId.programs}>
         <GeneralContainer>
+          <SectionTitle text='Групи' />
+        </GeneralContainer>
+
+        <Wrapper ref={containerRef}>
           <Container>
             <Content>
-              <DecorativeElementWrap>
-                <DecorativeElement
-                  style={{
-                    scale: smoothScale,
-                    rotate: smoothRotate,
-                  }}
-                ></DecorativeElement>
-              </DecorativeElementWrap>
+              <GeneralContainer>
+                <DecorativeElementWrap>
+                  <DecorativeElement
+                    style={{
+                      scale: smoothScale,
+                      rotate: smoothRotate,
+                    }}
+                  ></DecorativeElement>
+                </DecorativeElementWrap>
 
-              <List>
-                <Row>
-                  <Program>
-                    {sectionInView && (
-                      <CustomCursor>
-                        <CursorImg
-                          src={beginners.image}
-                          alt={beginners.label}
-                          width={160}
-                          height={160}
-                        />
-                      </CustomCursor>
-                    )}
+                <ListWrap>
+                  <List>
+                    <Row>
+                      <Program>
+                        {sectionInView && (
+                          <CustomCursor>
+                            <CursorImg
+                              src={beginners.image}
+                              alt={beginners.label}
+                              width={160}
+                              height={160}
+                            />
+                          </CustomCursor>
+                        )}
 
-                    <Name>{beginners.label}</Name>
-                    <GroupDesc desc={beginners.desc} />
-                  </Program>
-                  <Program>
-                    {sectionInView && (
-                      <CustomCursor>
-                        <CursorImg
-                          src={basic.image}
-                          alt={basic.label}
-                          width={160}
-                          height={200}
-                        />
-                      </CustomCursor>
-                    )}
+                        <Name>{beginners.label}</Name>
+                        <GroupDesc desc={beginners.desc} />
+                      </Program>
+                      <Program>
+                        {sectionInView && (
+                          <CustomCursor>
+                            <CursorImg
+                              src={basic.image}
+                              alt={basic.label}
+                              width={160}
+                              height={200}
+                            />
+                          </CustomCursor>
+                        )}
 
-                    <Name>{basic.label}</Name>
-                    <GroupDesc desc={basic.desc} />
-                  </Program>
-                </Row>
-                <Row>
-                  <Program>
-                    {sectionInView && (
-                      <CustomCursor>
-                        <CursorImg
-                          src={mixed.image}
-                          alt={mixed.label}
-                          width={160}
-                          height={200}
-                        />
-                      </CustomCursor>
-                    )}
+                        <Name>{basic.label}</Name>
+                        <GroupDesc desc={basic.desc} />
+                      </Program>
+                    </Row>
+                    <Row>
+                      <Program>
+                        {sectionInView && (
+                          <CustomCursor>
+                            <CursorImg
+                              src={mixed.image}
+                              alt={mixed.label}
+                              width={160}
+                              height={200}
+                            />
+                          </CustomCursor>
+                        )}
 
-                    <Name>{mixed.label}</Name>
-                    <GroupDesc desc={mixed.desc} />
-                  </Program>
-                  <Program type='button' onClick={onKidsBtnClick}>
-                    {sectionInView && (
-                      <CustomCursor>
-                        <CursorImg
-                          src={kids.image}
-                          alt={kids.label}
-                          width={160}
-                          height={200}
-                        />
-                      </CustomCursor>
-                    )}
+                        <Name>{mixed.label}</Name>
+                        <GroupDesc desc={mixed.desc} />
+                      </Program>
+                      <Program type='button' onClick={onKidsBtnClick}>
+                        {sectionInView && (
+                          <CustomCursor>
+                            <CursorImg
+                              src={kids.image}
+                              alt={kids.label}
+                              width={160}
+                              height={200}
+                            />
+                          </CustomCursor>
+                        )}
 
-                    <Name>{kids.label}</Name>
-                    <GroupDesc desc={kids.desc} />
-                  </Program>
-                </Row>
-                <EndRow>
-                  <Program>
-                    {sectionInView && (
-                      <CustomCursor>
-                        <CursorImg
-                          src={personal.image}
-                          alt={personal.label}
-                          width={160}
-                          height={160}
-                        />
-                      </CustomCursor>
-                    )}
+                        <Name>{kids.label}</Name>
+                        <GroupDesc desc={kids.desc} />
+                      </Program>
+                    </Row>
+                    <EndRow>
+                      <Program>
+                        {sectionInView && (
+                          <CustomCursor>
+                            <CursorImg
+                              src={personal.image}
+                              alt={personal.label}
+                              width={160}
+                              height={160}
+                            />
+                          </CustomCursor>
+                        )}
 
-                    <Name>{personal.label}</Name>
-                    <GroupDesc desc={personal.desc} />
-                  </Program>
-                </EndRow>
-                <StartRow>
-                  <Program>
-                    {sectionInView && (
-                      <CustomCursor>
-                        <CursorImg
-                          src={events.image}
-                          alt={events.label}
-                          width={192}
-                          height={200}
-                        />
-                      </CustomCursor>
-                    )}
+                        <Name>{personal.label}</Name>
+                        <GroupDesc desc={personal.desc} />
+                      </Program>
+                    </EndRow>
+                    <StartRow>
+                      <Program>
+                        {sectionInView && (
+                          <CustomCursor>
+                            <CursorImg
+                              src={events.image}
+                              alt={events.label}
+                              width={192}
+                              height={200}
+                            />
+                          </CustomCursor>
+                        )}
 
-                    <Name>{events.label}</Name>
-                    <GroupDesc desc={events.desc} />
-                  </Program>
-                </StartRow>
-              </List>
+                        <Name>{events.label}</Name>
+                        <GroupDesc desc={events.desc} />
+                      </Program>
+                    </StartRow>
+                  </List>
 
-              <TitleWrap>
-                <Symbol></Symbol>
-                <Title>[Програми занять)</Title>
-              </TitleWrap>
+                  <TitleWrap>
+                    <Symbol></Symbol>
+                    <Title>[Програми занять)</Title>
+                  </TitleWrap>
+                </ListWrap>
+              </GeneralContainer>
             </Content>
           </Container>
-        </GeneralContainer>
+        </Wrapper>
       </Section>
 
       <AnimatedKidsProgramModalWin

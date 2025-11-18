@@ -10,13 +10,18 @@ export const Section = styled.section`
 
 export const BannerWrap = styled.div`
   position: relative;
-  height: 100dvh;
+  height: 150px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    height: 250px;
+  }
 `;
 
 export const Banner = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: bottom center;
 `;
 
 export const Title = styled.p`

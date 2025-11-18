@@ -2,10 +2,15 @@ import AngelsLogoIcon from '@/icons/veterans/angels.svg?react';
 import styled from '@emotion/styled';
 import { motion } from 'framer-motion';
 import Azov from '@/icons/veterans/azov.svg?react';
+import {
+  IStyledCardDetailsProps,
+  IStyledImageProps,
+  StyledCardProps,
+} from './AngelsFoundersMob.types';
 
 export const Founders = styled.div`
   position: relative;
-  height: 250dvh;
+  height: 200dvh;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     display: none;
@@ -20,6 +25,7 @@ export const Content = styled.div`
   align-items: center;
   justify-content: center;
   height: 100dvh;
+  overflow: hidden;
 `;
 
 export const Title = styled.h3`
@@ -84,7 +90,7 @@ export const CardContainer = styled(motion.div)`
   cursor: pointer;
 `;
 
-export const Card = styled.div`
+export const Card = styled.div<StyledCardProps>`
   position: relative;
   width: 70.15vw;
   aspect-ratio: 273 / 403.81;
@@ -93,11 +99,13 @@ export const Card = styled.div`
   border-radius: 16px;
   overflow: hidden;
   transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
+  transform: ${({ isActive }) =>
+    isActive ? 'rotateY(180deg)' : 'rotateY(0deg)'};
 
-  *:is(:hover, :focus) > &,
+  /* *:is(:hover, :focus) > &,
   &:has(*:focus) {
     transform: rotateY(180deg);
-  }
+  } */
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
     width: 40vw;
@@ -105,7 +113,7 @@ export const Card = styled.div`
   }
 `;
 
-export const Image = styled.img`
+export const Image = styled.img<IStyledImageProps>`
   position: absolute;
   top: 0;
   left: 0;
@@ -113,15 +121,17 @@ export const Image = styled.img`
   height: 100%;
   object-fit: cover;
   transition: opacity ${({ theme }) => theme.transitionDurationAndFunc};
+  opacity: ${({ isActive }) => (isActive ? 0 : 1)};
+  pointer-events: ${({ isActive }) => (isActive ? 'none' : 'all')};
 
-  *:is(:hover, :focus) > * > &,
+  /* *:is(:hover, :focus) > * > &,
   *:has(*:focus) > & {
     opacity: 0;
     pointer-events: none;
-  }
+  } */
 `;
 
-export const CardDetails = styled.div`
+export const CardDetails = styled.div<IStyledCardDetailsProps>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -130,11 +140,12 @@ export const CardDetails = styled.div`
   opacity: 0;
   transform: rotateY(180deg);
   transition: opacity ${({ theme }) => theme.transitionDurationAndFunc};
+  opacity: ${({ isActive }) => (isActive ? 1 : 0)};
 
-  *:is(:hover, :focus) > * > &,
+  /* *:is(:hover, :focus) > * > &,
   *:has(*:focus) > & {
     opacity: 1;
-  }
+  } */
 `;
 
 export const CardHeader = styled.div`

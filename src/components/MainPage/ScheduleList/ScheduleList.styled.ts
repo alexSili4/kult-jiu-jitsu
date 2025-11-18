@@ -105,7 +105,7 @@ export const Program = styled.p`
   line-height: 1.4;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    width: 59%;
+    width: 40%;
   }
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
@@ -113,13 +113,15 @@ export const Program = styled.p`
   }
 `;
 
-export const Coach = styled.p`
+export const Coach = styled.button`
   flex-grow: 1;
   color: #808080;
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
   font-size: 16px;
   line-height: 1.4;
+  white-space: nowrap;
+  text-align: end;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     font-size: 20px;

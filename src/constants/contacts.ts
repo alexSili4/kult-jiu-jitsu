@@ -1,5 +1,6 @@
 import mapImgDesk from '@/images/contacts/map-desk.jpg';
 import mapImgMob from '@/images/contacts/map-mob.jpg';
+import { INavLink } from '@/types/common';
 import { IMap } from '@/types/contacts';
 
 const startMob = { bottom: '46%', right: '8%' };
@@ -19,8 +20,8 @@ const map: Record<'mob' | 'desk', IMap> = {
       { bottom: '61.19%', right: '46%' },
     ],
     parking: [
-      { bottom: '47.18%', right: '39%' },
-      { bottom: '55.4%', right: '47.94%' },
+      { bottom: '47%', right: '36%' },
+      { bottom: '54.5%', right: '52.5%' },
     ],
   },
   desk: {
@@ -47,4 +48,10 @@ const mapLink =
 
 const coaches = ['Вова', 'Бучеча', 'Андрій'];
 
-export default { mapLink, coaches, map };
+const instasport: INavLink = {
+  href: 'https://instasport.ua/club/kult_jiujitsu',
+  label: 'Instasport',
+  isPublic: true,
+};
+
+export default { mapLink, coaches, map, instasport };
