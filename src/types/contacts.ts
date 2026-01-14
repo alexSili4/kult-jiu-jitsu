@@ -1,7 +1,8 @@
 export interface IContactsForm {
   name: string;
   phone: string;
-  coach: string;
+  teacher: string;
+  email: string;
 }
 
 export interface IPoint {

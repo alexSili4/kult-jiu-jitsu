@@ -213,6 +213,11 @@ export const SubmitBtn = styled.button`
   line-height: 1;
   letter-spacing: -0.2px;
   overflow: hidden;
+
+  &:disabled {
+    filter: grayscale(1);
+    cursor: default;
+  }
 `;
 
 const SubmitBtnLabel = styled.span`

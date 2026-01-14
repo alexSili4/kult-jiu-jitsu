@@ -74,7 +74,7 @@ const AboutGroupSection: FC<IAboutGroupSectionProps> = ({ group }) => {
               </Category>
 
               <Category>
-                <Subtitle>Цілі програми</Subtitle>
+                <Subtitle>Рівні програми</Subtitle>
 
                 <Levels>
                   <Text>

@@ -116,12 +116,30 @@ const ContactsForm: FC = () => {
   const { register, handleSubmit, reset, setValue } = useForm<IContactsForm>();
 
   const onOptionChange = (option: string) => {
-    setValue('coach', option);
+    setValue('teacher', option);
   };
 
-  const onSubmit = (data: IContactsForm) => {
-    console.log(data);
-    reset();
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = async (data: IContactsForm) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/contact-form/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        reset();
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const onPhoneChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -161,17 +179,31 @@ const ContactsForm: FC = () => {
             })}
           />
           <Input
+            placeholder='Електронна пошта'
+            settings={register('email', {
+              required: true,
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Невірний формат email',
+              },
+            })}
+          />
+          <Input
             placeholder='Тренер'
             options={contacts.coaches}
             onOptionChange={onOptionChange}
-            settings={register('coach', { required: true })}
+            settings={register('teacher', { required: true })}
             isSelect
           />
         </InputsWrap>
-        <SubmitBtn>
-          <span>записатись</span>
-          <SubmitBtnLabelMain>записатись</SubmitBtnLabelMain>
-          <SubmitBtnLabelAlt>записатись</SubmitBtnLabelAlt>
+        <SubmitBtn disabled={isLoading}>
+          <span>{isLoading ? 'надсилаємо...' : 'записатись'}</span>
+          <SubmitBtnLabelMain>
+            {isLoading ? 'надсилаємо...' : 'записатись'}
+          </SubmitBtnLabelMain>
+          <SubmitBtnLabelAlt>
+            {isLoading ? 'надсилаємо...' : 'записатись'}
+          </SubmitBtnLabelAlt>
         </SubmitBtn>
       </Form>
     </FormContainer>
