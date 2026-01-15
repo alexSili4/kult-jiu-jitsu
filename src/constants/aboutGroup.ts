@@ -2,7 +2,7 @@ import kidsBanner from '@/images/aboutGroup/kids.jpg';
 import basicBanner from '@/images/aboutGroup/basic.png';
 import beginnersBanner from '@/images/aboutGroup/beginners.png';
 import eventsBanner from '@/images/aboutGroup/events.png';
-import mixedBanner from '@/images/aboutGroup/mixed.png';
+import proBanner from '@/images/aboutGroup/pro.png';
 import personalBanner from '@/images/aboutGroup/personal.png';
 
 import { IAboutGroup } from '@/types/aboutGroups';
@@ -133,10 +133,10 @@ const events: IAboutGroup = {
   levels: ['Всі рівні'],
 };
 
-const mixed: IAboutGroup = {
-  title: 'змішані групи',
-  banner: mixedBanner,
-  text: 'Єдина спільнота на татамі — для тих, хто прагне більшого',
+const pro: IAboutGroup = {
+  title: 'про група',
+  banner: proBanner,
+  text: 'Готові приходити вчасно та регулярно?\nНе пропускати жодної сутички?\nАктивно виступати на змаганнях та допомагати інших у підготовці?\n\nТоді вас вітає Про Група.',
   about: [
     {
       text: 'Будь-який вік',
@@ -152,11 +152,13 @@ const mixed: IAboutGroup = {
     },
   ],
   goals: [
-    'Можливість тренуватися з партнерами різного рівня та ваги.',
-    'Заглиблення у складні техніки та вдосконалення власного стилю.',
-    'Розвиток витривалості та ментальної стійкості у спарингах.',
+    'Тренувальний процес на Про групі формується відповідно до потреб атлетів, які готуються на змагання.',
   ],
-  levels: ['Всі рівні'],
+  requirements: [
+    'Тренування для досвідчених спортсменів !',
+    'Відвідування за узгодженням з тренером групи.',
+  ],
+  levels: ['Про рівень'],
 };
 
 const personal: IAboutGroup = {
@@ -185,4 +187,4 @@ const personal: IAboutGroup = {
   levels: ['Початковий', 'Середній', 'Просунутий'],
 };
 
-export default { kids, basic, beginners, events, mixed, personal };
+export default { kids, basic, beginners, events, pro, personal };

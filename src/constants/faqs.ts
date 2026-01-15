@@ -134,13 +134,13 @@ const events: IFAQ[] = [
   },
 ];
 
-const mixed: IFAQ[] = [
+const pro: IFAQ[] = [
   {
-    question: 'Хто може відвідувати змішані групи?',
+    question: 'Хто може відвідувати про групи?',
     answer: 'Будь-який учень клубу, незалежно від кольору поясу та досвіду.',
   },
   {
-    question: 'Який формат тренувань у змішаних групах?',
+    question: 'Який формат тренувань у про групах?',
     answer: 'Ми поєднуємо технічну роботу та тривалі сесії спарингів (ролів).',
   },
 ];
@@ -158,4 +158,4 @@ const personal: IFAQ[] = [
   },
 ];
 
-export default { all, kids, basic, beginners, events, mixed, personal };
+export default { all, kids, basic, beginners, events, pro, personal };

@@ -6,36 +6,36 @@ import GroupsSection from '@MainPageComponents/GroupsSection';
 import AboutGroupSection from '@MainPageComponents/AboutGroupSection';
 import { AnimatePresence } from 'framer-motion';
 
-interface IMixedProgramModalWinProps {
+interface IProProgramModalWinProps {
   setModalWinState: () => void;
 }
 
-interface IAnimatedMixedProgramModalWinProps {
+interface IAnimatedProProgramModalWinProps {
   setModalWinState: () => void;
   isOpen: boolean;
 }
 
-const MixedProgramModalWin: FC<IMixedProgramModalWinProps> = ({
+const ProProgramModalWin: FC<IProProgramModalWinProps> = ({
   setModalWinState,
 }) => {
   return (
     <ModalWin setModalWinState={setModalWinState}>
-      <AboutGroupSection group={aboutGroup.mixed} />
-      <FAQsSection faqs={faqs.mixed} isModalWin />
-      <GroupsSection groups={groups.mixed} />
+      <AboutGroupSection group={aboutGroup.pro} />
+      <FAQsSection faqs={faqs.pro} isModalWin />
+      <GroupsSection groups={groups.pro} />
     </ModalWin>
   );
 };
 
-const AnimatedMixedProgramModalWin: FC<IAnimatedMixedProgramModalWinProps> = ({
+const AnimatedProProgramModalWin: FC<IAnimatedProProgramModalWinProps> = ({
   isOpen,
   setModalWinState,
 }) => {
   return (
     <AnimatePresence>
-      {isOpen && <MixedProgramModalWin setModalWinState={setModalWinState} />}
+      {isOpen && <ProProgramModalWin setModalWinState={setModalWinState} />}
     </AnimatePresence>
   );
 };
 
-export default AnimatedMixedProgramModalWin;
+export default AnimatedProProgramModalWin;

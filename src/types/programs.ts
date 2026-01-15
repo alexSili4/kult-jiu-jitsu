@@ -1,6 +1,6 @@
 type ProgramKey =
   | 'beginners'
-  | 'mixed'
+  | 'pro'
   | 'basic'
   | 'kids'
   | 'personal'

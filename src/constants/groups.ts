@@ -51,7 +51,7 @@ const beginners: IGroup[] = [
   },
 ];
 
-const mixed: IGroup[] = [
+const pro: IGroup[] = [
   {
     days: 'Пн / Ср / Пт',
     period: 'Вечір',
@@ -84,4 +84,4 @@ const personal: IGroup[] = [
   },
 ];
 
-export default { kids, basic, beginners, mixed, events, personal };
+export default { kids, basic, beginners, pro, events, personal };

@@ -7,7 +7,12 @@ export const Container = styled(motion.div)`
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     position: relative;
     display: block;
-    translate:0 -50%
+    translate: 0 -50%;
+    cursor: none;
+
+    * {
+      cursor: none;
+    }
   }
 `;
 
@@ -15,6 +20,7 @@ export const CoachInfo = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  cursor: none;
 `;
 
 export const CoachDesc = styled(motion.div)`

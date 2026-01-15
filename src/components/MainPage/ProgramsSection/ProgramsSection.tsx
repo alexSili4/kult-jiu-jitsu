@@ -33,7 +33,7 @@ import CustomCursor from '@CommonComponents/CustomCursor';
 import AnimatedKidsProgramModalWin from '@MainPageComponents/KidsProgramModalWin';
 import AnimatedBeginnersProgramModalWin from '@MainPageComponents/BeginnersProgramModalWin';
 import AnimatedBasicProgramModalWin from '@MainPageComponents/BasicProgramModalWin';
-import AnimatedMixedProgramModalWin from '@MainPageComponents/MixedProgramModalWin';
+import AnimatedProProgramModalWin from '@MainPageComponents/ProProgramModalWin';
 import AnimatedPersonalProgramModalWin from '@MainPageComponents/PersonalProgramModalWin';
 import AnimatedEventsProgramModalWin from '@MainPageComponents/EventsProgramModalWin';
 
@@ -46,7 +46,7 @@ const GroupDesc: FC<IGroupDescProps> = ({ desc }) => {
 };
 
 const ProgramsSection: FC = () => {
-  const { beginners, basic, events, kids, mixed, personal } = programs;
+  const { beginners, basic, events, kids, pro, personal } = programs;
 
   const [showKidsProgramModalWin, setShowKidsProgramModalWin] =
     useState<boolean>(false);
@@ -54,7 +54,7 @@ const ProgramsSection: FC = () => {
     useState<boolean>(false);
   const [showBasicProgramModalWin, setShowBasicProgramModalWin] =
     useState<boolean>(false);
-  const [showMixedProgramModalWin, setShowMixedProgramModalWin] =
+  const [showProProgramModalWin, setShowProProgramModalWin] =
     useState<boolean>(false);
   const [showPersonalProgramModalWin, setShowPersonalProgramModalWin] =
     useState<boolean>(false);
@@ -89,8 +89,8 @@ const ProgramsSection: FC = () => {
   const toggleShowBasicProgramModalWin = () => {
     setShowBasicProgramModalWin((prevState) => !prevState);
   };
-  const toggleShowMixedProgramModalWin = () => {
-    setShowMixedProgramModalWin((prevState) => !prevState);
+  const toggleShowProProgramModalWin = () => {
+    setShowProProgramModalWin((prevState) => !prevState);
   };
   const toggleShowPersonalProgramModalWin = () => {
     setShowPersonalProgramModalWin((prevState) => !prevState);
@@ -111,10 +111,10 @@ const ProgramsSection: FC = () => {
     toggleShowBeginnersProgramModalWin();
   };
 
-  const onMixedBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const onProBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
     e.currentTarget.blur();
 
-    toggleShowMixedProgramModalWin();
+    toggleShowProProgramModalWin();
   };
 
   const onBasicBtnClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -190,20 +190,20 @@ const ProgramsSection: FC = () => {
                       </Program>
                     </Row>
                     <Row>
-                      <Program type='button' onClick={onMixedBtnClick}>
+                      <Program type='button' onClick={onProBtnClick}>
                         {sectionInView && (
                           <CustomCursor>
                             <CursorImg
-                              src={mixed.image}
-                              alt={mixed.label}
+                              src={pro.image}
+                              alt={pro.label}
                               width={160}
                               height={200}
                             />
                           </CustomCursor>
                         )}
 
-                        <Name>{mixed.label}</Name>
-                        <GroupDesc desc={mixed.desc} />
+                        <Name>{pro.label}</Name>
+                        <GroupDesc desc={pro.desc} />
                       </Program>
                       <Program type='button' onClick={onKidsBtnClick}>
                         {sectionInView && (
@@ -283,9 +283,9 @@ const ProgramsSection: FC = () => {
         setModalWinState={toggleShowBasicProgramModalWin}
       />
 
-      <AnimatedMixedProgramModalWin
-        isOpen={showMixedProgramModalWin}
-        setModalWinState={toggleShowMixedProgramModalWin}
+      <AnimatedProProgramModalWin
+        isOpen={showProProgramModalWin}
+        setModalWinState={toggleShowProProgramModalWin}
       />
 
       <AnimatedPersonalProgramModalWin
