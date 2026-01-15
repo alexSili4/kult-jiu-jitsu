@@ -73,6 +73,32 @@ const AboutGroupSection: FC<IAboutGroupSectionProps> = ({ group }) => {
                 </List>
               </Category>
 
+              {group.features && (
+                <Category>
+                  <Subtitle>Особливості програми</Subtitle>
+                  <List>
+                    {group.features.map((feature) => (
+                      <ListItem key={feature}>
+                        <TextWithSymbol>{feature}</TextWithSymbol>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Category>
+              )}
+
+              {group.requirements && (
+                <Category>
+                  <Subtitle>Що потрібно</Subtitle>
+                  <List>
+                    {group.requirements.map((req) => (
+                      <ListItem key={req}>
+                        <TextWithSymbol>{req}</TextWithSymbol>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Category>
+              )}
+
               <Category>
                 <Subtitle>Рівні програми</Subtitle>
 
@@ -93,6 +119,13 @@ const AboutGroupSection: FC<IAboutGroupSectionProps> = ({ group }) => {
                   </List>
                 </Levels>
               </Category>
+
+              {group.note && (
+                <Category>
+                  <Subtitle>Важливо знати</Subtitle>
+                  <AboutText>{group.note}</AboutText>
+                </Category>
+              )}
             </Details>
           </Content>
         </GeneralContainer>

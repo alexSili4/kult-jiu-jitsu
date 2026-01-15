@@ -10,14 +10,20 @@ export const Section = styled.section`
 
 export const BannerWrap = styled.div`
   position: relative;
-  height: 150px;
+  display: flex;
+  align-items: flex-end;
+  min-height: 150px;
+  padding-left: ${({ theme }) => theme.spacing(10)}px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    height: 250px;
+    min-height: 250px;
   }
 `;
 
 export const Banner = styled.img`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -25,9 +31,7 @@ export const Banner = styled.img`
 `;
 
 export const Title = styled.p`
-  position: absolute;
-  left: 40px;
-  bottom: 0;
+  position: relative;
   color: #f9f9f9;
   font-family: ${({ theme }) => theme.fontFamily.theater};
   font-weight: 700;

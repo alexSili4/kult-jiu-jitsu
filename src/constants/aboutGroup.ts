@@ -1,7 +1,20 @@
 import kidsBanner from '@/images/aboutGroup/kids.jpg';
+import basicBanner from '@/images/aboutGroup/basic.png';
+import beginnersBanner from '@/images/aboutGroup/beginners.png';
+import eventsBanner from '@/images/aboutGroup/events.png';
+import mixedBanner from '@/images/aboutGroup/mixed.png';
+import personalBanner from '@/images/aboutGroup/personal.png';
+
 import { IAboutGroup } from '@/types/aboutGroups';
 import Belt from '@/icons/aboutGroup/belt.svg?react';
-import { LuBaby, LuTimer } from 'react-icons/lu';
+import {
+  LuBaby,
+  LuTimer,
+  LuUser,
+  LuUsers,
+  LuCalendar,
+  LuTrophy,
+} from 'react-icons/lu';
 
 const kids: IAboutGroup = {
   title: 'дитячі групи',
@@ -28,4 +41,148 @@ const kids: IAboutGroup = {
   levels: ['Базовий', 'Середній'],
 };
 
-export default { kids };
+const basic: IAboutGroup = {
+  title: 'базовий курс',
+  banner: basicBanner,
+  text: 'Основа, фундамент, грунт !',
+  about: [
+    {
+      text: '1.5-2 роки навчання',
+      icon: LuTrophy,
+    },
+    {
+      text: 'Білий (2-4 страйпи) - синій пояси',
+      icon: Belt,
+    },
+    {
+      text: 'Тренування 90 хв',
+      icon: LuTimer,
+    },
+  ],
+  goals: [
+    'Групи де ви поглиблено вивчаєте головні позиції, базові техніки та формуєте своє повноцінне джиу-джитсу.',
+    'Робота над комбінаціями, переходами та системністю в діях.',
+    'Підготовка до перших змагань та адаптація до інтенсивних навантажень.',
+  ],
+  features: [
+    'Значно більше боротьби',
+    'Періодичні цикли підготовки до змагань',
+  ],
+  levels: ['Середній'],
+  note: 'До базових груп допускаються студенти, які закінчили курс початківців та будь які відвідувачі з досвідом від 6 місяців в джиу джитсу, або з досвідом у суміжних видах боротьби.',
+};
+
+const beginners: IAboutGroup = {
+  title: 'програма для новачків',
+  banner: beginnersBanner,
+  text: 'Групи розраховані на людей з будь яким рівнем підготовки, або її відсутності !',
+  about: [
+    {
+      text: 'Курс триває 3 місяці',
+      icon: LuUser,
+    },
+    {
+      text: 'Білий пояс (0-1 страйп)',
+      icon: Belt,
+    },
+    {
+      text: 'Тренування 60 хв',
+      icon: LuTimer,
+    },
+  ],
+  goals: [
+    'Формати в кімоно та без нього (Гі - Ноугі).',
+    'Плавно прогресуючі навантаження в зручному для тебе темпі.',
+    'Вивчення простих та ефективних технік за прогресивною авторською програмою тренувань.',
+    'Дружня атмосфера.',
+    'Після закінчення курсу ви зможете повноцінно доєднатись до базових груп.',
+  ],
+  levels: ['Початковий'],
+  requirements: [
+    'Зручний спортивний одяг без металевих деталей',
+    'Пляшка води',
+    'Капці та рушник для душа',
+    'Згодом доведеться придбати кімоно, або компресійний одяг для Ноу Гі',
+  ],
+  note: 'Можна приєднатись у будь-який момент. З приводу актуального набору в групи початківців запитуйте у нас в соцмережах.',
+};
+
+const events: IAboutGroup = {
+  title: 'події та семінари',
+  banner: eventsBanner,
+  text: 'Навчайся у кращих та зростай разом з нами!',
+  about: [
+    {
+      text: 'Відкриті для всіх',
+      icon: LuCalendar,
+    },
+    {
+      text: 'Будь-який пояс',
+      icon: Belt,
+    },
+    {
+      text: 'Тривалість залежить від заходу',
+      icon: LuTimer,
+    },
+  ],
+  goals: [
+    'Майстер-класи від топових українських та закордонних інструкторів.',
+    'Участь у внутрішніх турнірах клубу та великих чемпіонатах.',
+    'Тімбілдінг, обмін досвідом та зміцнення клубної спільноти.',
+  ],
+  levels: ['Всі рівні'],
+};
+
+const mixed: IAboutGroup = {
+  title: 'змішані групи',
+  banner: mixedBanner,
+  text: 'Єдина спільнота на татамі — для тих, хто прагне більшого',
+  about: [
+    {
+      text: 'Будь-який вік',
+      icon: LuUsers,
+    },
+    {
+      text: 'Всі пояси',
+      icon: Belt,
+    },
+    {
+      text: 'Тренування 90 хв',
+      icon: LuTimer,
+    },
+  ],
+  goals: [
+    'Можливість тренуватися з партнерами різного рівня та ваги.',
+    'Заглиблення у складні техніки та вдосконалення власного стилю.',
+    'Розвиток витривалості та ментальної стійкості у спарингах.',
+  ],
+  levels: ['Всі рівні'],
+};
+
+const personal: IAboutGroup = {
+  title: 'індивідуальні тренування',
+  banner: personalBanner,
+  text: 'Максимальний результат у найкоротші терміни',
+  about: [
+    {
+      text: 'Гнучкий графік',
+      icon: LuCalendar,
+    },
+    {
+      text: 'Будь-який рівень',
+      icon: LuUser,
+    },
+    {
+      text: 'Тренування 60 хв',
+      icon: LuTimer,
+    },
+  ],
+  goals: [
+    'Персоналізований план навчання, адаптований під ваші цілі та особливості.',
+    'Детальне розбирання технічних помилок у реальному часі.',
+    'Прискорений прогрес завдяки максимальній увазі тренера.',
+  ],
+  levels: ['Початковий', 'Середній', 'Просунутий'],
+};
+
+export default { kids, basic, beginners, events, mixed, personal };

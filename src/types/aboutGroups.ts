@@ -11,4 +11,7 @@ export interface IAboutGroup {
   }[];
   goals: string[];
   levels: string[];
+  requirements?: string[];
+  features?: string[];
+  note?: string;
 }
