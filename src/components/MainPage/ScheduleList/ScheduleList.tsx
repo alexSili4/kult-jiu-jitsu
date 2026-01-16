@@ -1,4 +1,4 @@
-import { schedule } from '@/constants';
+import { schedule, coaches } from '@/constants';
 import { IProgramDetails } from '@/types/schedule';
 import { FC, useRef } from 'react';
 import {
@@ -39,19 +39,41 @@ const ProgramDetails: FC<IProgramDetailsProps> = ({ program }) => {
             <Program>{program}</Program>
             <Coach
               type='button'
-              onClick={() =>
-                window.scrollTo({
-                  top:
-                    coach.id === 'andrew'
-                      ? 2.8 * window.innerHeight
-                      : coach.id === 'buchecha'
-                      ? 4.5 * window.innerHeight
-                      : coach.id === 'volodymyr'
-                      ? 3.6 * window.innerHeight
-                      : 0,
-                  behavior: 'smooth',
-                })
-              }
+              onClick={() => {
+                // Знаходимо секцію тренерів
+                const coachesSection = document.querySelector(
+                  '[id*="coaches"]'
+                ) as HTMLElement;
+                if (coachesSection) {
+                  const rect = coachesSection.getBoundingClientRect();
+                  const scrollTop =
+                    window.pageYOffset || document.documentElement.scrollTop;
+                  const sectionTop = rect.top + scrollTop;
+                  const sectionHeight = coachesSection.offsetHeight;
+
+                  // Знаходимо індекс тренера в масиві coaches
+                  const coachIndex = coaches.findIndex(
+                    (c) => c.id === coach.id
+                  );
+
+                  if (coachIndex !== -1) {
+                    // Використовуємо ту саму логіку що в CoachesList.tsx (рядки 256-258)
+                    // Кожен тренер займає 0.25 прогресу скролу
+                    const start = coachIndex * 0.25;
+                    const rotateEnd = start + 0.25;
+
+                    // Скролимо на середину діапазону для оптимальної видимості
+                    const scrollProgress = start + (rotateEnd - start) / 2;
+                    const targetScroll =
+                      sectionTop + sectionHeight * scrollProgress;
+
+                    window.scrollTo({
+                      top: targetScroll,
+                      behavior: 'smooth',
+                    });
+                  }
+                }
+              }}
             >
               {coach.name}
             </Coach>

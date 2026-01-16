@@ -163,6 +163,7 @@ export const CoachCursorWrap = styled.div`
   padding: ${({ theme }) => theme.spacing(2)}px;
   background-color: #527324;
   scale: 0.15;
+  transform-origin: center center;
   transition: scale ${({ theme }) => theme.transitionDurationAndFunc};
 
   div:has(a:is(:hover, :focus)) ~ div & {
@@ -177,14 +178,13 @@ export const LettersContainer = styled.div`
   margin: 0 auto;
   width: 148px;
   text-align: center;
-  rotate: -65deg;
+  transform: rotate(-65deg) scale(0);
   transform-origin: 50% 50%;
   -webkit-transform-origin: 50% 50%;
-  scale: 0;
-  transition: scale ${({ theme }) => theme.transitionDurationAndFunc};
+  transition: transform ${({ theme }) => theme.transitionDurationAndFunc};
 
   div:has(a:is(:hover, :focus)) ~ div & {
-    scale: 1;
+    transform: rotate(-65deg) scale(1);
   }
 `;
 

@@ -216,67 +216,69 @@ const CoachesList: FC<ICoachesListProps> = ({ scrollYProgress }) => {
   }, [inView]);
 
   return (
-    <Container
-      ref={containerRef}
-      variants={containerVariants}
-      initial='hidden'
-      animate={animate}
-    >
-      <CoachInfo>
-        <CoachDesc variants={descVariants}>
-          <CoachDescItem>
-            <DescText>{coach.qualification}</DescText>
-            <DescTitle>Кваліфікація</DescTitle>
-          </CoachDescItem>
-          <CoachDescItem>
-            <DescText>{coach.experience}</DescText>
-            <DescTitle>Досвід</DescTitle>
-          </CoachDescItem>
-          <CoachDescItem>
-            <DescText>{coach.groups}</DescText>
-            <DescTitle>Групи</DescTitle>
-          </CoachDescItem>
-        </CoachDesc>
+    <>
+      <Container
+        ref={containerRef}
+        variants={containerVariants}
+        initial='hidden'
+        animate={animate}
+      >
+        <CoachInfo>
+          <CoachDesc variants={descVariants}>
+            <CoachDescItem>
+              <DescText>{coach.qualification}</DescText>
+              <DescTitle>Кваліфікація</DescTitle>
+            </CoachDescItem>
+            <CoachDescItem>
+              <DescText>{coach.experience}</DescText>
+              <DescTitle>Досвід</DescTitle>
+            </CoachDescItem>
+            <CoachDescItem>
+              <DescText>{coach.groups}</DescText>
+              <DescTitle>Групи</DescTitle>
+            </CoachDescItem>
+          </CoachDesc>
 
-        <CoachName variants={nameVariants}>
-          <NameWrap>
-            <Name>{coach.name}</Name>
+          <CoachName variants={nameVariants}>
+            <NameWrap>
+              <Name>{coach.name}</Name>
 
-            <SymbolsWrap>
-              <Symbol></Symbol>
-              <Symbol></Symbol>
-            </SymbolsWrap>
-          </NameWrap>
-          <Desc>{coach.desc}</Desc>
-        </CoachName>
-      </CoachInfo>
+              <SymbolsWrap>
+                <Symbol></Symbol>
+                <Symbol></Symbol>
+              </SymbolsWrap>
+            </NameWrap>
+            <Desc>{coach.desc}</Desc>
+          </CoachName>
+        </CoachInfo>
 
-      {coachesData.map(({ name, video, id }, index) => {
-        const start = index * 0.25;
-        const rotateEnd = start + 0.25;
-        const scaleStart = rotateEnd + 0.17;
-        const scaleEnd = scaleStart + 0.25;
+        {coachesData.map(({ name, video, id }, index) => {
+          const start = index * 0.25;
+          const rotateEnd = start + 0.25;
+          const scaleStart = rotateEnd + 0.17;
+          const scaleEnd = scaleStart + 0.25;
 
-        return (
-          <CoachCard
-            key={name}
-            rotateEnd={rotateEnd}
-            scaleEnd={scaleEnd}
-            scaleStart={scaleStart}
-            start={start}
-            scrollYProgress={scrollYProgress}
-            video={video}
-            id={id}
-          />
-        );
-      })}
+          return (
+            <CoachCard
+              key={name}
+              rotateEnd={rotateEnd}
+              scaleEnd={scaleEnd}
+              scaleStart={scaleStart}
+              start={start}
+              scrollYProgress={scrollYProgress}
+              video={video}
+              id={id}
+            />
+          );
+        })}
+      </Container>
 
       {inView && (
         <CustomCursor>
           <CoachCursor />
         </CustomCursor>
       )}
-    </Container>
+    </>
   );
 };
 
