@@ -1,7 +1,6 @@
 import ModalWin from '@CommonComponents/ModalWin';
 import { FC } from 'react';
-import FAQsSection from '@MainPageComponents/FAQsSection';
-import { faqs, aboutGroup, groups } from '@/constants';
+import { aboutGroup, groups } from '@/constants';
 import GroupsSection from '@MainPageComponents/GroupsSection';
 import AboutGroupSection from '@MainPageComponents/AboutGroupSection';
 import { AnimatePresence } from 'framer-motion';
@@ -21,19 +20,20 @@ const PersonalProgramModalWin: FC<IPersonalProgramModalWinProps> = ({
   return (
     <ModalWin setModalWinState={setModalWinState}>
       <AboutGroupSection group={aboutGroup.personal} />
-      <FAQsSection faqs={faqs.personal} isModalWin />
-      <GroupsSection groups={groups.personal} />
+      {/* <FAQsSection faqs={faqs.personal} isModalWin /> */}
+      <GroupsSection groups={groups.personal} closeModal={setModalWinState} />
     </ModalWin>
   );
 };
 
-const AnimatedPersonalProgramModalWin: FC<IAnimatedPersonalProgramModalWinProps> = ({
-  isOpen,
-  setModalWinState,
-}) => {
+const AnimatedPersonalProgramModalWin: FC<
+  IAnimatedPersonalProgramModalWinProps
+> = ({ isOpen, setModalWinState }) => {
   return (
     <AnimatePresence>
-      {isOpen && <PersonalProgramModalWin setModalWinState={setModalWinState} />}
+      {isOpen && (
+        <PersonalProgramModalWin setModalWinState={setModalWinState} />
+      )}
     </AnimatePresence>
   );
 };

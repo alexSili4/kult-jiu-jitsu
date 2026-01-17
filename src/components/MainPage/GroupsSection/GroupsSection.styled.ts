@@ -149,6 +149,19 @@ export const Text = styled.p`
   line-height: 1.4;
 `;
 
+export const Coach = styled.button`
+  color: #808080;
+  font-family: ${({ theme }) => theme.fontFamily.involve};
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.4;
+  transition: color ${({ theme }) => theme.transitionDurationAndFunc};
+
+  &:is(:hover, :focus) {
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;
+
 export const Button = styled.a`
   background-color: #18181c;
   padding: ${({ theme }) => theme.spacing(5)}px;
@@ -160,7 +173,8 @@ export const Button = styled.a`
   line-height: 1;
   text-align: center;
   letter-spacing: -0.2px;
-  transition: background-color ${({ theme }) => theme.transitionDurationAndFunc},
+  transition:
+    background-color ${({ theme }) => theme.transitionDurationAndFunc},
     color ${({ theme }) => theme.transitionDurationAndFunc};
 
   &:is(:hover, :focus) {

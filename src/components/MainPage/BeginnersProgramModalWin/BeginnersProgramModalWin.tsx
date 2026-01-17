@@ -1,7 +1,6 @@
 import ModalWin from '@CommonComponents/ModalWin';
 import { FC } from 'react';
-import FAQsSection from '@MainPageComponents/FAQsSection';
-import { faqs, aboutGroup, groups } from '@/constants';
+import { aboutGroup, groups } from '@/constants';
 import GroupsSection from '@MainPageComponents/GroupsSection';
 import AboutGroupSection from '@MainPageComponents/AboutGroupSection';
 import { AnimatePresence } from 'framer-motion';
@@ -21,19 +20,20 @@ const BeginnersProgramModalWin: FC<IBeginnersProgramModalWinProps> = ({
   return (
     <ModalWin setModalWinState={setModalWinState}>
       <AboutGroupSection group={aboutGroup.beginners} />
-      <FAQsSection faqs={faqs.beginners} isModalWin />
-      <GroupsSection groups={groups.beginners} />
+      {/* <FAQsSection faqs={faqs.beginners} isModalWin /> */}
+      <GroupsSection groups={groups.beginners} closeModal={setModalWinState} />
     </ModalWin>
   );
 };
 
-const AnimatedBeginnersProgramModalWin: FC<IAnimatedBeginnersProgramModalWinProps> = ({
-  isOpen,
-  setModalWinState,
-}) => {
+const AnimatedBeginnersProgramModalWin: FC<
+  IAnimatedBeginnersProgramModalWinProps
+> = ({ isOpen, setModalWinState }) => {
   return (
     <AnimatePresence>
-      {isOpen && <BeginnersProgramModalWin setModalWinState={setModalWinState} />}
+      {isOpen && (
+        <BeginnersProgramModalWin setModalWinState={setModalWinState} />
+      )}
     </AnimatePresence>
   );
 };

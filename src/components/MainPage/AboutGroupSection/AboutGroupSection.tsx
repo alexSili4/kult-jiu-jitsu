@@ -104,19 +104,20 @@ const AboutGroupSection: FC<IAboutGroupSectionProps> = ({ group }) => {
 
                 <Levels>
                   <Text>
-                    Програма поділена на два рівні. Перехід учнів на другий
-                    рівень здійснюється інструкторами залежно від навичок і
-                    здатності зосереджуватися під час занять.
+                    {group.levelsDesc ||
+                      'Програма поділена на два рівні. Перехід учнів на другий рівень здійснюється інструкторами залежно від навичок і здатності зосереджуватися під час занять.'}
                   </Text>
-                  <List>
-                    {levels.map((level, index) => (
-                      <ListItem key={level}>
-                        <TextWithSymbol>
-                          {`${String(index + 1).padStart(2, '0')} ${level}`}
-                        </TextWithSymbol>
-                      </ListItem>
-                    ))}
-                  </List>
+                  {levels && (
+                    <List>
+                      {levels.map((level, index) => (
+                        <ListItem key={level}>
+                          <TextWithSymbol>
+                            {`${String(index + 1).padStart(2, '0')} ${level}`}
+                          </TextWithSymbol>
+                        </ListItem>
+                      ))}
+                    </List>
+                  )}
                 </Levels>
               </Category>
 

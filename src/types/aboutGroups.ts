@@ -10,7 +10,8 @@ export interface IAboutGroup {
     icon: IconType | FC;
   }[];
   goals: string[];
-  levels: string[];
+  levels: string[] | null;
+  levelsDesc?: string;
   requirements?: string[];
   features?: string[];
   note?: string;

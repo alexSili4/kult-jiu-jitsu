@@ -20,15 +20,17 @@ import {
   StartLabel,
   Start,
   Button,
+  Coach,
 } from './GroupsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import SectionLabel from '@CommonComponents/SectionLabel';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
 import { IGroup } from '@/types/groups';
-import { SectionId } from '@/constants';
+import { coaches, SectionId } from '@/constants';
 
 interface IGroupsSectionProps {
   groups: IGroup[];
+  closeModal?: () => void;
 }
 
 interface IDayDetailsProps {
@@ -37,6 +39,7 @@ interface IDayDetailsProps {
   coach: string;
   start: string;
   period: string;
+  closeModal?: () => void;
 }
 
 const DayDetails: FC<IDayDetailsProps> = ({
@@ -45,6 +48,7 @@ const DayDetails: FC<IDayDetailsProps> = ({
   coach,
   start,
   period,
+  closeModal,
 }) => {
   const containerRef = useRef(null);
 
@@ -97,7 +101,56 @@ const DayDetails: FC<IDayDetailsProps> = ({
             <Details>
               <Row>
                 <Text>Тренер:</Text>
-                <Text>{coach}</Text>
+                {coaches.some((c) => c.name.startsWith(coach)) ? (
+                  <Coach
+                    type='button'
+                    onClick={() => {
+                      // Знаходимо секцію тренерів
+                      const coachesSection = document.querySelector(
+                        '[id*="coaches"]'
+                      ) as HTMLElement;
+                      if (coachesSection) {
+                        const rect = coachesSection.getBoundingClientRect();
+                        const scrollTop =
+                          window.pageYOffset ||
+                          document.documentElement.scrollTop;
+                        const sectionTop = rect.top + scrollTop;
+                        const sectionHeight = coachesSection.offsetHeight;
+
+                        // Знаходимо індекс тренера в масиві coaches за коротким ім'ям
+                        const coachIndex = coaches.findIndex((c) =>
+                          c.name.startsWith(coach)
+                        );
+
+                        if (coachIndex !== -1) {
+                          if (closeModal) {
+                            closeModal();
+                          }
+
+                          // Використовуємо ту саму логіку що в CoachesList.tsx
+                          // Кожен тренер займає 0.25 прогресу скролу
+                          const start = coachIndex * 0.25;
+                          const rotateEnd = start + 0.25;
+
+                          // Скролимо на середину діапазону для оптимальної видимості
+                          const scrollProgress =
+                            start + (rotateEnd - start) / 2;
+                          const targetScroll =
+                            sectionTop + sectionHeight * scrollProgress;
+
+                          window.scrollTo({
+                            top: targetScroll,
+                            behavior: 'smooth',
+                          });
+                        }
+                      }
+                    }}
+                  >
+                    {coach}
+                  </Coach>
+                ) : (
+                  <Text>{coach}</Text>
+                )}
               </Row>
               <Row>
                 <Text>Формат:</Text>
@@ -107,13 +160,15 @@ const DayDetails: FC<IDayDetailsProps> = ({
           </About>
         </Info>
 
-        <Button href={`#${SectionId.contacts}`}>Спробувати</Button>
+        <Button onClick={closeModal} href={`#${SectionId.contacts}`}>
+          Спробувати
+        </Button>
       </Card>
     </AnimatedContainer>
   );
 };
 
-const GroupsSection: FC<IGroupsSectionProps> = ({ groups }) => {
+const GroupsSection: FC<IGroupsSectionProps> = ({ groups, closeModal }) => {
   return (
     <Section>
       <SectionTitle text='Групи' isHidden />
@@ -133,6 +188,7 @@ const GroupsSection: FC<IGroupsSectionProps> = ({ groups }) => {
                       format={format}
                       start={start}
                       period={period}
+                      closeModal={closeModal}
                     />
                   </ListItem>
                 )

@@ -1,7 +1,6 @@
 import ModalWin from '@CommonComponents/ModalWin';
 import { FC } from 'react';
-import FAQsSection from '@MainPageComponents/FAQsSection';
-import { faqs, aboutGroup, groups } from '@/constants';
+import { aboutGroup, groups } from '@/constants';
 import GroupsSection from '@MainPageComponents/GroupsSection';
 import AboutGroupSection from '@MainPageComponents/AboutGroupSection';
 import { AnimatePresence } from 'framer-motion';
@@ -21,8 +20,8 @@ const BasicProgramModalWin: FC<IBasicProgramModalWinProps> = ({
   return (
     <ModalWin setModalWinState={setModalWinState}>
       <AboutGroupSection group={aboutGroup.basic} />
-      <FAQsSection faqs={faqs.basic} isModalWin />
-      <GroupsSection groups={groups.basic} />
+      {/* <FAQsSection faqs={faqs.basic} isModalWin /> */}
+      <GroupsSection groups={groups.basic} closeModal={setModalWinState} />
     </ModalWin>
   );
 };

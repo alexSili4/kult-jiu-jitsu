@@ -82,11 +82,11 @@ export const AboutText = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 24px;
+  font-size: 26px;
   line-height: 1.32;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    font-size: 44px;
+    font-size: 46px;
   }
 `;
 
@@ -153,7 +153,7 @@ export const Desc = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 500;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.2;
 `;
 
@@ -171,11 +171,11 @@ export const Subtitle = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 24px;
+  font-size: 26px;
   line-height: 1.32;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    font-size: 44px;
+    font-size: 46px;
   }
 `;
 
@@ -189,7 +189,7 @@ export const Text = styled.p`
   color: ${({ theme }) => theme.colors.white};
   font-family: ${({ theme }) => theme.fontFamily.involve};
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.4;
 `;
 
