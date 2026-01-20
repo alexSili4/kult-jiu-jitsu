@@ -10,7 +10,6 @@ const CustomCursor: FC<ICustomCursorProps> = ({ children }) => {
 
   useEffect(() => {
     const move = (e: MouseEvent) => {
-      console.log(e);
       setPos({ x: e.clientX, y: e.clientY });
     };
 

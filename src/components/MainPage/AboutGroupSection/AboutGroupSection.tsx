@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { IAboutGroup } from '@/types/aboutGroups';
 import {
@@ -31,12 +31,14 @@ interface IAboutGroupSectionProps {
   group: IAboutGroup;
   withoutBanner?: boolean;
   withoutLevels?: boolean;
+  children?: ReactNode;
 }
 
 const AboutGroupSection: FC<IAboutGroupSectionProps> = ({
   group,
   withoutBanner,
   withoutLevels,
+  children,
 }) => {
   const { about, banner, goals, levels, text, title } = group;
 
@@ -54,6 +56,8 @@ const AboutGroupSection: FC<IAboutGroupSectionProps> = ({
           <Title>{title}</Title>
         </BannerWrap>
       )}
+
+      {children}
 
       <Container>
         <GeneralContainer>
