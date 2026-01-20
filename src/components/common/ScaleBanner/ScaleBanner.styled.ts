@@ -5,7 +5,7 @@ export const BannerWrap = styled.div`
   position: sticky;
   top: 0;
   left: 0;
-  height: 100dvh;
+  height: 100vh;
   overflow: hidden;
 `;
 

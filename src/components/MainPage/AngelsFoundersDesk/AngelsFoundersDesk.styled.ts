@@ -9,7 +9,7 @@ export const Founders = styled.div`
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     position: relative;
     display: block;
-    height: 150dvh;
+    height: 150vh;
   }
 `;
 
@@ -167,7 +167,7 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100dvh;
+  height: 100vh;
 `;
 
 export const Title = styled.h3`

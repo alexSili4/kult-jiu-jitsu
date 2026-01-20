@@ -10,7 +10,7 @@ import {
 
 export const Founders = styled.div`
   position: relative;
-  height: 200dvh;
+  height: 200vh;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     display: none;
@@ -24,7 +24,7 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100dvh;
+  height: 100vh;
   overflow: hidden;
 `;
 

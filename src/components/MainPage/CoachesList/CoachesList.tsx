@@ -109,7 +109,7 @@ const CoachCard: FC<ICoachCardProps> = ({
 
   const transition: SpringOptions = {
     stiffness: 150,
-    damping: 12,
+    damping: 40,
     mass: 0.5,
   };
 

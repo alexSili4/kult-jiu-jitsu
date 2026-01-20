@@ -5,7 +5,7 @@ export const Section = styled.section`
   z-index: 10;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    height: 300dvh;
+    height: 300vh;
   }
 `;
 
@@ -16,7 +16,7 @@ export const Container = styled.div`
     position: sticky;
     top: -200px;
     left: 0;
-    height: calc(100dvh + 200px);
+    height: calc(100vh + 200px);
   }
 `;
 

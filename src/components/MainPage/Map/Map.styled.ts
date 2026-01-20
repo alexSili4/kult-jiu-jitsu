@@ -7,14 +7,14 @@ export const MapContainer = styled.div`
   position: sticky;
   top: 0;
   left: 0;
-  height: 150dvh;
+  height: 150vh;
 `;
 
 export const MapWrap = styled.div`
-  position: sticky;
+  position: relative;
   top: 0;
   left: 0;
-  height: 100dvh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,6 +31,7 @@ export const MapImgWrap = styled.div`
 
 export const MapImgWrapMob = styled(MapImgWrap)`
   top: -50px;
+  bottom: auto;
   width: 100%;
   aspect-ratio: 810 / 850;
 
@@ -98,7 +99,8 @@ export const TooltipWrap = styled.span`
   display: block;
   translate: -50% -32px;
   opacity: 1;
-  transition: translate ${({ theme }) => theme.transitionDurationAndFunc},
+  transition:
+    translate ${({ theme }) => theme.transitionDurationAndFunc},
     opacity ${({ theme }) => theme.transitionDurationAndFunc};
 
   button:not(:is(:hover, :focus)) > & {

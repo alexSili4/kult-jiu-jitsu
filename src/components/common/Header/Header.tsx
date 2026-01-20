@@ -225,7 +225,7 @@ const MobileMenu: FC<IMobileMenuProps> = ({ onLinkClick }) => {
 
   const containerVariants: Variants = {
     initial: {
-      y: '-100dvh',
+      y: '-100vh',
       transition,
     },
     animate: {
@@ -233,7 +233,7 @@ const MobileMenu: FC<IMobileMenuProps> = ({ onLinkClick }) => {
       transition,
     },
     exit: {
-      y: '-100dvh',
+      y: '-100vh',
       transition,
     },
   };

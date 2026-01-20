@@ -165,7 +165,7 @@ const Map: FC = () => {
 
   const containerRef = useRef(null);
 
-  const inView = useInView(containerRef, { amount: 0.3 });
+  const inView = useInView(containerRef, { amount: 0.3, once: true });
 
   const animate: VariantLabels = inView ? 'visible' : 'hidden';
 
@@ -174,10 +174,11 @@ const Map: FC = () => {
     visible: {},
   };
 
-  const transition: Transition = {
+  const transition = {
     type: 'spring',
-    duration: 1.4,
-    bounce: 0.4,
+    stiffness: 100,
+    damping: 30,
+    mass: 1,
   };
 
   const itemVariants: Variants = {

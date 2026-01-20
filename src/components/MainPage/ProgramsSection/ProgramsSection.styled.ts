@@ -208,7 +208,7 @@ export const DecorativeElementWrap = styled.div`
   transform: translateX(-50%) translateY(-50%);
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
-    top: 3dvh;
+    top: 3vh;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -216,7 +216,7 @@ export const DecorativeElementWrap = styled.div`
 
 export const DecorativeElement = styled(motion.div)`
   width: 37.5vw;
-  height: 66.7dvh;
+  height: 66.7vh;
   background-image: url(${decorativeIcon});
   background-size: 100% 100%;
 `;

@@ -5,7 +5,7 @@ export const Section = styled.section`
 `;
 
 export const Content = styled.div`
-  min-height: 100dvh;
+  min-height: 100vh;
   background-color: #18181c;
   border-top-right-radius: 20px;
   border-top-left-radius: 20px;

@@ -11,7 +11,7 @@ export const Content = styled.div`
   padding-top: ${({ theme }) => theme.spacing(15)}px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
-    min-height: 100dvh;
+    min-height: 100vh;
     padding-bottom: ${({ theme }) => theme.spacing(10)}px;
   }
 

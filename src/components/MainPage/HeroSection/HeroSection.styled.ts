@@ -4,7 +4,7 @@ export const Section = styled.section`
   position: sticky;
   top: 0;
   left: 0;
-  height: 100dvh;
+  height: 100vh;
   padding-bottom: ${({ theme }) => theme.spacing(14)}px;
 
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.mob}px) {
