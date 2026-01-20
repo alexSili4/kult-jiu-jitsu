@@ -182,3 +182,42 @@ export const Button = styled.a`
     color: #18181c;
   }
 `;
+
+export const Title = styled.p`
+  color: ${({ theme }) => theme.colors.white};
+  font-family: ${({ theme }) => theme.fontFamily.involve};
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.32;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    font-size: 46px;
+  }
+`;
+
+export const ContactsWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(10)}px;
+  width: 100%;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    width: 67.2vw;
+  }
+`;
+
+export const ContactsTextWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(4)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    gap: ${({ theme }) => theme.spacing(10)}px;
+  }
+`;
+
+export const LinksWrap = styled.div`
+  background-color: #252525;
+  padding: ${({ theme }) => theme.spacing(4)}px;
+  border-radius: 20px;
+`;

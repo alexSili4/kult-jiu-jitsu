@@ -7,8 +7,6 @@ import {
   ContactsContainer,
   ContactsWrap,
   ContactsLinks,
-  SocialLinks,
-  SocialLink,
   ContactPhone,
   Symbol,
   ContactsBannerWrap,
@@ -33,13 +31,12 @@ import {
 } from './ContactsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import { contacts, SectionId } from '@/constants';
-import { PiTelegramLogo } from 'react-icons/pi';
-import { FaInstagram } from 'react-icons/fa';
 import banner from '@/images/contacts/banner.png';
 import { IoChevronDown } from 'react-icons/io5';
 import { useForm } from 'react-hook-form';
 import { IContactsForm } from '@/types/contacts';
 import Map from '@MainPageComponents/Map';
+import SocialLinks from '@CommonComponents/SocialLinks';
 
 interface IInputProps {
   placeholder: string;
@@ -215,25 +212,7 @@ const Contacts: FC = () => {
     <ContactsContainer>
       <ContactsWrap>
         <ContactsLinks>
-          <SocialLinks>
-            <SocialLink
-              href={contacts.externalLinks.instagram}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <FaInstagram />
-            </SocialLink>
-
-            <SocialLink
-              href={contacts.externalLinks.telegram}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              <PiTelegramLogo />
-            </SocialLink>
-          </SocialLinks>
-
-          <a></a>
+          <SocialLinks />
 
           <ContactPhone
             href={contacts.instasport.href}

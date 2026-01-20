@@ -21,15 +21,20 @@ import {
   Start,
   Button,
   Coach,
+  Title,
+  ContactsWrap,
+  ContactsTextWrap,
+  LinksWrap,
 } from './GroupsSection.styled';
 import SectionTitle from '@CommonComponents/SectionTitle';
 import SectionLabel from '@CommonComponents/SectionLabel';
 import { Transition, useInView, VariantLabels, Variants } from 'framer-motion';
 import { IGroup } from '@/types/groups';
 import { coaches, SectionId } from '@/constants';
+import SocialLinks from '@CommonComponents/SocialLinks';
 
 interface IGroupsSectionProps {
-  groups: IGroup[];
+  groups: IGroup[] | null;
   closeModal?: () => void;
 }
 
@@ -178,22 +183,38 @@ const GroupsSection: FC<IGroupsSectionProps> = ({ groups, closeModal }) => {
           <Container>
             <SectionLabel text='Групи' />
 
-            <List>
-              {groups.map(
-                ({ days, period, start, details: { coach, format } }) => (
-                  <ListItem key={`${days} ${period}`}>
-                    <DayDetails
-                      days={days}
-                      coach={coach}
-                      format={format}
-                      start={start}
-                      period={period}
-                      closeModal={closeModal}
-                    />
-                  </ListItem>
-                )
-              )}
-            </List>
+            {groups ? (
+              <List>
+                {groups.map(
+                  ({ days, period, start, details: { coach, format } }) => (
+                    <ListItem key={`${days} ${period}`}>
+                      <DayDetails
+                        days={days}
+                        coach={coach}
+                        format={format}
+                        start={start}
+                        period={period}
+                        closeModal={closeModal}
+                      />
+                    </ListItem>
+                  )
+                )}
+              </List>
+            ) : (
+              <ContactsWrap>
+                <ContactsTextWrap>
+                  <Title>
+                    З приводу актуального набору в групи початківців запитуйте у
+                    нас в соцмережах.
+                  </Title>
+                  <Title>Можна приєднатись у будь-який момент.</Title>
+                </ContactsTextWrap>
+
+                <LinksWrap>
+                  <SocialLinks />
+                </LinksWrap>
+              </ContactsWrap>
+            )}
           </Container>
         </GeneralContainer>
       </Content>

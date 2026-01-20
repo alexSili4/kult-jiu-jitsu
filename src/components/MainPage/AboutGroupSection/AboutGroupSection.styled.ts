@@ -30,6 +30,17 @@ export const Banner = styled.img`
   object-position: bottom center;
 `;
 
+export const TitleWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: ${({ theme }) => theme.spacing(26)}px;
+
+  @media screen and (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    padding-top: ${({ theme }) => theme.spacing(22)}px;
+  }
+`;
+
 export const Title = styled.p`
   position: relative;
   color: #f9f9f9;

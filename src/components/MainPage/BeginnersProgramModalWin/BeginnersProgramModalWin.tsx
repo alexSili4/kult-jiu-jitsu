@@ -1,9 +1,10 @@
 import ModalWin from '@CommonComponents/ModalWin';
 import { FC } from 'react';
-import { aboutGroup, groups } from '@/constants';
+import { aboutGroup } from '@/constants';
 import GroupsSection from '@MainPageComponents/GroupsSection';
 import AboutGroupSection from '@MainPageComponents/AboutGroupSection';
 import { AnimatePresence } from 'framer-motion';
+import BeginnersProgramDecorativeElements from '@MainPageComponents/BeginnersProgramDecorativeElements';
 
 interface IBeginnersProgramModalWinProps {
   setModalWinState: () => void;
@@ -19,9 +20,16 @@ const BeginnersProgramModalWin: FC<IBeginnersProgramModalWinProps> = ({
 }) => {
   return (
     <ModalWin setModalWinState={setModalWinState}>
-      <AboutGroupSection group={aboutGroup.beginners} />
+      <AboutGroupSection
+        group={aboutGroup.beginners}
+        withoutBanner
+        withoutLevels
+      />
+
+      <BeginnersProgramDecorativeElements />
+
       {/* <FAQsSection faqs={faqs.beginners} isModalWin /> */}
-      <GroupsSection groups={groups.beginners} closeModal={setModalWinState} />
+      <GroupsSection groups={null} closeModal={setModalWinState} />
     </ModalWin>
   );
 };

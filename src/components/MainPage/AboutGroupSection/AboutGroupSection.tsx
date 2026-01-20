@@ -22,25 +22,38 @@ import {
   Text,
   Levels,
   Title,
+  TitleWrap,
 } from './AboutGroupSection.styled';
 import GeneralContainer from '@CommonComponents/GeneralContainer';
 import SectionLabel from '@/components/common/SectionLabel';
 
 interface IAboutGroupSectionProps {
   group: IAboutGroup;
+  withoutBanner?: boolean;
+  withoutLevels?: boolean;
 }
 
-const AboutGroupSection: FC<IAboutGroupSectionProps> = ({ group }) => {
+const AboutGroupSection: FC<IAboutGroupSectionProps> = ({
+  group,
+  withoutBanner,
+  withoutLevels,
+}) => {
   const { about, banner, goals, levels, text, title } = group;
 
   return (
     <Section>
       <SectionTitle text='Про програму' isHidden />
 
-      <BannerWrap>
-        <Banner src={banner} alt='Банер' />
-        <Title>{title}</Title>
-      </BannerWrap>
+      {withoutBanner ? (
+        <TitleWrap>
+          <Title>{title}</Title>
+        </TitleWrap>
+      ) : (
+        <BannerWrap>
+          <Banner src={banner} alt='Банер' />
+          <Title>{title}</Title>
+        </BannerWrap>
+      )}
 
       <Container>
         <GeneralContainer>
@@ -62,16 +75,18 @@ const AboutGroupSection: FC<IAboutGroupSectionProps> = ({ group }) => {
                 ))}
               </About>
 
-              <Category>
-                <Subtitle>Цілі програми</Subtitle>
-                <List>
-                  {goals.map((goal) => (
-                    <ListItem key={goal}>
-                      <TextWithSymbol>{goal}</TextWithSymbol>
-                    </ListItem>
-                  ))}
-                </List>
-              </Category>
+              {goals && (
+                <Category>
+                  <Subtitle>Цілі програми</Subtitle>
+                  <List>
+                    {goals.map((goal) => (
+                      <ListItem key={goal}>
+                        <TextWithSymbol>{goal}</TextWithSymbol>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Category>
+              )}
 
               {group.features && (
                 <Category>
@@ -80,6 +95,19 @@ const AboutGroupSection: FC<IAboutGroupSectionProps> = ({ group }) => {
                     {group.features.map((feature) => (
                       <ListItem key={feature}>
                         <TextWithSymbol>{feature}</TextWithSymbol>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Category>
+              )}
+
+              {group.inGroup && (
+                <Category>
+                  <Subtitle>Що на вас чекає в групі:</Subtitle>
+                  <List>
+                    {group.inGroup.map((item) => (
+                      <ListItem key={item}>
+                        <TextWithSymbol>{item}</TextWithSymbol>
                       </ListItem>
                     ))}
                   </List>
@@ -99,27 +127,29 @@ const AboutGroupSection: FC<IAboutGroupSectionProps> = ({ group }) => {
                 </Category>
               )}
 
-              <Category>
-                <Subtitle>Рівні програми</Subtitle>
+              {!withoutLevels && (
+                <Category>
+                  <Subtitle>Рівні програми</Subtitle>
 
-                <Levels>
-                  <Text>
-                    {group.levelsDesc ||
-                      'Програма поділена на два рівні. Перехід учнів на другий рівень здійснюється інструкторами залежно від навичок і здатності зосереджуватися під час занять.'}
-                  </Text>
-                  {levels && (
-                    <List>
-                      {levels.map((level, index) => (
-                        <ListItem key={level}>
-                          <TextWithSymbol>
-                            {`${String(index + 1).padStart(2, '0')} ${level}`}
-                          </TextWithSymbol>
-                        </ListItem>
-                      ))}
-                    </List>
-                  )}
-                </Levels>
-              </Category>
+                  <Levels>
+                    <Text>
+                      {group.levelsDesc ||
+                        'Програма поділена на два рівні. Перехід учнів на другий рівень здійснюється інструкторами залежно від навичок і здатності зосереджуватися під час занять.'}
+                    </Text>
+                    {levels && (
+                      <List>
+                        {levels.map((level, index) => (
+                          <ListItem key={level}>
+                            <TextWithSymbol>
+                              {`${String(index + 1).padStart(2, '0')} ${level}`}
+                            </TextWithSymbol>
+                          </ListItem>
+                        ))}
+                      </List>
+                    )}
+                  </Levels>
+                </Category>
+              )}
 
               {group.note && (
                 <Category>
