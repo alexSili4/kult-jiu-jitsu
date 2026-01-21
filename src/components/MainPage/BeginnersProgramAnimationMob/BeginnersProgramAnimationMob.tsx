@@ -2,41 +2,39 @@ import { FC } from 'react';
 import {
   Container,
   TextWrap,
-  LeftShadow,
-  RightShadow,
+  CenterShadow,
+  Top,
   TopShadow,
   BottomShadow,
-  Left,
-  Right,
+  Bottom,
   CenterWrap,
   Center,
   Text,
-} from './BeginnersProgramAnimation.styled';
+} from './BeginnersProgramAnimationMob.styled';
 import { useInView } from 'framer-motion';
+
 import { useRef } from 'react';
 
-import leftShadow from '@/images/aboutGroup/beginners/shadow-left.webp';
-import rightShadow from '@/images/aboutGroup/beginners/shadow-right.webp';
-import topShadow from '@/images/aboutGroup/beginners/shadow-top.webp';
-import bottomShadow from '@/images/aboutGroup/beginners/shadow-bottom.webp';
-import left from '@/images/aboutGroup/beginners/left.webp';
-import right from '@/images/aboutGroup/beginners/right.webp';
-import center from '@/images/aboutGroup/beginners/center.webp';
+import centerShadow from '@/images/aboutGroup/beginners/shadow-center-mob.webp';
+import topShadow from '@/images/aboutGroup/beginners/shadow-top-mob.webp';
+import bottomShadow from '@/images/aboutGroup/beginners/shadow-bottom-mob.webp';
+import top from '@/images/aboutGroup/beginners/top.webp';
+import bottom from '@/images/aboutGroup/beginners/bottom.webp';
+import center from '@/images/aboutGroup/beginners/center-mob.webp';
 
-const BeginnersProgramAnimation: FC = () => {
+const BeginnersProgramAnimationMob: FC = () => {
   const containerRef = useRef(null);
   const isInView = useInView(containerRef, { once: true, amount: 'all' });
 
   return (
     <Container ref={containerRef}>
-      <LeftShadow src={leftShadow} alt='' />
-      <RightShadow src={rightShadow} alt='' />
       <TopShadow src={topShadow} alt='' />
       <BottomShadow src={bottomShadow} alt='' />
+      <CenterShadow src={centerShadow} alt='' />
 
       <TextWrap
-        initial={{ width: 195, overflow: 'hidden' }}
-        animate={isInView ? { width: 1046 } : { width: 195 }}
+        initial={{ height: 140, overflow: 'hidden' }}
+        animate={isInView ? { height: 580 } : { height: 140 }}
         transition={{
           duration: 1.2,
           type: 'spring',
@@ -51,12 +49,11 @@ const BeginnersProgramAnimation: FC = () => {
             животі. На щастя, ті часи минули!”
           </Text>
         </CenterWrap>
-        <Left src={left} alt='' />
-        <Right src={right} alt='' />
+        <Top src={top} alt='' />
+        <Bottom src={bottom} alt='' />
       </TextWrap>
     </Container>
   );
 };
 
-
-export default BeginnersProgramAnimation;
+export default BeginnersProgramAnimationMob;

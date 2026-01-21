@@ -6,6 +6,7 @@ import AboutGroupSection from '@MainPageComponents/AboutGroupSection';
 import { AnimatePresence } from 'framer-motion';
 import BeginnersProgramDecorativeElements from '@MainPageComponents/BeginnersProgramDecorativeElements';
 import BeginnersProgramAnimation from '@MainPageComponents/BeginnersProgramAnimation';
+import BeginnersProgramAnimationMob from '@MainPageComponents/BeginnersProgramAnimationMob';
 
 interface IBeginnersProgramModalWinProps {
   setModalWinState: () => void;
@@ -27,6 +28,7 @@ const BeginnersProgramModalWin: FC<IBeginnersProgramModalWinProps> = ({
         withoutLevels
       >
         <BeginnersProgramAnimation />
+        <BeginnersProgramAnimationMob />
       </AboutGroupSection>
 
       <BeginnersProgramDecorativeElements />
