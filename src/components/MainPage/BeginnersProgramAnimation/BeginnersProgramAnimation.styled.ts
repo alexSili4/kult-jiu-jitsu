@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { motion } from 'framer-motion';
 
 export const Container = styled.div`
   position: relative;
@@ -9,7 +10,7 @@ export const Container = styled.div`
   height: 537px;
 `;
 
-export const TextWrap = styled.div`
+export const TextWrap = styled(motion.div)`
   position: relative;
   width: 1046px;
   height: 526px;
@@ -57,4 +58,54 @@ export const BottomShadow = styled.img`
   @media screen and (min-width: ${({ theme }) => theme.breakpoints.desk}px) {
     right: 29vw;
   }
+`;
+
+export const Left = styled.img`
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+`;
+
+export const Right = styled.img`
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+`;
+
+export const CenterWrap = styled.div`
+  position: absolute;
+  left: 90px;
+  right: 90px;
+  top: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 526px;
+  transform: translateY(-50%);
+  overflow: hidden;
+`;
+
+export const Center = styled.img`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 867px;
+  max-width: none;
+  height: 437px;
+  transform: translateY(-50%) translateX(-50%);
+`;
+
+export const Text = styled.p`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 620px;
+  font-family: ${({ theme }) => theme.fontFamily.ubuntu};
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 1.32;
+  text-align: center;
+  transform: translateY(-50%) translateX(-50%);
 `;

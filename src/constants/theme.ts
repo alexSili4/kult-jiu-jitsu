@@ -4,7 +4,7 @@ declare module '@emotion/react' {
 
 interface ITheme {
   colors: Record<'white' | 'white10' | 'white50' | 'white60' | 'black', string>;
-  fontFamily: Record<'involve' | 'theater', string>;
+  fontFamily: Record<'involve' | 'theater' | 'ubuntu', string>;
   breakpoints: Record<'mob' | 'tablet' | 'desk', number>;
   transitionDurationAndFunc: string;
   spacing: (value?: number) => number;
@@ -19,6 +19,7 @@ const theme: ITheme = {
     black: '#000000',
   },
   fontFamily: {
+    ubuntu: 'Ubuntu Mono',
     involve: 'Involve',
     theater: 'Theater',
   },

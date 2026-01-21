@@ -51,7 +51,7 @@ const ProgramsSection: FC = () => {
   const [showKidsProgramModalWin, setShowKidsProgramModalWin] =
     useState<boolean>(false);
   const [showBeginnersProgramModalWin, setShowBeginnersProgramModalWin] =
-    useState<boolean>(false);
+    useState<boolean>(true);
   const [showBasicProgramModalWin, setShowBasicProgramModalWin] =
     useState<boolean>(false);
   const [showProProgramModalWin, setShowProProgramModalWin] =
